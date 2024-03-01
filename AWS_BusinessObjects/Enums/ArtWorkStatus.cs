@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AWS_BusinessObjects.Enums
 {
-    public enum ArtWork
+    public enum ArtWorkStatus
     {
         Active = 1,
         Inactive = 2

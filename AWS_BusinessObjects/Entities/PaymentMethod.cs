@@ -11,5 +11,6 @@ namespace AWS_BusinessObjects.Entities
     {
         public string Name { get; set; }
         public int Status { get; set; }
+        public virtual IList<PackageDetail>? PackageDetails { get; set; }
     }
 }
