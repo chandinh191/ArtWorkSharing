@@ -9,5 +9,7 @@ namespace AWS_BusinessObjects.Entities
 {
     public class PaymentMethod : BaseAuditableEntity
     {
+        public string Name { get; set; }
+        public int Status { get; set; }
     }
 }

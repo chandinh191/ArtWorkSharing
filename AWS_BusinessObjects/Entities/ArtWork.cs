@@ -17,7 +17,7 @@ namespace AWS_BusinessObjects.Entities
         public string Description { get; set; }
         public float Price { get; set; }
         public string ImageUrl { get; set; }
-        public string status { get; set; }
+        public int Status { get; set; }
         public bool IsSold { get; set; }
         public bool IsPreOrder { get; set; }
     }
