@@ -3,6 +3,7 @@ using AWS_DAO.Common.Interfaces;
 using AWS_DAO.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -63,18 +64,23 @@ namespace AWS_Repository.Identity
                 //add role
                 authClaims.Add(new Claim(ClaimTypes.Role, role.ToString()));
             }
-            //Get Key and token
+            // Use this line to relax HMAC key size validation
+            IdentityModelEventSource.ShowPII = true;
+
+            // Get Key and token
             var authenKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:SecrectKey"]));
             var token = new JwtSecurityToken(
-                    issuer: configuration["JWT:ValidIssuer"],
-                    audience: configuration["JWT:ValidAudience"],
-                    //expires: DateTime.Now.AddDays(1),
-                    expires: DateTime.Now.AddMinutes(30),
-                    claims: authClaims,
-                    signingCredentials: new SigningCredentials(authenKey, SecurityAlgorithms.HmacSha512Signature)
-                    );
-            //return token
+                issuer: configuration["JWT:ValidIssuer"],
+                audience: configuration["JWT:ValidAudience"],
+                expires: DateTime.Now.AddMinutes(30),
+                claims: authClaims,
+                signingCredentials: new SigningCredentials(authenKey, SecurityAlgorithms.HmacSha512Signature)
+            );
+
+            // Return token
             return new JwtSecurityTokenHandler().WriteToken(token);
+
+
         }
 
         public async Task<IdentityResult> SignUpAsync(SignUpModel model)
