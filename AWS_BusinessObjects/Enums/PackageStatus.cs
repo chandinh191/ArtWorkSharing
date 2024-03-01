@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AWS_BusinessObjects.Enums
 {
-    internal class PackageStatus
+    public enum PackageStatus
     {
+        Active = 1,
+        Inactive = 2
     }
 }
