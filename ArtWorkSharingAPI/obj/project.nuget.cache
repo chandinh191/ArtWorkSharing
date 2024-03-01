@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "luLLI3ZuEuyLJV0mixlhOP1eKHoPQNPmezZ/f4iekIf3ickGiRzE3IrpKIcSJPjPYYMGQnyopQvAn1Ftl537dg==",
+  "dgSpecHash": "jTfWDkRmkb2pOxFiupG7n0wo6KFh5TRf00/TZRVefztJnkuEroJ3+eZMOqoJpQk1vTDVz97V2LIHEtzMk11uDw==",
   "success": true,
   "projectFilePath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,8 @@
     "C:\\Users\\gamer\\.nuget\\packages\\duende.identityserver.entityframework\\6.0.4\\duende.identityserver.entityframework.6.0.4.nupkg.sha512",
     "C:\\Users\\gamer\\.nuget\\packages\\duende.identityserver.entityframework.storage\\6.0.4\\duende.identityserver.entityframework.storage.6.0.4.nupkg.sha512",
     "C:\\Users\\gamer\\.nuget\\packages\\duende.identityserver.storage\\6.0.4\\duende.identityserver.storage.6.0.4.nupkg.sha512",
+    "C:\\Users\\gamer\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\gamer\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.0\\fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "C:\\Users\\gamer\\.nuget\\packages\\identitymodel\\6.0.0\\identitymodel.6.0.0.nupkg.sha512",
     "C:\\Users\\gamer\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\gamer\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
