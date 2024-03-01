@@ -103,3 +103,15 @@ E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\CsvHelper.dll
 E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
 E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\System.Linq.Async.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\FluentValidation.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Humanizer.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
+E:\S8\PRN231\ArtWorkSharingBE\ArtWorkSharingAPI\bin\Debug\net7.0\System.CodeDom.dll

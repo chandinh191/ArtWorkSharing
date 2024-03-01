@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
+﻿using AWS_DAO.Common.Interfaces;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
-namespace CleanArchitecture.Application.Common.Behaviours;
+namespace AWS_DAO.Common.Behaviours;
 
 public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {

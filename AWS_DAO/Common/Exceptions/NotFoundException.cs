@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Application.Common.Exceptions;
+﻿namespace AWS_DAO.Common.Exceptions;
 
 public class NotFoundException : Exception
 {
