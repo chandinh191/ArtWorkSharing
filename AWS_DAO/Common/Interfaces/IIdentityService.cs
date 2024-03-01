@@ -19,5 +19,6 @@ namespace AWS_DAO.Common.Interfaces
         Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password);
 
         Task<Result> DeleteUserAsync(string userId);
+        Task<ApplicationUser> GetUserByEmailAsync(string email);
     }
 }

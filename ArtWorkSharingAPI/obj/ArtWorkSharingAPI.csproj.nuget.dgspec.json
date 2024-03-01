@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\S8\\PRN231\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj": {}
+    "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj": {}
   },
   "projects": {
-    "E:\\S8\\PRN231\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj": {
+    "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S8\\PRN231\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj",
+        "projectUniqueName": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj",
         "projectName": "ArtWorkSharingAPI",
-        "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj",
-        "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
-        "outputPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\ArtWorkSharingAPI\\obj\\",
+        "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\ArtWorkSharingAPI\\ArtWorkSharingAPI.csproj",
+        "packagesPath": "C:\\Users\\vinht\\.nuget\\packages\\",
+        "outputPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\ArtWorkSharingAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\vinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj": {
-                "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj"
+              "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj": {
+                "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj"
               }
             }
           }
@@ -51,6 +47,10 @@
             "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
               "target": "Package",
               "version": "[7.0.7, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.16, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
@@ -96,25 +96,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj": {
+    "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj",
+        "projectUniqueName": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj",
         "projectName": "AWS_BusinessObjects",
-        "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj",
-        "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
-        "outputPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_BusinessObjects\\obj\\",
+        "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj",
+        "packagesPath": "C:\\Users\\vinht\\.nuget\\packages\\",
+        "outputPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_BusinessObjects\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\vinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -165,25 +161,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj": {
+    "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj",
+        "projectUniqueName": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj",
         "projectName": "AWS_DAO",
-        "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj",
-        "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
-        "outputPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_DAO\\obj\\",
+        "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj",
+        "packagesPath": "C:\\Users\\vinht\\.nuget\\packages\\",
+        "outputPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_DAO\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\vinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -197,8 +189,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj": {
-                "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj"
+              "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj": {
+                "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_BusinessObjects\\AWS_BusinessObjects.csproj"
               }
             }
           }
@@ -242,25 +234,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj": {
+    "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj",
+        "projectUniqueName": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj",
         "projectName": "AWS_Repository",
-        "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj",
-        "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
-        "outputPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Repository\\obj\\",
+        "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj",
+        "packagesPath": "C:\\Users\\vinht\\.nuget\\packages\\",
+        "outputPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Repository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\vinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -274,8 +262,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj": {
-                "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj"
+              "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj": {
+                "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_DAO\\AWS_DAO.csproj"
               }
             }
           }
@@ -349,25 +337,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj": {
+    "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj",
+        "projectUniqueName": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj",
         "projectName": "AWS_Services",
-        "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj",
-        "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
-        "outputPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Services\\obj\\",
+        "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Services\\AWS_Services.csproj",
+        "packagesPath": "C:\\Users\\vinht\\.nuget\\packages\\",
+        "outputPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Services\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\vinht\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -381,8 +365,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj": {
-                "projectPath": "E:\\S8\\PRN231\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj"
+              "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj": {
+                "projectPath": "E:\\Ky8\\PRN231\\ArtWork\\ArtWorkSharingBE\\AWS_Repository\\AWS_Repository.csproj"
               }
             }
           }
@@ -412,7 +396,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

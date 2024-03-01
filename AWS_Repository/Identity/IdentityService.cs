@@ -79,4 +79,10 @@ public class IdentityService : IIdentityService
 
         return result.ToApplicationResult();
     }
+    public async Task<ApplicationUser> GetUserByEmailAsync(string email)
+    {
+        var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.Equals(email));
+
+        return user;
+    }
 }
