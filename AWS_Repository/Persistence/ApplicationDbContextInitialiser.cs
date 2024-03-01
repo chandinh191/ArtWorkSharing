@@ -95,12 +95,12 @@ namespace AWS_Repository.Persistence
                  }
              }*/
 
-            var managerRole = new IdentityRole("Manager");
+            //var managerRole = new IdentityRole("Manager");
 
-            if (_roleManager.Roles.All(r => r.Name != managerRole.Name))
-            {
-                await _roleManager.CreateAsync(managerRole);
-            }
+            //if (_roleManager.Roles.All(r => r.Name != managerRole.Name))
+            //{
+            //    await _roleManager.CreateAsync(managerRole);
+            //}
 
             /*  var manager = new UserAccount { UserName = "manager@localhost", Email = "manager@localhost" };
 
@@ -110,7 +110,7 @@ namespace AWS_Repository.Persistence
                   await _userManager.AddToRolesAsync(manager, new[] { managerRole.Name });
               }*/
 
-            var customerRole = new IdentityRole("Customer");
+            var customerRole = new IdentityRole("Audience");
 
             if (_roleManager.Roles.All(r => r.Name != customerRole.Name))
             {
@@ -125,7 +125,7 @@ namespace AWS_Repository.Persistence
                   await _userManager.AddToRolesAsync(customer, new[] { customerRole.Name });
               }
       */
-            var psychologistRole = new IdentityRole("Psychologist");
+            var psychologistRole = new IdentityRole("Artist");
 
             if (_roleManager.Roles.All(r => r.Name != psychologistRole.Name))
             {
