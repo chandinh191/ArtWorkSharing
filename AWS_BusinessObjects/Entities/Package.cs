@@ -9,5 +9,8 @@ namespace AWS_BusinessObjects.Entities
 {
     public class Package : BaseAuditableEntity
     {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string status { get; set; }
     }
 }

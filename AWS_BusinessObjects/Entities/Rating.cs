@@ -9,5 +9,8 @@ namespace AWS_BusinessObjects.Entities
 {
     public class Rating : BaseAuditableEntity
     {
+        public Guid OrderID { get; set; }
+        public string Description { get; set; } 
+        public float Point { get; set; }
     }
 }

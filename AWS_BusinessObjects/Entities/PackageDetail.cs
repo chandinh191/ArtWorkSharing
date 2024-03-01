@@ -9,5 +9,10 @@ namespace AWS_BusinessObjects.Entities
 {
     public class PackageDetail : BaseAuditableEntity
     {
+        public Guid PackageID { get; set; }
+        public Guid UserAccountId { get; set; }
+        public Guid PaymentMethodID { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }
