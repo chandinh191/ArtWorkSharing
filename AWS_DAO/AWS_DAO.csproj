@@ -18,4 +18,26 @@
     <ProjectReference Include="..\AWS_BusinessObjects\AWS_BusinessObjects.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ArtistAccount\Commands\UpdateArtistAccount\" />
+    <Folder Include="ArtWork\Commands\" />
+    <Folder Include="ArtWork\Queries\" />
+    <Folder Include="AudienceAccount\Commands\" />
+    <Folder Include="AudienceAccount\Queries\" />
+    <Folder Include="Interact\Commands\" />
+    <Folder Include="Interact\Queries\" />
+    <Folder Include="Order\Commands\" />
+    <Folder Include="Order\Queries\" />
+    <Folder Include="PackageDetail\Commands\" />
+    <Folder Include="PackageDetail\Queries\" />
+    <Folder Include="Package\Commands\" />
+    <Folder Include="Package\Queries\" />
+    <Folder Include="PaymentMethod\Commands\" />
+    <Folder Include="PaymentMethod\Queries\" />
+    <Folder Include="Rating\Commands\" />
+    <Folder Include="Rating\Queries\" />
+    <Folder Include="Report\Commands\" />
+    <Folder Include="Report\Queries\" />
+  </ItemGroup>
+
 </Project>
