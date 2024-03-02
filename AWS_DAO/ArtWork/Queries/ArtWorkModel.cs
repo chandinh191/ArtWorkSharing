@@ -24,7 +24,7 @@ namespace AWS_DAO.ArtWork.Queries
         public ArtWorkStatus ArtWorkStatus { get; set; }
         public bool IsSold { get; set; }
         public bool IsPreOrder { get; set; }
-        public virtual IList<Order>? Orders { get; set; }
-        public virtual IList<Interact>? Interacts { get; set; }
+/*        public virtual IList<Order>? Orders { get; set; }
+        public virtual IList<Interact>? Interacts { get; set; }*/
     }
 }

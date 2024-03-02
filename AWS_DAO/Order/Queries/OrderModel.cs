@@ -21,6 +21,6 @@ namespace AWS_DAO.Order.Queries
         public string Price { get; set; }
         public OrderStatus Status { get; set; }
         public bool isPreOrder { get; set; }
-        public virtual IList<Rating>? Rating { get; set; }
+/*        public virtual IList<Rating>? Rating { get; set; }*/
     }
 }

@@ -13,6 +13,6 @@ namespace AWS_DAO.Package.Queries
         public string? NamePacked { get; set; }
         public string? Description { get; set; }
         public int Status { get; set; }
-        public virtual IList<PackageDetail>? PackageDetails { get; set; }
+/*        public virtual IList<PackageDetail>? PackageDetails { get; set; }*/
     }
 }
