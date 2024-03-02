@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common;
+using AWS_BusinessObjects.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AWS_BusinessObjects.Entities
     public class PaymentMethod : BaseAuditableEntity
     {
         public string Name { get; set; }
-        public int Status { get; set; }
+        public PaymentMethodStatus PaymentMethodStatus { get; set; }
         public virtual IList<PackageDetail>? PackageDetails { get; set; }
     }
 }
