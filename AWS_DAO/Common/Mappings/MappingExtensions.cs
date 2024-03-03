@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using AWS_DAO.Common.Models;
+using AWS_BusinessObjects.Common.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AWS_DAO.Common.Mappings;

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AWS_DAO.Common.Exceptions;
-using AWS_DAO.Common.Interfaces;
+using AWS_BusinessObjects.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;

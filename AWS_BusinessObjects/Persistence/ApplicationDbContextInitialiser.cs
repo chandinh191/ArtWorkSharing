@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_Repository.Persistence
+namespace AWS_BusinessObjects.Persistence
 {
     public class ApplicationDbContextInitialiser
     {

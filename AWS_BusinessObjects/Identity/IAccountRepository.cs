@@ -1,4 +1,4 @@
-﻿using AWS_DAO.Models;
+﻿using AWS_BusinessObjects.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_Repository.Identity
+namespace AWS_BusinessObjects.Identity
 {
     public interface IAccountRepository
     {

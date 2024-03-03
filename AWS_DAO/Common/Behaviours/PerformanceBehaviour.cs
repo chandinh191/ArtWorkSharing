@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using AWS_DAO.Common.Interfaces;
+using AWS_BusinessObjects.Common.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

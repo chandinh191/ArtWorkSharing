@@ -1,7 +1,6 @@
 using ArtWorkSharingAPI;
+using AWS_BusinessObjects.Persistence;
 using AWS_DAO;
-using AWS_Repository;
-using AWS_Repository.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;

@@ -1,7 +1,7 @@
-﻿using AWS_DAO.Common.Models;
+﻿using AWS_BusinessObjects.Common.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace AWS_Repository.Identity;
+namespace AWS_BusinessObjects.Identity;
 
 public static class IdentityResultExtensions
 {

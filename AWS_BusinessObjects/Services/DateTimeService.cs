@@ -1,6 +1,6 @@
-﻿using AWS_DAO.Common.Interfaces;
+﻿using AWS_BusinessObjects.Common.Interfaces;
 
-namespace AWS_Repository.Services;
+namespace AWS_BusinessObjects.Services;
 
 public class DateTimeService : IDateTime
 {

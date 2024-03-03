@@ -1,5 +1,5 @@
 ﻿using AWS_BusinessObjects.Enums;
-using AWS_DAO.Common.Interfaces;
+using AWS_BusinessObjects.Common.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

@@ -1,12 +1,12 @@
 ﻿using AWS_BusinessObjects.Identity;
-using AWS_DAO.Common.Models;
+using AWS_BusinessObjects.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_DAO.Common.Interfaces
+namespace AWS_BusinessObjects.Common.Interfaces
 {
     public interface IIdentityService
     {

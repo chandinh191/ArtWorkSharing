@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_DAO.Common.Models
+namespace AWS_BusinessObjects.Common.Models
 {
     public class Result
     {

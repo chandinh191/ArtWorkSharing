@@ -1,9 +1,8 @@
 ﻿using AWS_BusinessObjects.Common;
+using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
 using AWS_BusinessObjects.Identity;
-using AWS_DAO.Common.Interfaces;
-using AWS_Repository.Persistence.Interceptors;
-using AWS_Repository.Common;
+using AWS_BusinessObjects.Persistence.Interceptors;
 using Azure;
 using Duende.IdentityServer.EntityFramework.Options;
 using MediatR;
@@ -18,7 +17,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_Repository.Persistence
+namespace AWS_BusinessObjects.Persistence
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
     {

@@ -1,6 +1,6 @@
-﻿using AWS_BusinessObjects.Identity;
-using AWS_DAO.Common.Interfaces;
-using AWS_DAO.Models;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Identity;
+using AWS_BusinessObjects.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
@@ -13,7 +13,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_Repository.Identity
+namespace AWS_BusinessObjects.Identity
 {
 
     public class AccountRepository : IAccountRepository

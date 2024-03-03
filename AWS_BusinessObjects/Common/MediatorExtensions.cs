@@ -1,5 +1,4 @@
 ﻿using AWS_BusinessObjects.Common;
-using AWS_Repository.Common;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_Repository.Common
+namespace AWS_BusinessObjects.Common
 {
     public static class MediatorExtensions
     {

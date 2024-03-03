@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using AWS_DAO.Common.Interfaces;
+using AWS_BusinessObjects.Common.Interfaces;
 using AWS_DAO.Common.Exceptions;
 using AWS_DAO.Common.Security;
 using MediatR;

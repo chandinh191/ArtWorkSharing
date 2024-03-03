@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
-
-using AWS_DAO.Common.Interfaces;
+using AWS_BusinessObjects.Common.Interfaces;
 
 namespace ArtWorkSharingAPI.Services;
 

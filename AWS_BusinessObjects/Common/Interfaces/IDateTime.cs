@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_DAO.Common.Interfaces
+namespace AWS_BusinessObjects.Common.Interfaces
 {
     public interface IDateTime
     {

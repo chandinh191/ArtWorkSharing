@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace AWS_DAO.Common.Models;
+namespace AWS_BusinessObjects.Common.Models;
 
 public class PaginatedList<T>
 {

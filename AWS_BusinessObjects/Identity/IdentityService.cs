@@ -1,11 +1,11 @@
-﻿using AWS_BusinessObjects.Identity;
-using AWS_DAO.Common.Interfaces;
-using AWS_DAO.Common.Models;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace AWS_Repository.Identity;
+namespace AWS_BusinessObjects.Identity;
 
 public class IdentityService : IIdentityService
 {

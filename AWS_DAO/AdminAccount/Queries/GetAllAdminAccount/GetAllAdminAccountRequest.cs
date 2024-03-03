@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AWS_BusinessObjects.Entities;
-using AWS_DAO.Common.Interfaces;
-using AWS_DAO.Common.Models;
+using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;

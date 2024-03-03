@@ -1,7 +1,4 @@
 ﻿using AWS_BusinessObjects.Identity;
-using AWS_DAO.Common.Interfaces;
-using AWS_Repository.Persistence.Interceptors;
-using AWS_Repository.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,10 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AWS_Repository.Services;
-using AWS_Repository.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
+using AWS_BusinessObjects.Persistence.Interceptors;
+using AWS_BusinessObjects.Persistence;
+using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices

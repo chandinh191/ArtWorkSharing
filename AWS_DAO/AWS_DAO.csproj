@@ -26,6 +26,7 @@
     <Folder Include="AudienceAccount\Queries\" />
     <Folder Include="Interact\Commands\" />
     <Folder Include="Interact\Queries\" />
+    <Folder Include="Models\" />
     <Folder Include="Order\Commands\" />
     <Folder Include="Order\Queries\" />
     <Folder Include="PackageDetail\Commands\" />

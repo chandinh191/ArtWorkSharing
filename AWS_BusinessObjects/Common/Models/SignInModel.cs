@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_DAO.Models
+namespace AWS_BusinessObjects.Models
 {
     public class SignInModel
     {

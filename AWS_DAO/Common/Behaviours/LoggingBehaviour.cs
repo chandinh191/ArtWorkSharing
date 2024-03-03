@@ -1,4 +1,4 @@
-﻿using AWS_DAO.Common.Interfaces;
+﻿using AWS_BusinessObjects.Common.Interfaces;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 

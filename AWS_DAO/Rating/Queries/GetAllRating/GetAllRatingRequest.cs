@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using AWS_DAO.Common.Interfaces;
-using AWS_DAO.Common.Models;
+using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_DAO.PaymentMethod.Queries.GetAllPaymentMethod;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

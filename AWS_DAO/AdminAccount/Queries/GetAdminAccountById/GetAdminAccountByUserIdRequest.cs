@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AWS_DAO.AdminAccount.Queries;
 using AutoMapper;
-using AWS_DAO.Common.Interfaces;
+using AWS_BusinessObjects.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace AWS_DAO.AdminAccount.Queries.GetAdminAccountById
