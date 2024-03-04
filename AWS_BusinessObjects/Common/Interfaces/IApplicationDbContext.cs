@@ -12,5 +12,6 @@ namespace AWS_BusinessObjects.Common.Interfaces
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         DbSet<T> Get<T>() where T : BaseAuditableEntity;
+        void SaveChanges();
     }
 }
