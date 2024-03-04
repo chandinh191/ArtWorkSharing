@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_BusinessObjects.Identity
+namespace AWS_Repository.Identity
 {
     public interface IAccountRepository
     {

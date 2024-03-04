@@ -1,6 +1,6 @@
 ﻿using ArtWorkSharingAPI.Services;
 using AWS_BusinessObjects.Common.Interfaces;
-using AWS_BusinessObjects.Identity;
+using AWS_Repository.Identity;
 using AWS_BusinessObjects.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
