@@ -35,6 +35,7 @@ namespace AWS_BusinessObjects.Persistence
             _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
         }
 
+   
 
         public DbSet<ArtWork> ArtWorks => Set<ArtWork>();
         public DbSet<Interact> Interacts => Set<Interact>();
@@ -65,6 +66,12 @@ namespace AWS_BusinessObjects.Persistence
             await _mediator.DispatchDomainEvents(this);
 
             return await base.SaveChangesAsync(cancellationToken);
+        }
+        public void SaveChanges()
+        {
+             _mediator.DispatchDomainEvents(this);
+
+             base.SaveChanges();
         }
 
         public DbSet<T> Get<T>() where T : BaseAuditableEntity => Set<T>();

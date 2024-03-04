@@ -5,6 +5,10 @@ using AWS_BusinessObjects.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using AWS_Repository.Interface;
+using AWS_Repository.Repositories;
+using AWS_Services.Interface;
+using AWS_Services.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
@@ -24,7 +28,15 @@ public static class ConfigureServices
 
         services.AddRazorPages();
 
+
+        //----------DI------------------
         services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddScoped<IArtWorkRepository, ArtWorkRepository>();
+
+
+        services.AddScoped<IArtWorkService, ArtWorkService>();
+
+
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
