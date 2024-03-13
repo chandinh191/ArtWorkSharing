@@ -16,6 +16,11 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public OrderDAO()
+        {
+            
+        }
+
         // get all Order
         public List<Order> GetAll()
         {

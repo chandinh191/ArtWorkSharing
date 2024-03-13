@@ -17,6 +17,10 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public RatingDAO()
+        {
+        }
+
         // get all Rating
         public List<Rating> GetAll()
         {

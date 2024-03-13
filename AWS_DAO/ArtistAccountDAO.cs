@@ -17,6 +17,11 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public ArtistAccountDAO()
+        {
+            
+        }
+
         // get all ArtistAccount
         public List<ArtistAccount> GetAll()
         {

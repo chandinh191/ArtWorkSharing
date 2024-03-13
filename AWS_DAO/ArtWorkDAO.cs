@@ -21,6 +21,11 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public ArtWorkDAO()
+        {
+            
+        }
+
         // get ArtWork by id
         public AWS_BusinessObjects.Entities.ArtWork GetById(Guid id)
         {

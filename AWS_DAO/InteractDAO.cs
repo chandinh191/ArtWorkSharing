@@ -17,6 +17,10 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public InteractDAO()
+        {
+            
+        }
         // get all Interact
         public List<Interact> GetAll()
         {

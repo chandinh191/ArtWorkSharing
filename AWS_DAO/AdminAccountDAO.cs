@@ -16,6 +16,11 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public AdminAccountDAO()
+        {
+            
+        }
+
         // get all AdminAccount
         public List<AdminAccount> GetAll()
         {

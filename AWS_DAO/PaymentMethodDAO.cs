@@ -16,6 +16,10 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public PaymentMethodDAO()
+        {
+        }
+
         // get all PaymentMethod
         public List<PaymentMethod> GetAll()
         {

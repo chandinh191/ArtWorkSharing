@@ -16,6 +16,10 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public PackageDAO()
+        {
+        }
+
         // get all Package
         public List<Package> GetAll()
         {

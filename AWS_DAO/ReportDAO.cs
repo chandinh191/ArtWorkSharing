@@ -17,6 +17,10 @@ namespace AWS_DAO
             _context = context;
         }
 
+        public ReportDAO()
+        {
+        }
+
         // get all reports, validate and try catch
         public List<Report> GetAll()
         {
