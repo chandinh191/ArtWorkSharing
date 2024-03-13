@@ -21,11 +21,7 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public ArtWorkDAO()
-        {
-            // lỗi nè
-        }
-
+        // get ArtWork by id
         public AWS_BusinessObjects.Entities.ArtWork GetById(Guid id)
         {
             try
@@ -37,11 +33,13 @@ namespace AWS_DAO
                 throw new Exception(ex.Message);
             }
         }
+
+        // get all ArtWork
         public List<AWS_BusinessObjects.Entities.ArtWork> GetAll()
         {
             try
             {
-                List<AWS_BusinessObjects.Entities.ArtWork> artWorks 
+                List<AWS_BusinessObjects.Entities.ArtWork> artWorks
                     = (List<ArtWork>)_context.Get<ArtWork>().ToList();
                 return artWorks;
             }
@@ -50,6 +48,8 @@ namespace AWS_DAO
                 throw new Exception(ex.Message);
             }
         }
+
+        // add ArtWork
         public void Add(AWS_BusinessObjects.Entities.ArtWork artWorks)
         {
             try
@@ -62,12 +62,14 @@ namespace AWS_DAO
                 throw new Exception(ex.Message);
             }
         }
+
+        // update ArtWork
         public void Update(AWS_BusinessObjects.Entities.ArtWork artWorks)
         {
             try
             {      
                 var ArtWork = _context.Get<ArtWork>().FirstOrDefault(x => x.Id == artWorks.Id);
-                if(ArtWork != null)
+                if(ArtWork == null)
                 {
                     throw new NotFoundException();
                 }
@@ -80,12 +82,14 @@ namespace AWS_DAO
                 throw new Exception(ex.Message);
             }
         }
+
+        // delete ArtWork
         public void Delete(AWS_BusinessObjects.Entities.ArtWork artWorks)
         {
             try
             {
                 var ArtWork = _context.Get<ArtWork>().FirstOrDefault(x => x.Id == artWorks.Id);
-                if (ArtWork != null)
+                if (ArtWork == null)
                 {
                     throw new NotFoundException();
                 }
@@ -98,6 +102,5 @@ namespace AWS_DAO
                 throw new Exception(ex.Message);
             }
         }
-
     }
 }
