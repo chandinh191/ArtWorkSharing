@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS_Repository.Interface
+namespace AWS_Services.Interface
 {
-    public interface IReportRepository
+    public interface IReportService
     {
         public List<Report> GetAll();
         public Report GetById(Guid id);

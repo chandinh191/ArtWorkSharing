@@ -90,18 +90,18 @@ namespace AWS_DAO
         }
 
         // delete report, validate and try catch, isDelete = true   
-        public void Delete(Report report)
+        public void Delete(Guid id)
         {
             try
             {
                 // check reportId, throw not found exception if not found
-                var checkId = GetById(report.Id);
+                var checkId = GetById(id);
                 if (checkId == null)
                 {
                     throw new NotFoundException("Report not found");
                 }
-                report.IsDeleted = true;
-                _context.Get<Report>().Update(report);
+                checkId.IsDeleted = true;
+                _context.Get<Report>().Update(checkId);
                 _context.SaveChanges();
             }
             catch (Exception ex)

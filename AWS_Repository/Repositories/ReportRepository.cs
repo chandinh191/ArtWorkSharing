@@ -20,8 +20,8 @@ namespace AWS_Repository.Repositories
         public void Add(Report report)
         => reportDAO.Add(report);
 
-        public void Delete(Report report)
-        => reportDAO.Delete(report);
+        public void Delete(Guid id)
+        => reportDAO.Delete(id);
 
         public List<Report> GetAll()
         => reportDAO.GetAll();
