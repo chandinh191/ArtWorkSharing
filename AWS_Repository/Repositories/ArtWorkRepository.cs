@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
 using System;
@@ -11,21 +12,21 @@ namespace AWS_Repository.Repositories
 {
     public class ArtWorkRepository : IArtWorkRepository
     {
-        private ArtWorkDAO artWorkDAO = null;
-        public ArtWorkRepository()
+        private ArtWorkDAO artWorkDAO;
+        public ArtWorkRepository(IApplicationDbContext context)
         {
-            artWorkDAO = new ArtWorkDAO();
+            artWorkDAO = new ArtWorkDAO(context);
         }
         public void Add(ArtWork artWork)
         {
             artWorkDAO.Add(artWork);
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public void Delete(ArtWork artWork)
+        public void Delete(Guid id)
         {
-            artWorkDAO.Delete(artWork);
-            throw new NotImplementedException();
+            artWorkDAO.Delete(id);
+            //throw new NotImplementedException();
         }
 
         public List<ArtWork> GetAll()
@@ -43,7 +44,7 @@ namespace AWS_Repository.Repositories
         public void Update(ArtWork artWork)
         {
             artWorkDAO.Update(artWork);
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

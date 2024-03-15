@@ -9,6 +9,7 @@ using AWS_Repository.Interface;
 using AWS_Repository.Repositories;
 using AWS_Services.Interface;
 using AWS_Services.Services;
+using AWS_DAO;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
@@ -30,11 +31,16 @@ public static class ConfigureServices
 
 
         //----------DI------------------
+        // Service
+        services.AddScoped<IArtWorkService, ArtWorkService>();
+
+        // Repository
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IArtWorkRepository, ArtWorkRepository>();
+        services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
 
-
-        services.AddScoped<IArtWorkService, ArtWorkService>();
+        // DAO
+        services.AddScoped<ArtWorkDAO>();
 
 
 

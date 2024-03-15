@@ -13,7 +13,7 @@ namespace AWS_Repository.Interface
         public ArtWork GetById(Guid id);
         public void Add(ArtWork artWork);
         public void Update(ArtWork artWork);
-        public void Delete(ArtWork artWork);
+        public void Delete(Guid id);
     }
 }
 

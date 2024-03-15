@@ -20,13 +20,13 @@ namespace AWS_Services.Services
         public void Add(ArtWork artWork)
         {
             _artWorkRepository.Add(artWork);
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public void Delete(ArtWork artWork)
+        public void Delete(Guid id)
         {
-            _artWorkRepository.Delete(artWork);
-            throw new NotImplementedException();
+            _artWorkRepository.Delete(id);
+            //throw new NotImplementedException();
         }
 
         public List<ArtWork> GetAll()
@@ -44,7 +44,7 @@ namespace AWS_Services.Services
         public void Update(ArtWork artWork)
         {
             _artWorkRepository.Update(artWork);
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

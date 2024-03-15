@@ -21,11 +21,6 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public ArtWorkDAO()
-        {
-            
-        }
-
         // get ArtWork by id
         public AWS_BusinessObjects.Entities.ArtWork GetById(Guid id)
         {
@@ -78,22 +73,35 @@ namespace AWS_DAO
                 {
                     throw new NotFoundException();
                 }
-                ArtWork = artWorks;
+                //ArtWork = artWorks;
+                ArtWork.ArtWorkStatus = artWorks.ArtWorkStatus;
+                ArtWork.IsPreOrder = artWorks.IsPreOrder;
+                
+                ArtWork.Name = artWorks.Name;
+
+
+                ArtWork.UserAccountId = artWorks.UserAccountId;
+                ArtWork.Description = artWorks.Description;
+                ArtWork.Price = artWorks.Price;
+                ArtWork.ImageUrl = artWorks.ImageUrl;
+                ArtWork.LastModified = DateTime.Now;
+                ArtWork.Interacts = artWorks.Interacts;
+                ArtWork.Orders = artWorks.Orders;
                 _context.Get<ArtWork>().Update(ArtWork);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                    throw new Exception(ex.Message);
             }
         }
 
         // delete ArtWork
-        public void Delete(AWS_BusinessObjects.Entities.ArtWork artWorks)
+        public void Delete(Guid id)
         {
             try
             {
-                var ArtWork = _context.Get<ArtWork>().FirstOrDefault(x => x.Id == artWorks.Id);
+                var ArtWork = _context.Get<ArtWork>().FirstOrDefault(x => x.Id == id);
                 if (ArtWork == null)
                 {
                     throw new NotFoundException();
