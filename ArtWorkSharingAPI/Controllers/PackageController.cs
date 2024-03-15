@@ -17,14 +17,14 @@ namespace ArtWorkSharingAPI.Controllers
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            var artWorks = packageService.GetAll();
-            return Ok(artWorks);
+            var packages = packageService.GetAll();
+            return Ok(packages);
         }
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            var artWork = packageService.GetById(id);
-            return Ok(artWork);
+            var package = packageService.GetById(id);
+            return Ok(package);
         }
         [HttpPost("Add")]
         public IActionResult Add(Package package)
@@ -41,9 +41,9 @@ namespace ArtWorkSharingAPI.Controllers
         [HttpPut("Update")]
         public IActionResult Update(Package package)
         {
-            var artWorkCheck = packageService.GetById(package.Id);
+            var Package = packageService.GetById(package.Id);
 
-            if (artWorkCheck != null)
+            if (Package != null)
             {
                 packageService.Update(package);
                 return Ok("Cập nhật thành công");

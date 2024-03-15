@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
 using System;
@@ -12,9 +13,9 @@ namespace AWS_Repository.Repositories
     public class PaymentMethodRepository : IPaymentMethodRepository
     {
         private PaymentMethodDAO paymentMethodDAO = null;
-        public PaymentMethodRepository()
+        public PaymentMethodRepository(IApplicationDbContext context)
         {
-            paymentMethodDAO = new PaymentMethodDAO();
+            paymentMethodDAO = new PaymentMethodDAO(context);
         }
 
         public void Add(PaymentMethod paymentMethod)

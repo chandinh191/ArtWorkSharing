@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
+using AWS_DAO.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,6 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public PaymentMethodDAO()
-        {
-        }
 
         // get all PaymentMethod
         public List<PaymentMethod> GetAll()
@@ -67,7 +65,16 @@ namespace AWS_DAO
         {
             try
             {
-                _context.Get<PaymentMethod>().Update(paymentMethod);
+                var PaymentMethod = _context.Get<PaymentMethod>().FirstOrDefault(x => x.Id == paymentMethod.Id);
+                if (PaymentMethod == null)
+                {
+                    throw new NotFoundException();
+                }
+                //ArtWork = artWorks;
+                PaymentMethod.Name = paymentMethod.Name;
+                PaymentMethod.PaymentMethodStatus = paymentMethod.PaymentMethodStatus;
+                PaymentMethod.LastModified = DateTime.Now;
+                _context.Get<PaymentMethod>().Update(PaymentMethod);
                 _context.SaveChanges();
             }
             catch (Exception ex)

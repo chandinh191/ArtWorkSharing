@@ -10,6 +10,7 @@ using AWS_Repository.Repositories;
 using AWS_Services.Interface;
 using AWS_Services.Services;
 using AWS_DAO;
+using AWS_BusinessObjects.Entities;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
@@ -34,18 +35,23 @@ public static class ConfigureServices
         // Service
         services.AddScoped<IArtWorkService, ArtWorkService>();
         services.AddScoped<IPackageService, PackageService>();
+        services.AddScoped<IPaymentMethodService,PaymentMethodService>();
+        services.AddScoped<IPackageDetailsService, PackageDetailsService>();
 
-
+        //services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
         // Repository
         services.AddScoped<IAccountRepository, AccountRepository>();
-        services.AddScoped<IArtWorkRepository, ArtWorkRepository>();
-        services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
+
+        services.AddScoped<IArtWorkRepository, ArtWorkRepository>();        
         services.AddScoped<IPackageRepository,PackageRepository>();
+        services.AddScoped<IPaymentMethodRepository,PaymentMethodRepository>();
+        services.AddScoped<IPackageDetailsRepository, PackageDetailsRepository>();
 
         // DAO
         services.AddScoped<ArtWorkDAO>();
         services.AddScoped<PackageDAO>();
-
+        services.AddScoped<PaymentMethodDAO>();
+        services.AddScoped<PackageDetailsDAO>();
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
