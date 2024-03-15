@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
+using AWS_DAO.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,6 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public PackageDAO()
-        {
-        }
 
         // get all Package
         public List<Package> GetAll()
@@ -67,7 +65,19 @@ namespace AWS_DAO
         {
             try
             {
-                _context.Get<Package>().Update(package);
+                var Package = _context.Get<Package>().FirstOrDefault(x => x.Id == package.Id);
+                if (Package == null)
+                {
+                    throw new NotFoundException();
+                }
+
+                Package.NamePacked = package.NamePacked;
+                Package.Description = package.Description;
+                Package.PackageStatus = package.PackageStatus;
+                Package.LastModified = DateTime.Now;
+
+
+                _context.Get<Package>().Update(Package);
                 _context.SaveChanges();
             }
             catch (Exception ex)

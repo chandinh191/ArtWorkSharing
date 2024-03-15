@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
 using System;
@@ -12,9 +13,9 @@ namespace AWS_Repository.Repositories
     public class PackageRepository : IPackageRepository
     {
         private PackageDAO packageDAO = null;
-        public PackageRepository()
+        public PackageRepository(IApplicationDbContext context)
         {
-            packageDAO = new PackageDAO();
+            packageDAO = new PackageDAO(context);
         }
 
         public void Add(Package package)

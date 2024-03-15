@@ -33,15 +33,18 @@ public static class ConfigureServices
         //----------DI------------------
         // Service
         services.AddScoped<IArtWorkService, ArtWorkService>();
+        services.AddScoped<IPackageService, PackageService>();
+
 
         // Repository
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IArtWorkRepository, ArtWorkRepository>();
         services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
+        services.AddScoped<IPackageRepository,PackageRepository>();
 
         // DAO
         services.AddScoped<ArtWorkDAO>();
-
+        services.AddScoped<PackageDAO>();
 
 
         // Customise default API behaviour
