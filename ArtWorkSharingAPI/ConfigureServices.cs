@@ -68,7 +68,7 @@ public static class ConfigureServices
 
         services.AddSwaggerGen(option =>
         {
-            option.SwaggerDoc("v1", new OpenApiInfo { Title = "Z-Alpha API", Version = "v1" });
+            option.SwaggerDoc("v1", new OpenApiInfo { Title = "Art Work Sharing API", Version = "v1" });
             option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 In = ParameterLocation.Header,
