@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
 using System;
@@ -12,9 +13,9 @@ namespace AWS_Repository.Repositories
     public class InteractRepository : IInteractRepository
     {
         private InteractDAO interactDAO = null;
-        public InteractRepository()
+        public InteractRepository(IApplicationDbContext context)
         {
-            interactDAO = new InteractDAO();
+            interactDAO = new InteractDAO(context);
         }
 
         public void Add(Interact interact)

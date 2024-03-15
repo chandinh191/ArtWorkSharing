@@ -17,10 +17,6 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public InteractDAO()
-        {
-            
-        }
         // get all Interact
         public List<Interact> GetAll()
         {
@@ -68,7 +64,16 @@ namespace AWS_DAO
         {
             try
             {
-                _context.Get<Interact>().Update(interact);
+                var Interact = _context.Get<Interact>().FirstOrDefault(x => x.Id == interact.Id);
+                if (Interact == null)
+                {
+                    throw new NotFoundException();
+                }
+                Interact.Comment = interact.Comment;
+                Interact.IsLike = interact.IsLike;
+                Interact.LastModified = DateTime.Now;
+
+                _context.Get<Interact>().Update(Interact);
                 _context.SaveChanges();
             }
             catch (Exception ex)

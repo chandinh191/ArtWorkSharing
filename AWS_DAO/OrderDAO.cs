@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
+using AWS_DAO.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,7 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public OrderDAO()
-        {
-            
-        }
-
+  
         // get all Order
         public List<Order> GetAll()
         {
@@ -68,7 +65,17 @@ namespace AWS_DAO
         {
             try
             {
-                _context.Get<Order>().Update(order);
+                var Order = _context.Get<Order>().FirstOrDefault(x => x.Id == order.Id);
+                if (Order == null)
+                {
+                    throw new NotFoundException();
+                }
+                Order.Price = order.Price;
+                Order.isPreOrder = order.isPreOrder;
+                Order.LastModified = DateTime.Now;
+
+
+                _context.Get<Order>().Update(Order);
                 _context.SaveChanges();
             }
             catch (Exception ex)

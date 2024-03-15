@@ -17,10 +17,6 @@ namespace AWS_DAO
             _context = context;
         }
 
-        public RatingDAO()
-        {
-        }
-
         // get all Rating
         public List<Rating> GetAll()
         {
@@ -74,13 +70,17 @@ namespace AWS_DAO
         {
             try
             {
-                // check ratingId, if not found throw exception
-                var checkId = GetById(rating.Id);
-                if (checkId == null)
+                var Rating = _context.Get<Rating>().FirstOrDefault(x => x.Id == rating.Id);
+                if (Rating == null)
                 {
-                    throw new NotFoundException("Rating not found");
+                    throw new NotFoundException();
                 }
-                _context.Get<Rating>().Update(rating);
+                Rating.Description = rating.Description;    
+                Rating.Point = rating.Point;
+                Rating.LastModified = DateTime.Now;
+
+
+                _context.Get<Rating>().Update(Rating);
                 _context.SaveChanges();
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
 using System;
@@ -12,9 +13,9 @@ namespace AWS_Repository.Repositories
     public class OrderRepository : IOrderRepository
     {
         private OrderDAO orderDAO = null;
-        public OrderRepository()
+        public OrderRepository(IApplicationDbContext context)
         {
-            orderDAO = new OrderDAO();
+            orderDAO = new OrderDAO(context);
         }
 
         public void Add(Order order)
