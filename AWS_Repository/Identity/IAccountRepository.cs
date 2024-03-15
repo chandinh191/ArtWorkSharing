@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Models;
+﻿using AWS_BusinessObjects.Identity;
+using AWS_BusinessObjects.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace AWS_Repository.Identity
     {
         public Task<IdentityResult> SignUpAsync(SignUpModel model);
         public Task<string> SignInAsync(SignInModel model);
-
+        public Task<List<ApplicationUser>> GetAudienceAcountAsync();
+        public Task<List<ApplicationUser>> GetArtistAcountAsync();
+        public Task<List<ApplicationUser>> GetAdministratorAcountAsync();
     }
 
 }

@@ -7,6 +7,7 @@ using Azure;
 using Duende.IdentityServer.EntityFramework.Options;
 using MediatR;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
@@ -48,6 +49,8 @@ namespace AWS_BusinessObjects.Persistence
 
 
 
+        public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -75,5 +78,6 @@ namespace AWS_BusinessObjects.Persistence
         }
 
         public DbSet<T> Get<T>() where T : BaseAuditableEntity => Set<T>();
+        public DbSet<T> GetUser<T>() where T : IdentityUser => Set<T>();
     }
 }

@@ -1,7 +1,9 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Entities;
 using AWS_BusinessObjects.Identity;
 using AWS_BusinessObjects.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -23,12 +25,14 @@ namespace AWS_Repository.Identity
         private readonly RoleManager<IdentityRole> roleManager;
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signInManager;
+        private readonly IApplicationDbContext context;
 
         public AccountRepository(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IConfiguration configuration,
             RoleManager<IdentityRole> roleManager,
-            IIdentityService identityService
+            IIdentityService identityService,
+            IApplicationDbContext context
             )
         {
             this.userManager = userManager;
@@ -36,6 +40,7 @@ namespace AWS_Repository.Identity
             this.configuration = configuration;
             this.roleManager = roleManager;
             this.identityService = identityService;
+            this.context = context;
         }
         public async Task<string> SignInAsync(SignInModel model)
         {
@@ -46,6 +51,7 @@ namespace AWS_Repository.Identity
                 //return string.Empty;
             }*/
             var user = await identityService.GetUserByEmailAsync(model.Email);
+         
             var passwordCheck = await userManager.CheckPasswordAsync(user, model.Password);
             if (user == null || passwordCheck == false)
             {
@@ -79,8 +85,6 @@ namespace AWS_Repository.Identity
 
             // Return token
             return new JwtSecurityTokenHandler().WriteToken(token);
-
-
         }
 
         public async Task<IdentityResult> SignUpAsync(SignUpModel model)
@@ -103,6 +107,78 @@ namespace AWS_Repository.Identity
 
             return result;
         }
+
+        public async Task<List<ApplicationUser>> GetAudienceAcountAsync()
+        {
+            try
+            {
+                List<AWS_BusinessObjects.Identity.ApplicationUser> users
+                    = (List<ApplicationUser>)context.GetUser<ApplicationUser>().ToList();
+
+                List<AWS_BusinessObjects.Identity.ApplicationUser> checkedUsers = new List<ApplicationUser>();
+                foreach (var user in users)
+                {
+                    var isRole = await identityService.IsInRoleAsync(user.Id.ToString(), "AUDIENCE");
+                    if (isRole)
+                    {
+                        checkedUsers.Add(user);
+                    }
+                }
+                return checkedUsers;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<ApplicationUser>> GetArtistAcountAsync()
+        {
+            try
+            {
+                List<AWS_BusinessObjects.Identity.ApplicationUser> users
+                    = (List<ApplicationUser>)context.GetUser<ApplicationUser>().ToList();
+
+                List<AWS_BusinessObjects.Identity.ApplicationUser> checkedUsers = new List<ApplicationUser>();
+                foreach (var user in users)
+                {
+                    var isRole = await identityService.IsInRoleAsync(user.Id.ToString(), "ARTIST");
+                    if (isRole)
+                    {
+                        checkedUsers.Add(user);
+                    }
+                }
+                return checkedUsers;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<ApplicationUser>> GetAdministratorAcountAsync()
+        {
+            try
+            {
+                List<AWS_BusinessObjects.Identity.ApplicationUser> users
+                    = (List<ApplicationUser>)context.GetUser<ApplicationUser>().ToList();
+
+                List<AWS_BusinessObjects.Identity.ApplicationUser> checkedUsers = new List<ApplicationUser>();
+                foreach (var user in users)
+                {
+                    var isRole = await identityService.IsInRoleAsync(user.Id.ToString(), "ADMINISTRATOR");
+                    if (isRole)
+                    {
+                        checkedUsers.Add(user);
+                    }
+                }
+                return checkedUsers;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
     }
 
 }

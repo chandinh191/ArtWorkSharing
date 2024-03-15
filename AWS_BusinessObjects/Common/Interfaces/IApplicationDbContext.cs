@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace AWS_BusinessObjects.Common.Interfaces
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         DbSet<T> Get<T>() where T : BaseAuditableEntity;
+        DbSet<T> GetUser<T>() where T : IdentityUser;
         void SaveChanges();
     }
 }

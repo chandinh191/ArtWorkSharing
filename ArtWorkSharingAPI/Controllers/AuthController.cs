@@ -45,5 +45,27 @@ namespace ArtWorkSharingAPI.Controllers
             }
             return Ok(result);
         }
+
+
+
+        [HttpGet("GetAudienceAcount")]
+        public async Task<IActionResult> GetAudienceAcount()
+        {
+            var result = await accountRepository.GetAudienceAcountAsync();
+            return Ok(result);
+        }
+        [HttpGet("GetArtistAcount")]
+        public async Task<IActionResult> GetArtistAcount()
+        {
+            var result = await accountRepository.GetArtistAcountAsync();
+            return Ok(result);
+        }
+        [HttpGet("GetAdministratorAcount")]
+        public async Task<IActionResult> GetAdministratorAcountAsync()
+        {
+            var result = await accountRepository.GetAdministratorAcountAsync();
+            return Ok(result);
+        }
+
     }
 }
