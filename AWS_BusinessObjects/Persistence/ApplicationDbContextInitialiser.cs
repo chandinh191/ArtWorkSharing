@@ -88,6 +88,7 @@ namespace AWS_BusinessObjects.Persistence
             {
                 await _roleManager.CreateAsync(customerRole);
             }
+
             //Default user account
             var customer = new ApplicationUser { UserName = "customer@localhost", Email = "customer@localhost" };
             if (_userManager.Users.All(u => u.UserName != customer.UserName))
@@ -96,16 +97,12 @@ namespace AWS_BusinessObjects.Persistence
                 await _userManager.AddToRolesAsync(customer, new[] { customerRole.Name });
             }
 
-
             var psychologistRole = new IdentityRole("Artist");
 
             if (_roleManager.Roles.All(r => r.Name != psychologistRole.Name))
             {
                 await _roleManager.CreateAsync(psychologistRole);
-            }
-
-            
-
+            }       
 
             await _context.SaveChangesAsync();
             // Default data

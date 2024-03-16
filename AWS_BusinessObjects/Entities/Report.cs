@@ -13,9 +13,9 @@ namespace AWS_BusinessObjects.Entities
     {
         public ApplicationUser applicationUser { get; set; }
         [ForeignKey("ApplicationUser")]
-        public Guid UserAccountID { get; set; }
+        public string UserAccountID { get; set; }
         [ForeignKey("ApplicationUser")]
-        public Guid UserAccountIDReport { get; set; }
+        public string UserAccountIDReport { get; set; }
         public string? Description { get; set; }
     }
 }

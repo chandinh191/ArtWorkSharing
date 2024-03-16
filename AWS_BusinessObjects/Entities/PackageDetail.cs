@@ -13,7 +13,7 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey("Package")]
         public Guid PackageID { get; set; }
         [ForeignKey("ApplicationUser")]
-        public Guid UserAccountId { get; set; }
+        public string UserAccountId { get; set; }
         [ForeignKey("PaymentMethod")]
         public Guid PaymentMethodID { get; set; }
         public DateTime StartDate { get; set; }

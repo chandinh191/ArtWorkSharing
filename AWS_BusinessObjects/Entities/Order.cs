@@ -13,12 +13,10 @@ namespace AWS_BusinessObjects.Entities
     public class Order : BaseAuditableEntity
     {
         [ForeignKey("ApplicationUser")]
-        public Guid UserAccountId { get; set; }
+        public string UserAccountId { get; set; }
         [ForeignKey("ArtWord")]
         public Guid ArtWordID { get; set; }
-        public string Name { get; set; }
-        public string imgURL { get; set; }
-        public string Price { get; set; }
+        public float Price { get; set; }
         public OrderStatus Status { get; set; }
         public bool isPreOrder { get; set; }    
         public virtual IList<Rating>? Rating { get; set; }
