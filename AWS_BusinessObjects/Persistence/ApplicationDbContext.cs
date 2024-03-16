@@ -92,7 +92,51 @@ namespace AWS_BusinessObjects.Persistence
                 }
                 );
 
+            // Artist Seed Data, 3 artists
+            builder.Entity<ArtistAccount>()
+                .HasData(
+                new ArtistAccount
+                {
+                    Id = Guid.NewGuid(),
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
+                    Created = DateTime.Now,
+                    IsDeleted = false
+                },
+                new ArtistAccount
+                {
+                    Id = Guid.NewGuid(),
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cg",
+                    Created = DateTime.Now,
+                    IsDeleted = false
+                },
+                new ArtistAccount
+                {
+                    Id = Guid.NewGuid(),
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ch",
+                    Created = DateTime.Now,
+                    IsDeleted = false
+                }
+                );
 
+
+            // Audience Seed Data, 3 audiences
+            builder.Entity<AudienceAccount>()
+                .HasData(
+                new AudienceAccount
+                {
+                    Id = Guid.NewGuid(),
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ci",
+                    Created = DateTime.Now,
+                    IsDeleted = false
+                },
+                new AudienceAccount
+                {
+                    Id = Guid.NewGuid(),
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cj",
+                    Created = DateTime.Now,
+                    IsDeleted = false
+                }
+                );
 
             // ArtWork Seed Data
             builder.Entity<ArtWork>()
