@@ -23,12 +23,12 @@ public static class ConfigureServices
 
         services.AddHttpContextAccessor();
 
-        services.AddHealthChecks()
-            .AddDbContextCheck<ApplicationDbContext>();
+        //services.AddHealthChecks()
+        //    .AddDbContextCheck<ApplicationDbContext>();
 
-        services.AddControllersWithViews();
+        //services.AddControllersWithViews();
 
-        services.AddRazorPages();
+        //services.AddRazorPages();
 
 
         //----------DI------------------
