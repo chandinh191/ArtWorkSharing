@@ -4,6 +4,10 @@ using AWS_DAO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +36,6 @@ builder.Services.AddCors(options =>
                       });
 });
 
-
 //JWT
 builder.Services.AddAuthentication(option =>
 {
@@ -53,6 +56,11 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 var app = builder.Build();
 

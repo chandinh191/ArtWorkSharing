@@ -10,6 +10,7 @@ using AWS_Repository.Repositories;
 using AWS_Services.Interface;
 using AWS_Services.Services;
 using AWS_DAO;
+using Newtonsoft.Json;
 using AWS_BusinessObjects.Entities;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -29,7 +30,6 @@ public static class ConfigureServices
         services.AddControllersWithViews();
 
         services.AddRazorPages();
-
 
         //----------DI------------------
         // Service
