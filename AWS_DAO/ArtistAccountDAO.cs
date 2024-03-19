@@ -28,7 +28,7 @@ namespace AWS_DAO
             try
             {
                 List<ArtistAccount> artistAccounts
-                    = (List<ArtistAccount>)_context.Get<ArtistAccount>().ToList();
+                    = _context.Get<ArtistAccount>().ToList();
                 return artistAccounts;
             }
             catch (Exception ex)
