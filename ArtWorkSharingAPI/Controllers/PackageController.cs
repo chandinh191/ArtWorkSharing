@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
+using AWS_Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArtWorkSharingAPI.Controllers
@@ -24,31 +25,71 @@ namespace ArtWorkSharingAPI.Controllers
         public IActionResult GetById(Guid id)
         {
             var package = packageService.GetById(id);
-            return Ok(package);
+            if (package == null)
+            {
+                return NotFound($"Không tìm thấy gói của bạn!, Id: {id}");
+            }
+            else
+            {
+                return Ok(package);
+            }
         }
         [HttpPost("Add")]
         public IActionResult Add(Package package)
         {
-            packageService.Add(package);
-            return Ok("Thêm thành công");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                packageService.Add(package);
+                return Ok("Thêm thành công");
+            }
         }
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
-            packageService.Delete(id);
-            return Ok("Xóa thành công");
+            if (ModelState.IsValid)
+            {
+                var packageCheck = packageService.GetById(id);
+                if (packageCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy gói của bạn!, Id: {id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    packageService.Delete(id);
+                    return Ok("Xóa thành công");
+                }
+            }
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
         }
         [HttpPut("Update")]
         public IActionResult Update(Package package)
         {
-            var Package = packageService.GetById(package.Id);
-
-            if (Package != null)
+            if (ModelState.IsValid)
             {
-                packageService.Update(package);
-                return Ok("Cập nhật thành công");
+                var packageCheck = packageService.GetById(package.Id);
+                if (packageCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy gói của bạn!, Id: {package.Id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    packageService.Update(package);
+                    return Ok("Cập nhật thành công");
+                }
             }
-            return NotFound();
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
         }
     }
 }
