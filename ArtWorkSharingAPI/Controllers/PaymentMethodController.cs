@@ -20,12 +20,14 @@ namespace ArtWorkSharingAPI.Controllers
             var paymentMethods = paymentMethodService.GetAll();
             return Ok(paymentMethods);
         }
+        //[Authorize Roles = ("1, 2, 3")]
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
             var paymentMethod = paymentMethodService.GetById(id);
             return Ok(paymentMethod);
         }
+        //[Authorize Roles = ("1, 2")]
         [HttpPost("Add")]
         public IActionResult Add(PaymentMethod paymentMethod)
         {
