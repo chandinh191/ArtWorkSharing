@@ -19,7 +19,6 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey("ArtWord")]
         [Required(ErrorMessage = "Name is required")]
         public Guid ArtWordID { get; set; }
-        [Required(ErrorMessage = "Price is required")]
         [Range(1,9999999999, ErrorMessage = "Price must be between 1 and 9999999999")]
         public float Price { get; set; }
         public OrderStatus Status { get; set; }

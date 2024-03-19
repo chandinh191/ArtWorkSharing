@@ -19,7 +19,7 @@ namespace AWS_BusinessObjects.Entities
         /*public ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("ApplicationUser")]
         public string UserAccountId { get; set; }*/
-        [Required]
+        [Required(ErrorMessage = "Comment is required")]
         public string Comment { get; set; }
         public bool IsLike { get; set; }
         [DataType(DataType.Date)]

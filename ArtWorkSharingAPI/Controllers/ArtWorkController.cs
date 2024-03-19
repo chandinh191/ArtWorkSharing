@@ -31,6 +31,10 @@ namespace ArtWorkSharingAPI.Controllers
         public IActionResult GetById(Guid id)
         {
             var artWork = _artWorkService.GetById(id);
+            if (artWork == null)
+            {
+                return NotFound($"Không tìm thấy tranh của bạn!, Id: {id}");
+            }
             return Ok(artWork);
         }
         //[Authorize Roles = ("1, 2, 3")]
@@ -39,33 +43,59 @@ namespace ArtWorkSharingAPI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(artWork);
+                return BadRequest(ModelState);
             }
             else
             {
                 _artWorkService.Add(artWork);
                 return Ok("Thêm thành công");
-            }            
+            }
         }
         //[Authorize Roles = ("1, 2, 3")]
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
-            _artWorkService.Delete(id);
-            return Ok("Xóa thành công");
+            if (ModelState.IsValid)
+            {
+                var artWorkCheck = _artWorkService.GetById(id);
+                if (artWorkCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh của bạn!, Id: {id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    _artWorkService.Delete(id);
+                    return Ok("Xóa thành công");
+                }
+            }
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
         }
         //[Authorize Roles = ("1, 2, 3")]
         [HttpPut("Update")]
         public IActionResult Update(ArtWork artWork)
-        {
-            var artWorkCheck = _artWorkService.GetById(artWork.Id);
-
-            if (artWorkCheck != null)
+        {            
+            if (ModelState.IsValid)
             {
-                _artWorkService.Update(artWork);
-                return Ok("Cập nhật thành công");
-            }
-            return NotFound();
+                var artWorkCheck = _artWorkService.GetById(artWork.Id);
+                if (artWorkCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh của bạn!, Id: {artWork.Id}, Name: {artWork.Name}");
+                    return NotFound(ModelState);
+                } 
+                else
+                {
+                    _artWorkService.Update(artWork);
+                    return Ok("Cập nhật thành công");
+                }
+            } 
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }            
         }
     }
 }

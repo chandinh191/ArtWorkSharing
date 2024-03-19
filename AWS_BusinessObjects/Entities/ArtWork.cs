@@ -22,6 +22,7 @@ namespace AWS_BusinessObjects.Entities
         public string UserOwnerId { get; set; }
         [Required(ErrorMessage = "Name is required")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Name must be between 2 and 50 characters")]
+        [RegularExpression(@"^[^\d]{0,50}$", ErrorMessage = "Name can have a maximum of 50 characters and should not contain numbers.")]
         public string Name { get; set; }
         [Required(AllowEmptyStrings = true, ErrorMessage = "Description is required")]
         [StringLength(500, ErrorMessage = "Description must be at most 500 characters")]
