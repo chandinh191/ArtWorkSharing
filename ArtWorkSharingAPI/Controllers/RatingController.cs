@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
+using AWS_Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArtWorkSharingAPI.Controllers
@@ -24,31 +25,73 @@ namespace ArtWorkSharingAPI.Controllers
         public IActionResult GetById(Guid id)
         {
             var ratings = ratingService.GetById(id);
-            return Ok(ratings);
+            if (ratings == null)
+            {
+                return NotFound($"Không tìm thấy đánh giá của bạn!, Id: {id}");
+            }
+            else
+            {
+                return Ok(ratings);
+            }
         }
         [HttpPost("Add")]
         public IActionResult Add(Rating rating)
         {
-            ratingService.Add(rating);
-            return Ok("Thêm thành công");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                ratingService.Add(rating);
+                return Ok("Thêm thành công");
+            }
+            
         }
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
-            ratingService.Delete(id);
-            return Ok("Xóa thành công");
+            if (ModelState.IsValid)
+            {
+                var ratingCheck = ratingService.GetById(id);
+                if (ratingCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy đánh giá của bạn!, Id: {id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    ratingService.Delete(id);
+                    return Ok("Xóa thành công");
+                }
+            }
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
+            
         }
         [HttpPut("Update")]
         public IActionResult Update(Rating rating)
         {
-            var Rating = ratingService.GetById(rating.Id);
-
-            if (Rating != null)
+            if (ModelState.IsValid)
             {
-                ratingService.Update(rating);
-                return Ok("Cập nhật thành công");
+                var ratingCheck = ratingService.GetById(rating.Id);
+                if (ratingCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy đánh giá của bạn!, Id: {rating.Id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    ratingService.Update(rating);
+                    return Ok("Cập nhật thành công");
+                }
             }
-            return NotFound();
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
         }
     }
 }

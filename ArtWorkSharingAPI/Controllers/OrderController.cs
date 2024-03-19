@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
+using AWS_Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArtWorkSharingAPI.Controllers
@@ -24,31 +25,72 @@ namespace ArtWorkSharingAPI.Controllers
         public IActionResult GetById(Guid id)
         {
             var order = orderService.GetById(id);
-            return Ok(order);
+            if (order == null)
+            {
+                return NotFound($"Không tìm thấy đơn đặt hàng của bạn!, Id: {id}");
+            }
+            else
+            {
+                return Ok(order);
+            }
         }
         [HttpPost("Add")]
         public IActionResult Add(Order order)
         {
-            orderService.Add(order);
-            return Ok("Thêm thành công");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                orderService.Add(order);
+                return Ok("Thêm thành công");
+            }
         }
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
-            orderService.Delete(id);
-            return Ok("Xóa thành công");
+            if (ModelState.IsValid)
+            {
+                var orderCheck = orderService.GetById(id);
+                if (orderCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy đơn đặt hàng của bạn!, Id: {id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    orderService.Delete(id);
+                    return Ok("Xóa thành công");
+                }
+            }
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
+            
         }
         [HttpPut("Update")]
         public IActionResult Update(Order order)
         {
-            var Order = orderService.GetById(order.Id);
-
-            if (Order != null)
+            if (ModelState.IsValid)
             {
-                orderService.Update(order);
-                return Ok("Cập nhật thành công");
+                var orderCheck = orderService.GetById(order.Id);
+                if (orderCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy đơn đặt hàng của bạn!, Id: {order.Id}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                    orderService.Update(order);
+                    return Ok("Cập nhật thành công");
+                }
             }
-            return NotFound();
+            else
+            {
+                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
+            }
         }
     }
 }

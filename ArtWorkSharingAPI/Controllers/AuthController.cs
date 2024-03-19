@@ -17,6 +17,7 @@ namespace ArtWorkSharingAPI.Controllers
         {
             accountRepository = iAccountRepository;
         }
+
         [HttpPost("SignUp")]
         public async Task<IActionResult> SignUp(SignUpModel model)
         {
@@ -47,19 +48,21 @@ namespace ArtWorkSharingAPI.Controllers
         }
 
 
-
+        //[Authorize Roles = ("1, 2")]
         [HttpGet("GetAudienceAcount")]
         public async Task<IActionResult> GetAudienceAcount()
         {
             var result = await accountRepository.GetAudienceAcountAsync();
             return Ok(result);
         }
+        //[Authorize Roles = ("1, 2")]
         [HttpGet("GetArtistAcount")]
         public async Task<IActionResult> GetArtistAcount()
         {
             var result = await accountRepository.GetArtistAcountAsync();
             return Ok(result);
         }
+        //[Authorize Roles = ("1")]
         [HttpGet("GetAdministratorAcount")]
         public async Task<IActionResult> GetAdministratorAcountAsync()
         {
