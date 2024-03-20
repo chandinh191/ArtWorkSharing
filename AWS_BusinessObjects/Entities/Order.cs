@@ -14,10 +14,10 @@ namespace AWS_BusinessObjects.Entities
     public class Order : BaseAuditableEntity
     {
         [ForeignKey("ApplicationUser")]
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "UserAccountId is required")]
         public string UserAccountId { get; set; }
         [ForeignKey("ArtWord")]
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "ArtWordID is required")]
         public Guid ArtWordID { get; set; }
         [Range(1,9999999999, ErrorMessage = "Price must be between 1 and 9999999999")]
         public float Price { get; set; }
