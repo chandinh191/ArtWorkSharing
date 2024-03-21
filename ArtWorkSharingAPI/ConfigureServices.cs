@@ -40,6 +40,7 @@ public static class ConfigureServices
         services.AddScoped<IInteractService, InteractService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IOrderService,OrderService>();
+        services.AddScoped<ICategoryService, CategoryService>();
 
         //services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
         // Repository

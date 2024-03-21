@@ -12,10 +12,10 @@ namespace AWS_Services.Services
 {
     public class CategoryService : ICategoryRepository
     {
-        private CategoryRepository categoryRepository = null;
-        public CategoryService(IApplicationDbContext context)
+        private ICategoryRepository categoryRepository;
+        public CategoryService(ICategoryRepository context)
         {
-            categoryRepository = new CategoryRepository(context);
+            categoryRepository = context;
         }
         public void Add(Category category) => categoryRepository.Add(category);
 
