@@ -38,6 +38,7 @@ public static class ConfigureServices
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IOrderService,OrderService>();
         services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IWishListService, WishListService>();
 
         //services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
         // Repository
@@ -47,12 +48,15 @@ public static class ConfigureServices
         services.AddScoped<IInteractRepository,InteractRepository>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IWishListRepository, WishListRepository>();
 
         // DAO
         services.AddScoped<ArtWorkDAO>();
         services.AddScoped<InteractDAO>();
         services.AddScoped<RatingDAO>();
         services.AddScoped<OrderDAO>();
+        services.AddScoped<WishListDAO>();
+
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>

@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Entities;
+using AWS_Repository.Interface;
 using AWS_Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace AWS_Services.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ICategoryService categoryRepository;
-        public CategoryService(ICategoryService categoryRepository)
+        private readonly ICategoryRepository categoryRepository;
+        public CategoryService(ICategoryRepository categoryRepository)
         {
             this.categoryRepository = categoryRepository;
         }

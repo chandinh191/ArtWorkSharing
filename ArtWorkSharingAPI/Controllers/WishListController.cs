@@ -7,35 +7,35 @@ namespace ArtWorkSharingAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class WishListController : ControllerBase
     {
-        private ICategoryService categoryService;
+        private IWishListService wishListService;
 
-        public CategoryController(ICategoryService categoryService)
+        public WishListController(IWishListService wishListService)
         {
-            this.categoryService = categoryService;
+            this.wishListService = wishListService;
         }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            var categories = categoryService.GetAll();
+            var categories = wishListService.GetAll();
             return Ok(categories);
         }
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            var category = categoryService.GetById(id);
-            if (category == null)
+            var wishList = wishListService.GetById(id);
+            if (wishList == null)
             {
                 return NotFound($"Không tìm thấy loại tranh của bạn!, Id: {id}");
             }
             else
             {
-                return Ok(category);
+                return Ok(wishList);
             }
         }
         [HttpPost("Add")]
-        public IActionResult Add(Category category)
+        public IActionResult Add(WishList wishList)
         {
             if (!ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace ArtWorkSharingAPI.Controllers
             }
             else
             {
-                categoryService.Add(category);
+                wishListService.Add(wishList);
                 return Ok("Thêm thành công");
             }
         }
@@ -52,15 +52,15 @@ namespace ArtWorkSharingAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var categoryCheck = categoryService.GetById(id);
-                if (categoryCheck == null)
+                var wishListCheck = wishListService.GetById(id);
+                if (wishListCheck == null)
                 {
                     ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    categoryService.Delete(id);
+                    wishListService.Delete(id);
                     return Ok("Xóa thành công");
                 }
             }
@@ -71,19 +71,19 @@ namespace ArtWorkSharingAPI.Controllers
 
         }
         [HttpPut("Update")]
-        public IActionResult Update(Category category)
+        public IActionResult Update(WishList wishList)
         {
             if (ModelState.IsValid)
             {
-                var categoryCheck = categoryService.GetById(category.Id);
-                if (category == null)
+                var wishListCheck = wishListService.GetById(wishList.Id);
+                if (wishListCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {category.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {wishList.Id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    categoryService.Update(category);
+                    wishListService.Update(wishList);
                     return Ok("Cập nhật thành công");
                 }
             }
