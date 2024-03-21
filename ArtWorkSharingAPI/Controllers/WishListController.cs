@@ -1,42 +1,41 @@
 ﻿using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
-using AWS_Services.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArtWorkSharingAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PackageDetailController : ControllerBase
+    public class WishListController : ControllerBase
     {
-        private IPackageDetailsService packageDetailsService;
+        private IWishListService wishListService;
 
-        public PackageDetailController(IPackageDetailsService packageDetailsService)
+        public WishListController(IWishListService wishListService)
         {
-            this.packageDetailsService = packageDetailsService;
+            this.wishListService = wishListService;
         }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            var packageDetails = packageDetailsService.GetAll();
-            return Ok(packageDetails);
+            var categories = wishListService.GetAll();
+            return Ok(categories);
         }
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            var packageDetail = packageDetailsService.GetById(id);
-            if (packageDetail == null)
+            var wishList = wishListService.GetById(id);
+            if (wishList == null)
             {
-                return NotFound($"Không tìm thấy chi tiết gói của bạn!, Id: {id}");
+                return NotFound($"Không tìm thấy loại tranh của bạn!, Id: {id}");
             }
             else
             {
-                return Ok(packageDetail);
-            }       
-            
+                return Ok(wishList);
+            }
         }
         [HttpPost("Add")]
-        public IActionResult Add(PackageDetail packageDetail)
+        public IActionResult Add(WishList wishList)
         {
             if (!ModelState.IsValid)
             {
@@ -44,25 +43,24 @@ namespace ArtWorkSharingAPI.Controllers
             }
             else
             {
-                packageDetailsService.Add(packageDetail);
+                wishListService.Add(wishList);
                 return Ok("Thêm thành công");
             }
-            
         }
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
             if (ModelState.IsValid)
             {
-                var packageDetailCheck = packageDetailsService.GetById(id);
-                if (packageDetailCheck == null)
+                var wishListCheck = wishListService.GetById(id);
+                if (wishListCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy chi tiết gói của bạn!, Id: {id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    packageDetailsService.Delete(id);
+                    wishListService.Delete(id);
                     return Ok("Xóa thành công");
                 }
             }
@@ -70,22 +68,22 @@ namespace ArtWorkSharingAPI.Controllers
             {
                 return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
             }
-            
+
         }
         [HttpPut("Update")]
-        public IActionResult Update(PackageDetail packageDetail)
+        public IActionResult Update(WishList wishList)
         {
             if (ModelState.IsValid)
             {
-                var packageDetailCheck = packageDetailsService.GetById(packageDetail.Id);
-                if (packageDetailCheck == null)
+                var wishListCheck = wishListService.GetById(wishList.Id);
+                if (wishListCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy chi tiết gói của bạn!, Id: {packageDetail.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {wishList.Id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    packageDetailsService.Update(packageDetail);
+                    wishListService.Update(wishList);
                     return Ok("Cập nhật thành công");
                 }
             }

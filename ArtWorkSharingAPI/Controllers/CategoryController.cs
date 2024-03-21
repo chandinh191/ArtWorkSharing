@@ -75,8 +75,8 @@ namespace ArtWorkSharingAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var orderCheck = categoryService.GetById(category.Id);
-                if (orderCheck == null)
+                var categoryCheck = categoryService.GetById(category.Id);
+                if (category == null)
                 {
                     ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {category.Id}");
                     return NotFound(ModelState);

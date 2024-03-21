@@ -39,9 +39,7 @@ namespace AWS_BusinessObjects.Persistence
         public DbSet<ArtWork> ArtWorks => Set<ArtWork>();
         public DbSet<Interact> Interacts => Set<Interact>();
         public DbSet<Order> Orders => Set<Order>();
-        public DbSet<Package> Packages => Set<Package>();
-        public DbSet<PackageDetail> PackageDetails => Set<PackageDetail>();
-        public DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
+        public DbSet<Category> Categories => Set<Category>();
         public DbSet<Rating> Ratings => Set<Rating>();
         public DbSet<Report> Reports => Set<Report>();
         public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
@@ -408,97 +406,6 @@ namespace AWS_BusinessObjects.Persistence
                     ArtWordID = Guid.Parse("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
                     Status = OrderStatus.Pending,
                     isPreOrder = false,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                }
-                );
-
-            // Package Seed Data, 3 Packages
-            builder.Entity<Package>()
-                .HasData(
-                               new Package
-                               {
-                    Id = Guid.Parse("1ebe4b4b-e00b-4e82-b3be-418f58df9726"),
-                    NamePacked = "Package 1",
-                    Description = "Description 1",
-                    PackageStatus = PackageStatus.Active,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                                              new Package
-                                              {
-                    Id = Guid.Parse("39b58807-f4b1-46bb-bdd2-597399a51c90"),
-                    NamePacked = "Package 2",
-                    Description = "Description 2",
-                    PackageStatus = PackageStatus.Active,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                                                             new Package
-                                                             {
-                    Id = Guid.Parse("a04d8c84-4698-4d73-a3cb-e1ce395d5bcf"),
-                    NamePacked = "Package 3",
-                    Description = "Description 3",
-                    PackageStatus = PackageStatus.Active,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                }
-                                                                            );
-
-            // PackageDetail Seed Data, 3 PackageDetails
-            builder.Entity<PackageDetail>()
-                .HasData(
-                new PackageDetail
-                {
-                    Id = Guid.NewGuid(),
-                    PackageID = Guid.Parse("1ebe4b4b-e00b-4e82-b3be-418f58df9726"),
-                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ch",
-                    PaymentMethodID = Guid.Parse("c466ed52-40d1-41a7-9a76-141526876859"),
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new PackageDetail
-                {
-                    Id = Guid.NewGuid(),
-                    PackageID = Guid.Parse("39b58807-f4b1-46bb-bdd2-597399a51c90"),
-                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
-                    PaymentMethodID = Guid.Parse("d3b9eb3f-8da2-40b2-8fd0-d0b09f287008"),
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new PackageDetail
-                {
-                    Id = Guid.NewGuid(),
-                    PackageID = Guid.Parse("a04d8c84-4698-4d73-a3cb-e1ce395d5bcf"),
-                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
-                    PaymentMethodID = Guid.Parse("d3b9eb3f-8da2-40b2-8fd0-d0b09f287008"),
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                }
-                );
-
-            // PaymentMethod Seed Data, 2 PaymentMethods
-            builder.Entity<PaymentMethod>()
-                .HasData(
-                new PaymentMethod
-                {
-                    Id = Guid.Parse("c466ed52-40d1-41a7-9a76-141526876859"),
-                    Name = "MOMO",
-                    PaymentMethodStatus = PaymentMethodStatus.Active,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new PaymentMethod
-                {
-                    Id = Guid.Parse("d3b9eb3f-8da2-40b2-8fd0-d0b09f287008"),
-                    Name = "VN Pay",
-                    PaymentMethodStatus = PaymentMethodStatus.Active,
                     Created = DateTime.Now,
                     IsDeleted = false
                 }

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace AWS_Services.Interface
 {
-    public interface IPackageService
+    public interface IWishListService
     {
-        public List<Package> GetAll();
-        public Package GetById(Guid id);
-        public void Add(Package package);
-        public void Update(Package package);
+        public List<WishList> GetAll();
+        public WishList GetById(Guid id);
+        public void Add(WishList wishList);
+        public void Update(WishList wishList);
         public void Delete(Guid id);
     }
 }

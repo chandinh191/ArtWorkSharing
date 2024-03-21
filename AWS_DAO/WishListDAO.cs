@@ -1,6 +1,7 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO.Common.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,23 +10,25 @@ using System.Threading.Tasks;
 
 namespace AWS_DAO
 {
-    public class PackageDAO
+    public class WishListDAO
     {
         private readonly IApplicationDbContext _context;
-        public PackageDAO(IApplicationDbContext context)
+        public WishListDAO(IApplicationDbContext context)
         {
             _context = context;
         }
 
 
-        // get all Package
-        public List<Package> GetAll()
+        // get all Order
+        public List<WishList> GetAll()
         {
             try
             {
-                List<Package> packages
-                    = (List<Package>)_context.Get<Package>().ToList();
-                return packages;
+                List<WishList> wishLists
+                    = (List<WishList>)_context.Get<WishList>()
+                    .Include(i => i.ArtWorks)
+                    .ToList();
+                return wishLists;
             }
             catch (Exception ex)
             {
@@ -33,12 +36,12 @@ namespace AWS_DAO
             }
         }
 
-        // get Package by id
-        public Package GetById(Guid id)
+        // get Order by id
+        public WishList GetById(Guid id)
         {
             try
             {
-                return _context.Get<Package>().Where(o => o.Id == id).FirstOrDefault();
+                return _context.Get<WishList>().Where(o => o.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -46,12 +49,12 @@ namespace AWS_DAO
             }
         }
 
-        // add Package
-        public void Add(Package package)
+        // add Order
+        public void Add(WishList wishList)
         {
             try
             {
-                _context.Get<Package>().Add(package);
+                _context.Get<WishList>().Add(wishList);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -60,24 +63,21 @@ namespace AWS_DAO
             }
         }
 
-        // update Package
-        public void Update(Package package)
+        // update Order
+        public void Update(WishList wishList)
         {
             try
             {
-                var Package = _context.Get<Package>().FirstOrDefault(x => x.Id == package.Id);
-                if (Package == null)
+                var WishList = _context.Get<WishList>().FirstOrDefault(x => x.Id == wishList.Id);
+                if (WishList == null)
                 {
                     throw new NotFoundException();
                 }
-
-                Package.NamePacked = package.NamePacked;
-                Package.Description = package.Description;
-                Package.PackageStatus = package.PackageStatus;
-                Package.LastModified = DateTime.Now;
+                WishList.ArtWordID = wishList.ArtWordID;
+                WishList.LastModified = DateTime.Now;
 
 
-                _context.Get<Package>().Update(Package);
+                _context.Get<WishList>().Update(WishList);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -86,14 +86,14 @@ namespace AWS_DAO
             }
         }
 
-        // delete Package, isDeleted = true
+        // delete Order, isDeleted = true
         public void Delete(Guid id)
         {
             try
             {
-                var package = _context.Get<Package>().Where(o => o.Id == id).FirstOrDefault();
-                package.IsDeleted = true;
-                _context.Get<Package>().Update(package);
+                WishList wishList = GetById(id);
+                wishList.IsDeleted = true;
+                _context.Get<WishList>().Update(wishList);
                 _context.SaveChanges();
             }
             catch (Exception ex)
