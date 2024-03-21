@@ -1,6 +1,7 @@
 ﻿using AWS_BusinessObjects.Common;
 using AWS_BusinessObjects.Enums;
 using AWS_BusinessObjects.Identity;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,13 +18,16 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey("ApplicationUser")]
         [Required(ErrorMessage = "UserAccountId is required")]
         public string UserAccountId { get; set; }
+        //public virtual ApplicationUser ApplicationUser { get; set; }
 
         [ForeignKey("ApplicationUser")]
         [Required(ErrorMessage = "UserOwnerId is required")]
         public string UserOwnerId { get; set; }
+        //public virtual ApplicationUser UserOwner { get; set; }
 
         [ForeignKey("Category")]        
-        public Guid? CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
+        //public virtual Category Category { get; set; }
 
 
         [Required(ErrorMessage = "Name is required")]

@@ -51,6 +51,23 @@ namespace AWS_BusinessObjects.Persistence
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            builder.Entity<Category>()
+               .HasData(
+               new Category
+               {
+                   Id = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c"),
+                   CategoryName = "Category1",
+                   Description = "Description Category1"
+               },
+               new Category
+               {
+                   Id = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987"),
+                   CategoryName = "Category2",
+                   Description = "Description Category2"
+               }
+               );
+
+
             // ApplicationUser Seed Data, 3 users
             builder.Entity<ApplicationUser>()
                 .HasData(
@@ -148,10 +165,12 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 1",
                     Description = "Description 1",
                     Price = 100,
-                    ImageUrl = "Image 1",
+                    ImageUrl = "https://img.cdn-pictorem.com/uploads/collection/D/DN4DFF8JRC/900_Nature-Art_10.jpg",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    IsPreOrder = false,
+                    CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
                 {
@@ -161,10 +180,12 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 2",
                     Description = "Description 2",
                     Price = 200,
-                    ImageUrl = "Image 2",
+                    ImageUrl = "https://i.ebayimg.com/images/g/pAUAAOSw5yJjhMYl/s-l1200.webp",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    IsPreOrder = true,
+                    CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 },
                 new ArtWork
                 {
@@ -174,10 +195,12 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 3",
                     Description = "Description 3",
                     Price = 300,
-                    ImageUrl = "Image 3",
+                    ImageUrl = "https://media.takealot.com/covers_images/0e56acf396604d34ac7c414b287c7cd7/s-pdpxl.file",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    IsPreOrder= true,
+                    CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
                 {
@@ -187,10 +210,11 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 4",
                     Description = "Description 4",
                     Price = 400,
-                    ImageUrl = "Image 4",
+                    ImageUrl = "https://studio.pinotspalette.com/naperville/images/nap-uniquevangogh.jpg",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 },
                 new ArtWork
                 {
@@ -200,10 +224,11 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 5",
                     Description = "Description 5",
                     Price = 500,
-                    ImageUrl = "Image 5",
+                    ImageUrl = "https://www.singulart.com/images/artworks/v2/cropped/2479/main/carousel/1844446_b5d87c0efe493d715a1d57f480131a2f.jpeg",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
                 {
@@ -213,10 +238,11 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 6",
                     Description = "Description 6",
                     Price = 600,
-                    ImageUrl = "Image 6",
+                    ImageUrl = "https://images.saatchiart.com/saatchi/1093024/art/4707641/3777473-FIDYEXAV-7.jpg",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
                 {
@@ -226,10 +252,11 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 7",
                     Description = "Description 7",
                     Price = 700,
-                    ImageUrl = "Image 7",
+                    ImageUrl = "https://images.saatchiart.com/saatchi/770124/art/8867466/7930834-HSC00923-7.jpg",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 },
                 new ArtWork
                 {
@@ -239,10 +266,11 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 8",
                     Description = "Description 8",
                     Price = 800,
-                    ImageUrl = "Image 8",
+                    ImageUrl = "https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/191815536_1305384429858113_8269960277638413432_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FYh3OT-x0AIAX-Z3VNM&_nc_ht=scontent.fsgn5-3.fna&oh=00_AfCifetKtGNeQBaVh8Yrx3lnW3U1CxznHdMAZMB1a1w5XA&oe=6623B508",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 },
                 new ArtWork
                 {
@@ -252,10 +280,12 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 9",
                     Description = "Description 9",
                     Price = 900,
-                    ImageUrl = "Image 9",
+                    ImageUrl = "https://scontent.fsgn5-11.fna.fbcdn.net/v/t1.6435-9/107542684_1068121206917771_2494785157216852040_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=o9rZ89Am3UEAX-VFzIF&_nc_ht=scontent.fsgn5-11.fna&oh=00_AfCNUsxrhFPBP5F0Yu-A-dnY-gT2TF8zwifP0MFBwfUTgQ&oe=66239792",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    IsPreOrder = true,
+                    CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
                 {
@@ -265,10 +295,12 @@ namespace AWS_BusinessObjects.Persistence
                     Name = "ArtWork 10",
                     Description = "Description 10",
                     Price = 1000,
-                    ImageUrl = "Image 10",
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Vincent_Willem_van_Gogh_127.jpg/270px-Vincent_Willem_van_Gogh_127.jpg",
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+                    IsPreOrder = true,
+                    CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 }
                 );
 
