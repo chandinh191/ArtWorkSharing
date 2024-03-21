@@ -13,6 +13,7 @@ namespace AWS_BusinessObjects.Entities
     public class Interact : BaseAuditableEntity
     {
         [Required]
+        [ForeignKey("ArtWork")]
         public Guid ArtWorkID { get; set; }
 
         // bị vòng
