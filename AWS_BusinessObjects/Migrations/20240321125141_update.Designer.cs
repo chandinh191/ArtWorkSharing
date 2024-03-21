@@ -4,6 +4,7 @@ using AWS_BusinessObjects.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AWS_BusinessObjects.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240321125141_update")]
+    partial class update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,8 +122,6 @@ namespace AWS_BusinessObjects.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("ArtWorks");
 
                     b.HasData(
@@ -128,7 +129,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(126),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8703),
                             Description = "Description 1",
                             ImageUrl = "Image 1",
                             IsDeleted = false,
@@ -143,7 +144,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("26709dca-1906-4c50-a00e-1c63582ab644"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(132),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8707),
                             Description = "Description 2",
                             ImageUrl = "Image 2",
                             IsDeleted = false,
@@ -158,7 +159,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(137),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8711),
                             Description = "Description 3",
                             ImageUrl = "Image 3",
                             IsDeleted = false,
@@ -173,7 +174,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("7b76bf1f-d24c-4ac9-b466-4179e65605b2"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(141),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8714),
                             Description = "Description 4",
                             ImageUrl = "Image 4",
                             IsDeleted = false,
@@ -188,7 +189,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(144),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8717),
                             Description = "Description 5",
                             ImageUrl = "Image 5",
                             IsDeleted = false,
@@ -203,7 +204,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(148),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8721),
                             Description = "Description 6",
                             ImageUrl = "Image 6",
                             IsDeleted = false,
@@ -218,7 +219,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("bd37c967-1817-495b-89eb-665c81b02d5e"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(154),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8724),
                             Description = "Description 7",
                             ImageUrl = "Image 7",
                             IsDeleted = false,
@@ -233,7 +234,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("1f35558f-a942-4837-81a4-720bae0e8bb1"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(200),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8730),
                             Description = "Description 8",
                             ImageUrl = "Image 8",
                             IsDeleted = false,
@@ -248,7 +249,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("9db314d0-6a55-492c-9a13-7ee6f2091cbf"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(203),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8733),
                             Description = "Description 9",
                             ImageUrl = "Image 9",
                             IsDeleted = false,
@@ -263,7 +264,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("d9d6b461-8efd-4395-8662-a58caa152200"),
                             ArtWorkStatus = 1,
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(206),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8737),
                             Description = "Description 10",
                             ImageUrl = "Image 10",
                             IsDeleted = false,
@@ -310,22 +311,22 @@ namespace AWS_BusinessObjects.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("bb7d48d0-b6a2-482f-acd5-374a000174c3"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(59),
+                            Id = new Guid("b69ae46c-e0b0-4f62-a898-160843a706e1"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8640),
                             IsDeleted = false,
                             UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf"
                         },
                         new
                         {
-                            Id = new Guid("4636d38e-1884-46e6-a9f9-fa2d54e7447b"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(63),
+                            Id = new Guid("3878ad0b-fae6-4882-b88a-99ff6df092c9"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8644),
                             IsDeleted = false,
                             UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cg"
                         },
                         new
                         {
-                            Id = new Guid("a83e16b2-6d3b-424f-ab31-02596b585b6a"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(66),
+                            Id = new Guid("ab50d3b3-a70c-4e52-8c8f-b489520b921b"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8646),
                             IsDeleted = false,
                             UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ch"
                         });
@@ -365,15 +366,15 @@ namespace AWS_BusinessObjects.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("be74b842-a7dd-48bc-b6cd-e9d2cee4ffb9"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(87),
+                            Id = new Guid("83df80e1-5579-4537-9c47-610a6650db3a"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8668),
                             IsDeleted = false,
                             UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ci"
                         },
                         new
                         {
-                            Id = new Guid("6bb05e39-7f7c-46e8-b28f-16a78fc26712"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(93),
+                            Id = new Guid("e3add75c-8373-4dfd-bb54-1d4529efeb3f"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8673),
                             IsDeleted = false,
                             UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cj"
                         });
@@ -462,101 +463,101 @@ namespace AWS_BusinessObjects.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d47bb0ad-1fe6-46f2-bf0c-ec80a577b16f"),
+                            Id = new Guid("3fa0d63f-5f23-474c-b5df-95430bea6537"),
                             ArtWorkID = new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
                             Comment = "Comment 1",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(232),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(234),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8757),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8760),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("3f1707f9-8112-4b62-9f1d-ce5f2dcdf50a"),
+                            Id = new Guid("07ce019c-2db5-453a-a947-9bc9a8df326d"),
                             ArtWorkID = new Guid("26709dca-1906-4c50-a00e-1c63582ab644"),
                             Comment = "Comment 2",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(238),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(239),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8764),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8765),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("a8177835-6248-40cf-af30-08ae98f53d5d"),
+                            Id = new Guid("5b8091c9-c779-4762-bc37-c5368bf6c413"),
                             ArtWorkID = new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
                             Comment = "Comment 3",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(244),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(246),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8770),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8771),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("765fbcce-62d1-4145-81e9-24ab02672265"),
+                            Id = new Guid("611b340a-8bb8-4655-815d-b3132eca221d"),
                             ArtWorkID = new Guid("7b76bf1f-d24c-4ac9-b466-4179e65605b2"),
                             Comment = "Comment 4",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(249),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(250),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8774),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8775),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("ec44f138-9d25-44cc-9a10-d87bc48d82ec"),
+                            Id = new Guid("15e3b5b1-2c41-4344-a5c0-8219c10ac94d"),
                             ArtWorkID = new Guid("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"),
                             Comment = "Comment 5",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(253),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(254),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8778),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8780),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("a5303209-98ca-416f-8b9c-5932fa28322b"),
+                            Id = new Guid("4db8b70f-2224-4e03-9e14-40932425e37f"),
                             ArtWorkID = new Guid("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"),
                             Comment = "Comment 6",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(257),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(258),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8812),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8814),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("737c152d-223a-4469-89df-a7dd286fa6b8"),
+                            Id = new Guid("52ed48f6-acf1-43f2-9520-3029fe911a84"),
                             ArtWorkID = new Guid("bd37c967-1817-495b-89eb-665c81b02d5e"),
                             Comment = "Comment 7",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(263),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(264),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8818),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8820),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("a43abead-f7be-413c-81a9-f1d6ea675b0d"),
+                            Id = new Guid("179731f2-7623-4eef-8cb8-2f6a6290cf99"),
                             ArtWorkID = new Guid("1f35558f-a942-4837-81a4-720bae0e8bb1"),
                             Comment = "Comment 8",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(267),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(268),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8823),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8824),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("71dc7120-b5e4-44dd-89a5-a5885581dae6"),
+                            Id = new Guid("b38adc0e-89b7-4452-a9d2-a06c0ebbe85d"),
                             ArtWorkID = new Guid("9db314d0-6a55-492c-9a13-7ee6f2091cbf"),
                             Comment = "Comment 9",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(271),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(272),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8827),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8828),
                             IsDeleted = false,
                             IsLike = true
                         },
                         new
                         {
-                            Id = new Guid("d375ffed-fa6c-4534-8898-38a516e5fbb6"),
+                            Id = new Guid("e909fc45-326e-45b6-b197-4e9946ec0586"),
                             ArtWorkID = new Guid("d9d6b461-8efd-4395-8662-a58caa152200"),
                             Comment = "Comment 10",
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(275),
-                            Date = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(276),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8831),
+                            Date = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8832),
                             IsDeleted = false,
                             IsLike = true
                         });
@@ -615,7 +616,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("871a809a-b3fa-495b-9cc2-c5d738a861cf"),
                             ArtWorkID = new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(298),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8855),
                             IsDeleted = false,
                             Price = 0f,
                             Status = 1,
@@ -626,7 +627,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("871a809a-b3fa-495b-9cc2-c5d738a862cf"),
                             ArtWorkID = new Guid("26709dca-1906-4c50-a00e-1c63582ab644"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(303),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8861),
                             IsDeleted = false,
                             Price = 0f,
                             Status = 1,
@@ -637,7 +638,7 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = new Guid("871a809a-b3fa-495b-9cc2-c5d738a863cf"),
                             ArtWorkID = new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(307),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8866),
                             IsDeleted = false,
                             Price = 0f,
                             Status = 1,
@@ -687,8 +688,8 @@ namespace AWS_BusinessObjects.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d8080722-d479-43b4-b4f2-594f4c798d2e"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(325),
+                            Id = new Guid("9d2eef43-d200-4e3e-92b4-afcf82a23bb8"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8886),
                             Description = "Description 1",
                             IsDeleted = false,
                             OrderID = new Guid("871a809a-b3fa-495b-9cc2-c5d738a861cf"),
@@ -696,8 +697,8 @@ namespace AWS_BusinessObjects.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7f654949-cd0b-4386-93c0-c547db73869c"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(329),
+                            Id = new Guid("1737ee32-1a61-41c7-a163-b70fa944418b"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8890),
                             Description = "Description 2",
                             IsDeleted = false,
                             OrderID = new Guid("871a809a-b3fa-495b-9cc2-c5d738a862cf"),
@@ -705,8 +706,8 @@ namespace AWS_BusinessObjects.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b8ff5608-b9f2-482a-b737-97707c4b9a38"),
-                            Created = new DateTime(2024, 3, 21, 19, 54, 28, 722, DateTimeKind.Local).AddTicks(334),
+                            Id = new Guid("dbc65157-a95a-4851-832c-8c7c1454c064"),
+                            Created = new DateTime(2024, 3, 21, 19, 51, 41, 546, DateTimeKind.Local).AddTicks(8894),
                             Description = "Description 3",
                             IsDeleted = false,
                             OrderID = new Guid("871a809a-b3fa-495b-9cc2-c5d738a863cf"),
@@ -796,7 +797,7 @@ namespace AWS_BusinessObjects.Migrations
 
                     b.HasIndex("ArtWorkID");
 
-                    b.ToTable("WishLists");
+                    b.ToTable("WishList");
                 });
 
             modelBuilder.Entity("AWS_BusinessObjects.Identity.ApplicationUser", b =>
@@ -874,13 +875,13 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c01d65a-92d4-4cc3-a08f-6146007a21e3",
+                            ConcurrencyStamp = "ac799272-3e3a-4a50-a817-54cabff3b47d",
                             Email = "hieu123@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "TRANHIEU1",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "71201ba2-27c3-4f55-84e3-de61c0ea3290",
+                            SecurityStamp = "79be15c4-6cbe-48ff-9dbd-59d555cbf9a0",
                             TwoFactorEnabled = false,
                             UserName = "TranHieu1"
                         },
@@ -888,13 +889,13 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = "871a809a-b3fa-495b-9cc2-c5d738a866cg",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d0eafd38-6be1-46c1-a821-022ddc648a3d",
+                            ConcurrencyStamp = "04ff464d-8472-4244-81f1-f751b27a2c6c",
                             Email = "hieuaccount2@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "TRANHIEU2",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b144d408-71ad-48b8-9f08-5c24aaf14b63",
+                            SecurityStamp = "ee410dd6-6ba4-49dc-97fc-f82059856124",
                             TwoFactorEnabled = false,
                             UserName = "TranHieu2"
                         },
@@ -902,13 +903,13 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = "871a809a-b3fa-495b-9cc2-c5d738a866ch",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e12adaf-b31a-4e8d-a951-2e2aadd8cd14",
+                            ConcurrencyStamp = "4aa4d503-c34f-452d-88c2-50c062e9316c",
                             Email = "hieuaccount3@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "TRANHIEU3",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9956a3fb-2187-4e31-ba0e-a2202371af2f",
+                            SecurityStamp = "4d998308-2455-4f52-99fc-fc9e32d8f3c6",
                             TwoFactorEnabled = false,
                             UserName = "TranHieu3"
                         },
@@ -916,13 +917,13 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = "871a809a-b3fa-495b-9cc2-c5d738a866ci",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "540380a3-b770-4246-a861-d3523f7847c4",
+                            ConcurrencyStamp = "6c0e0a7f-7971-4359-8157-768a39967de0",
                             Email = "hieuaccount4@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "TRANHIEU4",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "18c5527f-ef47-4bd1-98ac-edb23a129e45",
+                            SecurityStamp = "0dd9683f-2aaa-4729-853d-7e4587f6503b",
                             TwoFactorEnabled = false,
                             UserName = "TranHieu4"
                         },
@@ -930,16 +931,31 @@ namespace AWS_BusinessObjects.Migrations
                         {
                             Id = "871a809a-b3fa-495b-9cc2-c5d738a866cj",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7a0ffa1-ff1c-4f4e-9180-1b7716d5d2a9",
+                            ConcurrencyStamp = "e1ca74ef-774f-4d38-9fce-1ed725dca46a",
                             Email = "hieuaccount5@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "TRANHIEU5",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d232fcfc-864f-46ba-a662-33a0147fec80",
+                            SecurityStamp = "5368010a-9fcb-44f1-ac42-f6f6e96826ef",
                             TwoFactorEnabled = false,
                             UserName = "TranHieu5"
                         });
+                });
+
+            modelBuilder.Entity("ArtWorkCategory", b =>
+                {
+                    b.Property<Guid>("ArtWorksId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoriesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ArtWorksId", "CategoriesId");
+
+                    b.HasIndex("CategoriesId");
+
+                    b.ToTable("ArtWorkCategory");
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -1232,10 +1248,6 @@ namespace AWS_BusinessObjects.Migrations
                     b.HasOne("AWS_BusinessObjects.Identity.ApplicationUser", null)
                         .WithMany("ArtWorks")
                         .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("AWS_BusinessObjects.Entities.Category", null)
-                        .WithMany("ArtWorks")
-                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("AWS_BusinessObjects.Entities.ArtistAccount", b =>
@@ -1319,6 +1331,21 @@ namespace AWS_BusinessObjects.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ArtWorkCategory", b =>
+                {
+                    b.HasOne("AWS_BusinessObjects.Entities.ArtWork", null)
+                        .WithMany()
+                        .HasForeignKey("ArtWorksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AWS_BusinessObjects.Entities.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1377,11 +1404,6 @@ namespace AWS_BusinessObjects.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("WishLists");
-                });
-
-            modelBuilder.Entity("AWS_BusinessObjects.Entities.Category", b =>
-                {
-                    b.Navigation("ArtWorks");
                 });
 
             modelBuilder.Entity("AWS_BusinessObjects.Entities.Order", b =>

@@ -26,7 +26,7 @@ namespace AWS_DAO
             {
                 List<WishList> wishLists
                     = (List<WishList>)_context.Get<WishList>()
-                    .Include(i => i.ArtWorks)
+                    .Include(i => i.ArtWorkID)
                     .ToList();
                 return wishLists;
             }
@@ -73,7 +73,7 @@ namespace AWS_DAO
                 {
                     throw new NotFoundException();
                 }
-                WishList.ArtWordID = wishList.ArtWordID;
+                WishList.ArtWorkID = wishList.ArtWorkID;
                 WishList.LastModified = DateTime.Now;
 
 

@@ -20,7 +20,6 @@ namespace AWS_BusinessObjects.Identity
         public virtual IList<Report>? Reports { get; set; }  
         public virtual IList<ArtWork>? ArtWorks { get; set; }
         public virtual IList<Order>? Orders { get; set; }
-        public virtual IList<Category>? Categories { get; set; }
-
+        public virtual IList<WishList>? WishLists { get; set; }
     }
 }
