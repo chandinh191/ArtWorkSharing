@@ -27,7 +27,7 @@ namespace ArtWorkSharingAPI.Controllers
             var wishList = wishListService.GetById(id);
             if (wishList == null)
             {
-                return NotFound($"Không tìm thấy loại tranh của bạn!, Id: {id}");
+                return NotFound($"Không tìm thấy tranh mong muốn của bạn!, Id: {id}");
             }
             else
             {
@@ -55,7 +55,7 @@ namespace ArtWorkSharingAPI.Controllers
                 var wishListCheck = wishListService.GetById(id);
                 if (wishListCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh mong muốn của bạn!, Id: {id}");
                     return NotFound(ModelState);
                 }
                 else
@@ -78,7 +78,7 @@ namespace ArtWorkSharingAPI.Controllers
                 var wishListCheck = wishListService.GetById(wishList.Id);
                 if (wishListCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {wishList.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh mong muốn của bạn!, Id: {wishList.Id}");
                     return NotFound(ModelState);
                 }
                 else
