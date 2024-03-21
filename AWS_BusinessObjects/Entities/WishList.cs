@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AWS_BusinessObjects.Identity;
 
 namespace AWS_BusinessObjects.Entities
 {
@@ -14,9 +15,9 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey("ApplicationUser")]
         [Required(ErrorMessage = "UserAccountId is required")]
         public string UserAccountId { get; set; }
-        [ForeignKey("ArtWord")]
-        [Required(ErrorMessage = "ArtWordID is required")]
-        public Guid ArtWordID { get; set; }
-        public virtual IList<ArtWork>? ArtWorks { get; set; }
+        [ForeignKey("ArtWork")]
+        [Required(ErrorMessage = "ArtWorkID is required")]
+        public Guid ArtWorkID { get; set; }
+        
     }
 }

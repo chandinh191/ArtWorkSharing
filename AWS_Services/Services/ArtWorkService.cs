@@ -15,7 +15,7 @@ namespace AWS_Services.Services
         private readonly IArtWorkRepository _artWorkRepository;
         public ArtWorkService(IArtWorkRepository artWorkRepository)
         {
-            this._artWorkRepository = artWorkRepository;
+            _artWorkRepository = artWorkRepository;
         }
         public void Add(ArtWork artWork)
         {

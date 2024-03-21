@@ -11,25 +11,25 @@ namespace AWS_Repository.Repositories
 {
     public class ArtistAccountRepository : IArtistAccountRepository
     {
-        private ArtistAccountDAO artistAccountDAO = null;
-        public ArtistAccountRepository()
+        private readonly ArtistAccountDAO _artistAccountDAO;
+        public ArtistAccountRepository(ArtistAccountDAO artistAccountDAO)
         {
-            artistAccountDAO = new ArtistAccountDAO();
+            _artistAccountDAO = artistAccountDAO;
         }
 
         public void Add(ArtistAccount artistAccount)
-        => artistAccountDAO.Add(artistAccount);
+        => _artistAccountDAO.Add(artistAccount);
 
         public void Delete(ArtistAccount artistAccount)
-        => artistAccountDAO.Delete(artistAccount);
+        => _artistAccountDAO.Delete(artistAccount);
 
         public List<ArtistAccount> GetAll()
-        => artistAccountDAO.GetAll();
+        => _artistAccountDAO.GetAll();
 
         public ArtistAccount GetById(Guid id)
-        => artistAccountDAO.GetById(id);
+        => _artistAccountDAO.GetById(id);
 
         public void Update(ArtistAccount artistAccount)
-        => artistAccountDAO.Update(artistAccount);
+        => _artistAccountDAO.Update(artistAccount);
     }
 }

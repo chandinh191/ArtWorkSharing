@@ -12,25 +12,25 @@ namespace AWS_Repository.Repositories
 {
     public class InteractRepository : IInteractRepository
     {
-        private InteractDAO interactDAO = null;
-        public InteractRepository(IApplicationDbContext context)
+        private readonly InteractDAO _interactDAO;
+        public InteractRepository(InteractDAO interactDAO)
         {
-            interactDAO = new InteractDAO(context);
+            _interactDAO = interactDAO;
         }
 
         public void Add(Interact interact)
-        => interactDAO.Add(interact);
+        => _interactDAO.Add(interact);
 
         public void Delete(Guid id)
-        => interactDAO.Delete(id);
+        => _interactDAO.Delete(id);
 
         public List<Interact> GetAll()
-        => interactDAO.GetAll();
+        => _interactDAO.GetAll();
 
         public Interact GetById(Guid id)
-        => interactDAO.GetById(id);
+        => _interactDAO.GetById(id);
 
         public void Update(Interact interact)
-        => interactDAO.Update(interact);    
+        => _interactDAO.Update(interact);    
     }
 }

@@ -16,9 +16,9 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey("ApplicationUser")]
         [Required(ErrorMessage = "UserAccountId is required")]
         public string UserAccountId { get; set; }
-        [ForeignKey("ArtWord")]
+        [ForeignKey(nameof(ArtWork))]
         [Required(ErrorMessage = "ArtWordID is required")]
-        public Guid ArtWordID { get; set; }
+        public Guid ArtWorkID { get; set; }
         [Range(1,9999999999, ErrorMessage = "Price must be between 1 and 9999999999")]
         public float Price { get; set; }
         public OrderStatus Status { get; set; }

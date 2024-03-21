@@ -43,6 +43,7 @@ namespace AWS_BusinessObjects.Persistence
         public DbSet<Rating> Ratings => Set<Rating>();
         public DbSet<Report> Reports => Set<Report>();
         public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
+        public DbSet<WishList> WishLists => Set<WishList>();
 
         // seed data function
 
@@ -383,7 +384,7 @@ namespace AWS_BusinessObjects.Persistence
                 {
                     Id = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a861cf"),
                     UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
-                    ArtWordID = Guid.Parse("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
+                    ArtWorkID = Guid.Parse("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
                     Status = OrderStatus.Pending,
                     isPreOrder = false,
                     Created = DateTime.Now,
@@ -393,7 +394,7 @@ namespace AWS_BusinessObjects.Persistence
                 {
                     Id = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a862cf"),
                     UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cg",
-                    ArtWordID = Guid.Parse("26709dca-1906-4c50-a00e-1c63582ab644"),
+                    ArtWorkID = Guid.Parse("26709dca-1906-4c50-a00e-1c63582ab644"),
                     Status = OrderStatus.Pending,
                     isPreOrder = false,
                     Created = DateTime.Now,
@@ -403,7 +404,7 @@ namespace AWS_BusinessObjects.Persistence
                 {
                     Id = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a863cf"),
                     UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ch",
-                    ArtWordID = Guid.Parse("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
+                    ArtWorkID = Guid.Parse("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
                     Status = OrderStatus.Pending,
                     isPreOrder = false,
                     Created = DateTime.Now,

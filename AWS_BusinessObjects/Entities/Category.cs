@@ -11,12 +11,10 @@ namespace AWS_BusinessObjects.Entities
 {
     public class Category : BaseAuditableEntity
     {
-        [ForeignKey("ApplicationUser")]
-        [Required(ErrorMessage = "UserAccountId is required")]
-        public string UserAccountId { get; set; }
         public string CategoryName { get; set; }
         [Required(AllowEmptyStrings = true, ErrorMessage = "Description is required")]
         [StringLength(500, ErrorMessage = "Description must be at most 500 characters")]
         public string Description { get; set; }
+        public virtual IList<ArtWork>? ArtWorks { get; set; }
     }
 }

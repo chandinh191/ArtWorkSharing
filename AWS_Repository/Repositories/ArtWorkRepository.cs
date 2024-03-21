@@ -12,38 +12,38 @@ namespace AWS_Repository.Repositories
 {
     public class ArtWorkRepository : IArtWorkRepository
     {
-        private ArtWorkDAO artWorkDAO;
-        public ArtWorkRepository(IApplicationDbContext context)
+        private readonly ArtWorkDAO _artWorkDAO;
+        public ArtWorkRepository(ArtWorkDAO artWorkDAO)
         {
-            artWorkDAO = new ArtWorkDAO(context);
+            _artWorkDAO = artWorkDAO;
         }
         public void Add(ArtWork artWork)
         {
-            artWorkDAO.Add(artWork);
+            _artWorkDAO.Add(artWork);
             //throw new NotImplementedException();
         }
 
         public void Delete(Guid id)
         {
-            artWorkDAO.Delete(id);
+            _artWorkDAO.Delete(id);
             //throw new NotImplementedException();
         }
 
         public List<ArtWork> GetAll()
         {
-            return artWorkDAO.GetAll();
+            return _artWorkDAO.GetAll();
             throw new NotImplementedException();
         }
 
         public ArtWork GetById(Guid id)
         {
-            return artWorkDAO.GetById(id);
+            return _artWorkDAO.GetById(id);
             throw new NotImplementedException();
         }
 
         public void Update(ArtWork artWork)
         {
-            artWorkDAO.Update(artWork);
+            _artWorkDAO.Update(artWork);
             //throw new NotImplementedException();
         }
     }

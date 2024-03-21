@@ -12,25 +12,25 @@ namespace AWS_Repository.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
-        private OrderDAO orderDAO = null;
-        public OrderRepository(IApplicationDbContext context)
+        private readonly OrderDAO _orderDAO;
+        public OrderRepository(OrderDAO orderDAO)
         {
-            orderDAO = new OrderDAO(context);
+            _orderDAO = orderDAO;
         }
 
         public void Add(Order order)
-        => orderDAO.Add(order);
+        => _orderDAO.Add(order);
 
         public void Delete(Guid id)
-        => orderDAO.Delete(id);
+        => _orderDAO.Delete(id);
 
         public List<Order> GetAll()
-        => orderDAO.GetAll();
+        => _orderDAO.GetAll();
 
         public Order GetById(Guid id)
-        => orderDAO.GetById(id);
+        => _orderDAO.GetById(id);
 
         public void Update(Order order)
-        => orderDAO.Update(order);
+        => _orderDAO.Update(order);
     }
 }
