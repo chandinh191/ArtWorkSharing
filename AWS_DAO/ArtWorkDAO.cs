@@ -43,6 +43,7 @@ namespace AWS_DAO
                     = (List<ArtWork>)_context.Get<ArtWork>()
                     .Include(i => i.Orders)
                     .Include(i => i.Interacts)
+                    .Include(i =>i.Category)
                     .ToList();
                 return artWorks;
             }

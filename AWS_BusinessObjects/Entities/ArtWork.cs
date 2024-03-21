@@ -27,7 +27,7 @@ namespace AWS_BusinessObjects.Entities
 
         [ForeignKey("Category")]        
         public Guid CategoryId { get; set; }
-        //public virtual Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
 
         [Required(ErrorMessage = "Name is required")]
