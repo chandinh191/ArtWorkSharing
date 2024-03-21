@@ -40,7 +40,10 @@ namespace AWS_DAO
             try
             {
                 List<AWS_BusinessObjects.Entities.ArtWork> artWorks
-                    = (List<ArtWork>)_context.Get<ArtWork>().Include(x => x.ApplicationUser.ArtistAccounts).ToList();
+                    = (List<ArtWork>)_context.Get<ArtWork>()
+                    .Include(i => i.Orders)
+                    .Include(i => i.Interacts)
+                    .ToList();
                 return artWorks;
             }
             catch (Exception ex)

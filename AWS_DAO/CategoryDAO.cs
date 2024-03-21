@@ -10,25 +10,23 @@ using System.Threading.Tasks;
 
 namespace AWS_DAO
 {
-    public class OrderDAO
+    public class CategoryDAO
     {
         private readonly IApplicationDbContext _context;
-        public OrderDAO(IApplicationDbContext context)
+        public CategoryDAO(IApplicationDbContext context)
         {
             _context = context;
         }
 
-  
-        // get all Order
-        public List<Order> GetAll()
+        // get all Interact
+        public List<Category> GetAll()
         {
             try
             {
-                List<Order> orders
-                    = (List<Order>)_context.Get<Order>()
-                    .Include(i => i.Rating)
+                List<Category> categories
+                    = (List<Category>)_context.Get<Category>()
                     .ToList();
-                return orders;
+                return categories;
             }
             catch (Exception ex)
             {
@@ -36,12 +34,12 @@ namespace AWS_DAO
             }
         }
 
-        // get Order by id
-        public Order GetById(Guid id)
+        // get Interact by id
+        public Category GetById(Guid id)
         {
             try
             {
-                return _context.Get<Order>().Where(o => o.Id == id).FirstOrDefault();
+                return _context.Get<Category>().Where(o => o.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -49,12 +47,12 @@ namespace AWS_DAO
             }
         }
 
-        // add Order
-        public void Add(Order order)
+        // add Interact
+        public void Add(Category category)
         {
             try
             {
-                _context.Get<Order>().Add(order);
+                _context.Get<Category>().Add(category);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -63,22 +61,21 @@ namespace AWS_DAO
             }
         }
 
-        // update Order
-        public void Update(Order order)
+        // update Interact
+        public void Update(Category category)
         {
             try
             {
-                var Order = _context.Get<Order>().FirstOrDefault(x => x.Id == order.Id);
-                if (Order == null)
+                var Category = _context.Get<Category>().FirstOrDefault(x => x.Id == category.Id);
+                if (Category == null)
                 {
                     throw new NotFoundException();
                 }
-                Order.Price = order.Price;
-                Order.isPreOrder = order.isPreOrder;
-                Order.LastModified = DateTime.Now;
+                Category.CategoryName = category.CategoryName;
+                Category.Description = category.Description;
+                Category.LastModified = DateTime.Now;
 
-
-                _context.Get<Order>().Update(Order);
+                _context.Get<Category>().Update(Category);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -87,14 +84,18 @@ namespace AWS_DAO
             }
         }
 
-        // delete Order, isDeleted = true
+        // delete Interact, isDeleted = true
         public void Delete(Guid id)
         {
             try
             {
-                Order order = GetById(id);
-                order.IsDeleted = true;
-                _context.Get<Order>().Update(order);
+                var category = _context.Get<Category>().FirstOrDefault(x => x.Id == id);
+                if (category == null)
+                {
+                    throw new NotFoundException();
+                }
+                category.IsDeleted = true;
+                _context.Get<Category>().Update(category);
                 _context.SaveChanges();
             }
             catch (Exception ex)
