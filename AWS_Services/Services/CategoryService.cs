@@ -11,17 +11,17 @@ namespace AWS_Services.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
         public CategoryService(ICategoryRepository categoryRepository)
         {
-            this.categoryRepository = categoryRepository;
+            _categoryRepository = categoryRepository;
         }
-        public void Add(Category category) => categoryRepository.Add(category);
-        public void Delete(Guid id) => categoryRepository.Delete(id);
-        public List<Category> GetAll() => categoryRepository.GetAll();
+        public void Add(Category category) => _categoryRepository.Add(category);
+        public void Delete(Guid id) => _categoryRepository.Delete(id);
+        public List<Category> GetAll() => _categoryRepository.GetAll();
 
-        public Category GetById(Guid id) => categoryRepository.GetById(id);
+        public Category GetById(Guid id) => _categoryRepository.GetById(id);
 
-        public void Update(Category category) => categoryRepository.Update(category);
+        public void Update(Category category) => _categoryRepository.Update(category);
     }
 }
