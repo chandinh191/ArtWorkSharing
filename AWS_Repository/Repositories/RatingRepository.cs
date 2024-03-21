@@ -12,25 +12,25 @@ namespace AWS_Repository.Repositories
 {
     public class RatingRepository : IRatingRepository
     {
-        private RatingDAO ratingDAO = null;
-        public RatingRepository(IApplicationDbContext context)
+        private readonly RatingDAO _ratingDAO;
+        public RatingRepository(RatingDAO ratingDAO)
         {
-            ratingDAO = new RatingDAO(context);
+            _ratingDAO = ratingDAO;
         }
 
         public void Add(Rating rating)
-        => ratingDAO.Add(rating);
+        => _ratingDAO.Add(rating);
 
         public void Delete(Guid id)
-        => ratingDAO.Delete(id);
+        => _ratingDAO.Delete(id);
 
         public List<Rating> GetAll()
-        => ratingDAO.GetAll();
+        => _ratingDAO.GetAll();
 
         public Rating GetById(Guid id)
-        => ratingDAO.GetById(id);
+        => _ratingDAO.GetById(id);
 
         public void Update(Rating rating)
-        => ratingDAO.Update(rating);
+        => _ratingDAO.Update(rating);
     }
 }

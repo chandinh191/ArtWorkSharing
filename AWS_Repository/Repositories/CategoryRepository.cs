@@ -12,18 +12,18 @@ namespace AWS_Repository.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private CategoryDAO categoryDAO = null;
-        public CategoryRepository(IApplicationDbContext context)
+        private readonly CategoryDAO _categoryDAO;
+        public CategoryRepository(CategoryDAO categoryDAO)
         {
-            categoryDAO = new CategoryDAO(context);
+            _categoryDAO = categoryDAO;
         }
-        public void Add(Category category)  => categoryDAO.Add(category);
+        public void Add(Category category)  => _categoryDAO.Add(category);
 
-        public void Delete(Guid id) => categoryDAO.Delete(id);
+        public void Delete(Guid id) => _categoryDAO.Delete(id);
 
-        public List<Category> GetAll() => categoryDAO.GetAll();
-        public Category GetById(Guid id) => categoryDAO.GetById(id);
+        public List<Category> GetAll() => _categoryDAO.GetAll();
+        public Category GetById(Guid id) => _categoryDAO.GetById(id);
 
-        public void Update(Category category) => categoryDAO.Update(category);
+        public void Update(Category category) => _categoryDAO.Update(category);
     }
 }

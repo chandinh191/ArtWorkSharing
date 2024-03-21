@@ -11,25 +11,25 @@ namespace AWS_Repository.Repositories
 {
     public class AdminAccountRepository : IAdminAccountRepository
     {
-        private AdminAccountDAO adminAccountDAO = null;
-        public AdminAccountRepository()
+        private readonly AdminAccountDAO _adminAccountDAO;
+        public AdminAccountRepository(AdminAccountDAO adminAccountDAO)
         {
-            adminAccountDAO = new AdminAccountDAO();
+            _adminAccountDAO = adminAccountDAO;
         }
 
         public void Add(AdminAccount adminAccount)
-        => adminAccountDAO.Add(adminAccount);
+        => _adminAccountDAO.Add(adminAccount);
 
         public void Delete(AdminAccount adminAccount)
-        => adminAccountDAO.Delete(adminAccount);
+        => _adminAccountDAO.Delete(adminAccount);
 
         public List<AdminAccount> GetAll()
-        => adminAccountDAO.GetAll();
+        => _adminAccountDAO.GetAll();
 
         public AdminAccount GetById(Guid id)
-        => adminAccountDAO.GetById(id);
+        => _adminAccountDAO.GetById(id);
 
         public void Update(AdminAccount adminAccount)
-        => adminAccountDAO.Update(adminAccount);
+        => _adminAccountDAO.Update(adminAccount);
     }
 }

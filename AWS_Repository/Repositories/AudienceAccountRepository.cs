@@ -11,25 +11,24 @@ namespace AWS_Repository.Repositories
 {
     public class AudienceAccountRepository : IAudienceAccountRepository
     {
-        private AudienceAccountDAO AudienceAccountDAO = null;
-        public AudienceAccountRepository()
+        private readonly AudienceAccountDAO _audienceAccountDAO;
+        public AudienceAccountRepository(AudienceAccountDAO audienceAccountDAO)
         {
-            AudienceAccountDAO = new AudienceAccountDAO();
+            _audienceAccountDAO = audienceAccountDAO;
         }
-
         public void Add(AudienceAccount audienceAccount)
-        => AudienceAccountDAO.Add(audienceAccount);
+        => _audienceAccountDAO.Add(audienceAccount);
 
         public void Delete(AudienceAccount audienceAccount)
-        => AudienceAccountDAO.Delete(audienceAccount);
+        => _audienceAccountDAO.Delete(audienceAccount);
 
         public List<AudienceAccount> GetAll()
-        => AudienceAccountDAO.GetAll();
+        => _audienceAccountDAO.GetAll();
 
         public AudienceAccount GetById(Guid id)
-        => AudienceAccountDAO.GetById(id);
+        => _audienceAccountDAO.GetById(id);
 
         public void Update(AudienceAccount audienceAccount)
-        => AudienceAccountDAO.Update(audienceAccount);
+        => _audienceAccountDAO.Update(audienceAccount);
     }
 }

@@ -12,19 +12,20 @@ namespace AWS_Repository.Repositories
 {
     public class WishListRepository : IWishListRepository
     {
-        private WishListDAO wishListDAO = null;
-        public WishListRepository(IApplicationDbContext context)
+        private readonly WishListDAO _wishListDAO;
+        public WishListRepository(WishListDAO wishListDAO)
         {
-            wishListDAO = new WishListDAO(context);
+            _wishListDAO = wishListDAO;
         }
-        public void Add(WishList wishList) => wishListDAO.Add(wishList);
 
-        public void Delete(Guid id) => wishListDAO.Delete(id);
+        public void Add(WishList wishList) => _wishListDAO.Add(wishList);
 
-        public List<WishList> GetAll() => wishListDAO.GetAll();
+        public void Delete(Guid id) => _wishListDAO.Delete(id);
 
-        public WishList GetById(Guid id) => wishListDAO.GetById(id);
+        public List<WishList> GetAll() => _wishListDAO.GetAll();
 
-        public void Update(WishList wishList) => wishListDAO.Update(wishList);
+        public WishList GetById(Guid id) => _wishListDAO.GetById(id);
+
+        public void Update(WishList wishList) => _wishListDAO.Update(wishList);
     }
 }

@@ -11,25 +11,25 @@ namespace AWS_Repository.Repositories
 {
     public class ReportRepository : IReportRepository
     {
-        private ReportDAO reportDAO = null;
-        public ReportRepository()
+        private readonly ReportDAO _reportDAO;
+        public ReportRepository(ReportDAO reportDAO)
         {
-            reportDAO = new ReportDAO();
+            _reportDAO = reportDAO;
         }
 
         public void Add(Report report)
-        => reportDAO.Add(report);
+        => _reportDAO.Add(report);
 
         public void Delete(Guid id)
-        => reportDAO.Delete(id);
+        => _reportDAO.Delete(id);
 
         public List<Report> GetAll()
-        => reportDAO.GetAll();
+        => _reportDAO.GetAll();
 
         public Report GetById(Guid id)
-        => reportDAO.GetById(id);
+        => _reportDAO.GetById(id);
 
         public void Update(Report report)
-        => reportDAO.Update(report);
+        => _reportDAO.Update(report);
     }
 }
