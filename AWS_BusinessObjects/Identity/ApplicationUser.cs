@@ -16,10 +16,11 @@ namespace AWS_BusinessObjects.Identity
         public virtual IList<AdminAccount>? AdminAccounts { get; set; }
         public virtual IList<AudienceAccount>? AudienceAccounts { get; set; }
         public virtual IList<ArtistAccount>? ArtistAccounts { get; set; }
-        public virtual IList<PackageDetail>? PackageDetails { get; set; }
         public virtual IList<Interact>? Interacts { get; set; }
         public virtual IList<Report>? Reports { get; set; }  
         public virtual IList<ArtWork>? ArtWorks { get; set; }
         public virtual IList<Order>? Orders { get; set; }
+        public virtual IList<Category>? Categories { get; set; }
+
     }
 }

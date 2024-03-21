@@ -1,7 +1,5 @@
-﻿using AWS_BusinessObjects.Common.Interfaces;
-using AWS_BusinessObjects.Entities;
-using AWS_Repository.Interface;
-using AWS_Repository.Repositories;
+﻿using AWS_BusinessObjects.Entities;
+using AWS_Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +8,14 @@ using System.Threading.Tasks;
 
 namespace AWS_Services.Services
 {
-    public class CategoryService : ICategoryRepository
+    public class CategoryService : ICategoryService
     {
-        private CategoryRepository categoryRepository = null;
-        public CategoryService(IApplicationDbContext context)
+        private readonly ICategoryService categoryRepository;
+        public CategoryService(ICategoryService categoryRepository)
         {
-            categoryRepository = new CategoryRepository(context);
+            this.categoryRepository = categoryRepository;
         }
         public void Add(Category category) => categoryRepository.Add(category);
-
-
         public void Delete(Guid id) => categoryRepository.Delete(id);
         public List<Category> GetAll() => categoryRepository.GetAll();
 

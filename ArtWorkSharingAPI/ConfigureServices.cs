@@ -34,30 +34,22 @@ public static class ConfigureServices
         //----------DI------------------
         // Service
         services.AddScoped<IArtWorkService, ArtWorkService>();
-        services.AddScoped<IPackageService, PackageService>();
-        services.AddScoped<IPaymentMethodService,PaymentMethodService>();
-        services.AddScoped<IPackageDetailsService, PackageDetailsService>();
         services.AddScoped<IInteractService, InteractService>();
         services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IOrderService,OrderService>();
+        services.AddScoped<ICategoryService, CategoryService>();
 
         //services.AddScoped<IAdminAccountRepository, AdminAccountRepository>();
         // Repository
         services.AddScoped<IAccountRepository, AccountRepository>();
 
         services.AddScoped<IArtWorkRepository, ArtWorkRepository>();        
-        services.AddScoped<IPackageRepository,PackageRepository>();
-        services.AddScoped<IPaymentMethodRepository,PaymentMethodRepository>();
-        services.AddScoped<IPackageDetailsRepository, PackageDetailsRepository>();
         services.AddScoped<IInteractRepository,InteractRepository>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
 
         // DAO
         services.AddScoped<ArtWorkDAO>();
-        services.AddScoped<PackageDAO>();
-        services.AddScoped<PaymentMethodDAO>();
-        services.AddScoped<PackageDetailsDAO>();
         services.AddScoped<InteractDAO>();
         services.AddScoped<RatingDAO>();
         services.AddScoped<OrderDAO>();
