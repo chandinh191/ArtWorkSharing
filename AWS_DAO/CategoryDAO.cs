@@ -24,7 +24,7 @@ namespace AWS_DAO
             try
             {
                 List<Category> categories
-                    = (List<Category>)_context.Get<Category>()
+                    = (List<Category>)_context.Get<Category>().Where(x => x.IsDeleted==false).OrderByDescending(x => x.Created) 
                     .ToList();
                 return categories;
             }
