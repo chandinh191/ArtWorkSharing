@@ -17,13 +17,14 @@ namespace AWS_DAO
             _context = context;
         }
 
-        // get all Interact
+        // get all Interact, check isDeleted = false, sort by Created
         public List<Interact> GetAll()
         {
             try
             {
                 List<Interact> interacts
-                    = (List<Interact>)_context.Get<Interact>().ToList();
+                    = (List<Interact>)_context.Get<Interact>().Where(x => x.IsDeleted==false).OrderByDescending(x => x.Created) 
+                    .ToList();
                 return interacts;
             }
             catch (Exception ex)

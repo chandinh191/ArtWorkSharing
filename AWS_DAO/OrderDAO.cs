@@ -19,14 +19,13 @@ namespace AWS_DAO
         }
 
   
-        // get all Order
+        // get all Order, check isDeleted = false, sort by Created
         public List<Order> GetAll()
         {
             try
             {
                 List<Order> orders
-                    = (List<Order>)_context.Get<Order>()
-                    .Include(i => i.Rating)
+                    = (List<Order>)_context.Get<Order>().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Created)
                     .ToList();
                 return orders;
             }

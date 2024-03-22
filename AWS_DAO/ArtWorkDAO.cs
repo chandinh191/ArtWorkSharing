@@ -43,6 +43,8 @@ namespace AWS_DAO
                     = (List<ArtWork>)_context.Get<ArtWork>()
                     .Include(i => i.Orders)
                     .Include(i => i.Interacts)
+                    .Where(x => x.IsDeleted == false)
+                    .OrderByDescending(x => x.Created)
                     .ToList();
                 return artWorks;
             }
@@ -78,11 +80,8 @@ namespace AWS_DAO
                 }
                 //ArtWork = artWorks;
                 ArtWork.ArtWorkStatus = artWorks.ArtWorkStatus;
-                ArtWork.IsPreOrder = artWorks.IsPreOrder;
-                
+                ArtWork.IsPreOrder = artWorks.IsPreOrder;              
                 ArtWork.Name = artWorks.Name;
-
-
                 ArtWork.UserAccountId = artWorks.UserAccountId;
                 ArtWork.Description = artWorks.Description;
                 ArtWork.Price = artWorks.Price;
@@ -90,6 +89,7 @@ namespace AWS_DAO
                 ArtWork.LastModified = DateTime.Now;
                 ArtWork.Interacts = artWorks.Interacts;
                 ArtWork.Orders = artWorks.Orders;
+
                 _context.Get<ArtWork>().Update(ArtWork);
                 _context.SaveChanges();
             }

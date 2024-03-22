@@ -1,6 +1,7 @@
 ﻿
 using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,15 @@ namespace AWS_DAO
             
         }
 
-        // get all ArtistAccount
+        // get all ArtistAccount, check isDeleted = false, sort by Name
         public List<ArtistAccount> GetAll()
         {
             try
             {
                 List<ArtistAccount> artistAccounts
-                    = (List<ArtistAccount>)_context.Get<ArtistAccount>().ToList();
+                    = (List<ArtistAccount>)_context.Get<ArtistAccount>()
+                    .Include(x => x.ApplicationUser).Where(x => x.IsDeleted == false)
+                    .OrderBy(x => x.ApplicationUser.UserName).ToList();             
                 return artistAccounts;
             }
             catch (Exception ex)

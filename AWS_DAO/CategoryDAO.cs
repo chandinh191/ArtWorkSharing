@@ -18,7 +18,7 @@ namespace AWS_DAO
             _context = context;
         }
 
-        // get all Interact
+        // get all Interact, check isDeleted = false, sort by Created
         public List<Category> GetAll()
         {
             try

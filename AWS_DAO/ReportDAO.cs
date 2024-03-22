@@ -21,13 +21,14 @@ namespace AWS_DAO
         {
         }
 
-        // get all reports, validate and try catch
+        // get all reports, validate and try catch, isDeleted = false, sort by Created
         public List<Report> GetAll()
         {
             try
             {
                 List<Report> reports
-                    = (List<Report>)_context.Get<Report>().ToList();
+                    = (List<Report>)_context.Get<Report>().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Created)
+                    .ToList();
                 return reports;
             }
             catch (Exception ex)

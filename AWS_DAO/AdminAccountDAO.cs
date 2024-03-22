@@ -1,5 +1,6 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
 using AWS_BusinessObjects.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,15 @@ namespace AWS_DAO
             
         }
 
-        // get all AdminAccount
+        // get all AdminAccount, check isDeleted = false, sort by Name
         public List<AdminAccount> GetAll()
         {
             try
             {
                 List<AdminAccount> adminAccounts
-                    = (List<AdminAccount>)_context.Get<AdminAccount>().ToList();
+                    = (List<AdminAccount>)_context.Get<AdminAccount>()
+                    .Include(x => x.ApplicationUser).Where(x => x.IsDeleted == false)
+                    .OrderBy(x => x.ApplicationUser.UserName).ToList();
                 return adminAccounts;
             }
             catch (Exception ex)
