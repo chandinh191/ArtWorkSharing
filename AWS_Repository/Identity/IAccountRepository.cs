@@ -16,6 +16,7 @@ namespace AWS_Repository.Identity
         public Task<List<ApplicationUser>> GetAudienceAcountAsync();
         public Task<List<ApplicationUser>> GetArtistAcountAsync();
         public Task<List<ApplicationUser>> GetAdministratorAcountAsync();
+        public Task<bool> LockoutEnableAccount(string email);
+        public Task<bool> LockoutDisableAccount(string email);
     }
-
 }

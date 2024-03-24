@@ -70,5 +70,30 @@ namespace ArtWorkSharingAPI.Controllers
             return Ok(result);
         }
 
+        // Ban account
+        //[Authorize Roles = ("1")]
+        [HttpPut("BanAccount")]
+        public async Task<IActionResult> BanAccount(string email)
+        {
+            var result = await accountRepository.LockoutEnableAccount(email);
+            if (result)
+            {
+                return Ok("Account has been banned");
+            }
+            return BadRequest(result);
+        }
+
+        // Unban account
+        //[Authorize Roles = ("1")]
+        [HttpPut("UnbanAccount")]
+        public async Task<IActionResult> UnbanAccount(string email)
+        {
+            var result = await accountRepository.LockoutDisableAccount(email);
+            if (result)
+            {
+                return Ok("Account has been unbanned");
+            }
+            return BadRequest(result);
+        }
     }
 }

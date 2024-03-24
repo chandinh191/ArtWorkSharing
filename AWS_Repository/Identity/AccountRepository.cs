@@ -178,7 +178,46 @@ namespace AWS_Repository.Identity
             }
         }
 
+        // Lockout Enable Account
+        public async Task<bool> LockoutEnableAccount(string email)
+        {
+            try
+            {
+                var user = await identityService.GetUserByEmailAsync(email);
+                if (user == null)
+                {
+                    return false;
+                }
+                user.LockoutEnabled = true;
+                user.LockoutEnd = DateTime.Now.AddYears(100);
+                await userManager.UpdateAsync(user);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
+        // Lockout Disable Account
+        public async Task<bool> LockoutDisableAccount(string email)
+        {
+            try
+            {
+                var user = await identityService.GetUserByEmailAsync(email);
+                if (user == null)
+                {
+                    return false;
+                }
+                user.LockoutEnabled = false;
+                user.LockoutEnd = null;
+                await userManager.UpdateAsync(user);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
-
 }
