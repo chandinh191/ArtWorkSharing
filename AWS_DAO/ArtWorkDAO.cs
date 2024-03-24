@@ -26,7 +26,11 @@ namespace AWS_DAO
         {
             try
             {
-                return _context.Get<ArtWork>().Where(o=>o.Id == id).FirstOrDefault();
+                return _context.Get<ArtWork>()
+                    .Include(i => i.Category)
+                    .Include(i => i.Orders)
+                    .Include(i => i.Interacts)
+                    .Where(o=>o.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
