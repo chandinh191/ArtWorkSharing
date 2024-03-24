@@ -45,6 +45,7 @@ namespace AWS_DAO
             {
                 List<AWS_BusinessObjects.Entities.ArtWork> artWorks
                     = (List<ArtWork>)_context.Get<ArtWork>()
+                    .Where(o=>o.IsDeleted == false)
                     .Include(i => i.Category)
                     .Include(i => i.Orders)
                     .Include(i => i.Interacts)
