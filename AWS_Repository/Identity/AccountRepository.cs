@@ -93,6 +93,7 @@ namespace AWS_Repository.Identity
             {
                 Email = model.Email,
                 UserName = model.Email,
+                LockoutEnabled = false,
             };
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
