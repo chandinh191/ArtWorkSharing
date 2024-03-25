@@ -34,6 +34,7 @@ namespace ArtWorkSharingAPI.Controllers
                 return Ok(wishList);
             }
         }
+
         [HttpPost("Add")]
         public IActionResult Add(WishList wishList)
         {
@@ -47,6 +48,7 @@ namespace ArtWorkSharingAPI.Controllers
                 return Ok("Thêm thành công");
             }
         }
+
         [HttpDelete("Delete")]
         public IActionResult Delete(Guid id)
         {
@@ -68,8 +70,8 @@ namespace ArtWorkSharingAPI.Controllers
             {
                 return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
             }
-
         }
+
         [HttpPut("Update")]
         public IActionResult Update(WishList wishList)
         {
