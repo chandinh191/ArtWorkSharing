@@ -19,32 +19,66 @@ namespace AWS_Services.Services
         }
         public void Add(ArtWork artWork)
         {
-            _artWorkRepository.Add(artWork);
+            try
+            {                
+               _artWorkRepository.Add(artWork);
+            } 
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
             //throw new NotImplementedException();
         }
 
         public void Delete(Guid id)
         {
-            _artWorkRepository.Delete(id);
+            try
+            {
+                _artWorkRepository.Delete(id);
+            } 
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                      
             //throw new NotImplementedException();
         }
 
         public List<ArtWork> GetAll()
         {
-            return _artWorkRepository.GetAll();
-            throw new NotImplementedException();
+            try
+            {
+                return _artWorkRepository.GetAll();
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                     
         }
 
         public ArtWork GetById(Guid id)
         {
-            return _artWorkRepository.GetById(id);
-            throw new NotImplementedException();
+            try
+            {
+                return _artWorkRepository.GetById(id);
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
 
         public void Update(ArtWork artWork)
         {
-            _artWorkRepository.Update(artWork);
-            //throw new NotImplementedException();
+            try
+            {
+                _artWorkRepository.Update(artWork);
+            } catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                       
         }
     }
 }
