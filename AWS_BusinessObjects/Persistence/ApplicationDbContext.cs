@@ -56,15 +56,40 @@ namespace AWS_BusinessObjects.Persistence
                new Category
                {
                    Id = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c"),
-                   CategoryName = "Category1",
-                   Description = "Description Category1"
+                   CategoryName = "Category 1",
+                   Description = "Description Category 1"
                },
                new Category
                {
                    Id = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987"),
-                   CategoryName = "Category2",
-                   Description = "Description Category2"
+                   CategoryName = "Category 2",
+                   Description = "Description Category 2"
+               },
+               new Category
+               {
+                   Id = Guid.Parse("53b50d7f-44eb-4dda-84b1-9d3c938eba22"),
+                   CategoryName = "Category 3",
+                   Description = "Description Category 3"
+               },
+               new Category
+               {
+                   Id = Guid.Parse("58c96dfc-1c31-429b-9c6c-378db1c68b2a"),
+                   CategoryName = "Category 4",
+                   Description = "Description Category 4"
+               },
+               new Category
+               {
+                   Id = Guid.Parse("5d935698-bc0f-4692-88a3-43234943be40"),
+                   CategoryName = "Category 5",
+                   Description = "Description Category 5"
+               },
+               new Category
+               {
+                   Id = Guid.Parse("26b5fcea-c9cb-4c7c-ad93-100a6d8611d6"),
+                   CategoryName = "Category 6",
+                   Description = "Description Category 6"
                }
+
                );
 
 
@@ -418,7 +443,6 @@ namespace AWS_BusinessObjects.Persistence
                     UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
                     Status = OrderStatus.Pending,
-                    isPreOrder = false,
                     Created = DateTime.Now,
                     IsDeleted = false
                 },
@@ -428,7 +452,6 @@ namespace AWS_BusinessObjects.Persistence
                     UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cg",
                     ArtWorkID = Guid.Parse("26709dca-1906-4c50-a00e-1c63582ab644"),
                     Status = OrderStatus.Pending,
-                    isPreOrder = false,
                     Created = DateTime.Now,
                     IsDeleted = false
                 },
@@ -438,7 +461,6 @@ namespace AWS_BusinessObjects.Persistence
                     UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ch",
                     ArtWorkID = Guid.Parse("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
                     Status = OrderStatus.Pending,
-                    isPreOrder = false,
                     Created = DateTime.Now,
                     IsDeleted = false
                 }

@@ -72,8 +72,6 @@ namespace AWS_DAO
                 {
                     throw new NotFoundException();
                 }
-                Order.Price = order.Price;
-                Order.isPreOrder = order.isPreOrder;
                 Order.LastModified = DateTime.Now;
 
 
