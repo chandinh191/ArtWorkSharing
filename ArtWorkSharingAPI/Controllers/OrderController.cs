@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Entities;
+using AWS_BusinessObjects.Enums;
 using AWS_Services.Interface;
 using AWS_Services.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,12 @@ namespace ArtWorkSharingAPI.Controllers
         public IActionResult GetAll()
         {
             var orders = orderService.GetAll();
+            return Ok(orders);
+        }
+        [HttpGet("GetOrderByStatus")]
+        public IActionResult GetOrderByStatus(OrderStatus status)
+        {
+            var orders = orderService.GetAll().Where(o=>o.Status == status);
             return Ok(orders);
         }
         [HttpGet("GetById")]

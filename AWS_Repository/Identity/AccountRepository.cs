@@ -78,7 +78,7 @@ namespace AWS_Repository.Identity
             var token = new JwtSecurityToken(
                 issuer: configuration["JWT:ValidIssuer"],
                 audience: configuration["JWT:ValidAudience"],
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddDays(30),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authenKey, SecurityAlgorithms.HmacSha512Signature)
             );
@@ -111,6 +111,20 @@ namespace AWS_Repository.Identity
             }
 
             return result;
+        }
+
+        public async Task<ApplicationUser> GetAccountByIdAsync(string id)
+        {
+            try
+            {
+                AWS_BusinessObjects.Identity.ApplicationUser user
+                    = context.GetUser<ApplicationUser>().FirstOrDefault(r => r.Id == id);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<List<ApplicationUser>> GetAudienceAcountAsync()

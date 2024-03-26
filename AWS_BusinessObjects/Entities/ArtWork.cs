@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AWS_BusinessObjects.Entities
@@ -27,12 +28,12 @@ namespace AWS_BusinessObjects.Entities
 
         [ForeignKey("Category")]        
         public Guid CategoryId { get; set; }
-        public virtual Category? Category { get; set; }
+        
 
 
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "Art Work Name is required")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Name must be between 2 and 50 characters")]
-        [RegularExpression(@"^[^\d]{0,50}$", ErrorMessage = "Name can have a maximum of 50 characters and should not contain numbers.")]
+        [RegularExpression(@"^[A-Za-z\s]{1,50}$", ErrorMessage = "Name can have a maximum of 50 characters and should not contain numbers or special characters.")]
         public string Name { get; set; }
 
 
@@ -41,13 +42,11 @@ namespace AWS_BusinessObjects.Entities
         public string Description { get; set; }
 
 
-        [Range(1, 9999999999, ErrorMessage = "Price must be between 1 and 9999999999")]
+        [Range(0, 10000, ErrorMessage = "Price must be between 0 and 10000")]
         public float Price { get; set; }
 
 
         [Required(ErrorMessage = "ImageUrl is required")]
-        [RegularExpression(@"\b(https?|ftp|file):\/\/[-A-Za-z0-9+&@#\/%?=~_|!:,.;]+[-A-Za-z0-9+&@#\/%=~_|]",
-        ErrorMessage = "Invalid Image URL format")]
         [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
 
@@ -57,7 +56,11 @@ namespace AWS_BusinessObjects.Entities
         public bool IsPreOrder { get; set; }
 
         public virtual IList<Order>? Orders { get; set; }
+
         public virtual IList<Interact>? Interacts { get; set; }
+
         public virtual IList<WishList>? WishLists { get; set; }
+
+        public virtual Category? Category { get; set; }
     }
 }

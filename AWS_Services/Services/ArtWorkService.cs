@@ -1,4 +1,6 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
+using AWS_DAO.Common.Exceptions;
 using AWS_Repository.Identity;
 using AWS_Repository.Interface;
 using AWS_Services.Interface;
@@ -17,34 +19,68 @@ namespace AWS_Services.Services
         {
             _artWorkRepository = artWorkRepository;
         }
-        public void Add(ArtWork artWork)
+        public void Add(ArtWorkModel artWork)
         {
-            _artWorkRepository.Add(artWork);
+            try
+            {
+                _artWorkRepository.Add(artWork);
+            } 
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
             //throw new NotImplementedException();
         }
 
         public void Delete(Guid id)
         {
-            _artWorkRepository.Delete(id);
+            try
+            {
+                _artWorkRepository.Delete(id);
+            } 
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                      
             //throw new NotImplementedException();
         }
 
         public List<ArtWork> GetAll()
         {
-            return _artWorkRepository.GetAll();
-            throw new NotImplementedException();
+            try
+            {
+                return _artWorkRepository.GetAll();
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                     
         }
 
         public ArtWork GetById(Guid id)
         {
-            return _artWorkRepository.GetById(id);
-            throw new NotImplementedException();
+            try
+            {
+                return _artWorkRepository.GetById(id);
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
 
         public void Update(ArtWork artWork)
         {
-            _artWorkRepository.Update(artWork);
-            //throw new NotImplementedException();
+            try
+            {
+                _artWorkRepository.Update(artWork);
+            } catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                       
         }
     }
 }
