@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_BusinessObjects.Identity;
 using AWS_BusinessObjects.Models;
@@ -70,6 +71,47 @@ namespace AWS_Repository.Identity
                 //add role
                 authClaims.Add(new Claim(ClaimTypes.Role, role.ToString()));
             }
+            AccountModel accountModel = new AccountModel();
+            foreach (var role in userRole)
+            {
+                if (role == "Administrator")
+                {
+                    accountModel = new AccountModel()
+                    {
+                        Email = user.Email,
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        isAdminAccount = true,
+                        isArtistAccount = false,
+                        isAudienceAccount = false,
+                    };
+                }
+                else if (role == "Audience")
+                {
+                    accountModel = new AccountModel()
+                    {
+                        Email = user.Email,
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        isAdminAccount = false,
+                        isArtistAccount = false,
+                        isAudienceAccount = true,
+                    };
+                }
+                else if (role == "Artist")
+                {
+                    accountModel = new AccountModel()
+                    {
+                        Email = user.Email,
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        isAdminAccount = false,
+                        isArtistAccount = true,
+                        isAudienceAccount = false,
+                    };
+                }
+            }
+
             // Use this line to relax HMAC key size validation
             IdentityModelEventSource.ShowPII = true;
 
@@ -87,7 +129,7 @@ namespace AWS_Repository.Identity
 
             return new { 
                 token = new JwtSecurityTokenHandler().WriteToken(token),
-                accinfo = user
+                accinfo = accountModel
             };
         }
 
