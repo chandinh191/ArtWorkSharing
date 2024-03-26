@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Repository.Identity;
 using AWS_Services.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -39,7 +40,7 @@ namespace ArtWorkSharingAPI.Controllers
         }
         //[Authorize Roles = ("1, 2, 3")]
         [HttpPost("Add")]
-        public IActionResult Add(ArtWork artWork)
+        public IActionResult Add(ArtWorkModel artWork)
         {
             if (!ModelState.IsValid)
             {
