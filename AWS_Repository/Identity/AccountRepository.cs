@@ -102,12 +102,23 @@ namespace AWS_Repository.Identity
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                // Check role
-                if (!await roleManager.RoleExistsAsync("Audience"))
+                if (model.Status == AWS_BusinessObjects.Enums.SignUpStatus.AudienceAccount)
                 {
-                    await roleManager.CreateAsync(new IdentityRole("Audience"));
+                    if (!await roleManager.RoleExistsAsync("Audience"))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Audience"));
+                    }
+                    await userManager.AddToRoleAsync(user, "Audience");
                 }
-                await userManager.AddToRoleAsync(user, "Audience");
+                else if (model.Status == AWS_BusinessObjects.Enums.SignUpStatus.ArtistAccounts)
+                {
+                    if (!await roleManager.RoleExistsAsync("Artist"))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Artist"));
+                    }
+                    await userManager.AddToRoleAsync(user, "Artist");
+                }
+                // Check role
             }
 
             return result;
