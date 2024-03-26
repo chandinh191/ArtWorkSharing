@@ -26,6 +26,7 @@ namespace AWS_DAO
             {
                 List<Order> orders
                     = (List<Order>)_context.Get<Order>().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Created)
+                    .Include(o=>o.ArtWork)
                     .ToList();
                 return orders;
             }

@@ -19,6 +19,8 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey(nameof(ArtWork))]
         [Required(ErrorMessage = "ArtWordID is required")]
         public Guid ArtWorkID { get; set; }
+        public virtual ArtWork ArtWork { get; set; }
+
         public OrderStatus Status { get; set; }
         public virtual IList<Rating>? Rating { get; set; }
     }
