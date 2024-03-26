@@ -15,11 +15,11 @@ namespace AWS_BusinessObjects.Entities
     {
         [ForeignKey("ApplicationUser")]
         [Required(ErrorMessage = "UserAccountId is required")]
-        public string UserAccountId { get; set; }
+        public string? UserAccountId { get; set; }
         [ForeignKey(nameof(ArtWork))]
         [Required(ErrorMessage = "ArtWordID is required")]
-        public Guid ArtWorkID { get; set; }
-        public virtual ArtWork ArtWork { get; set; }
+        public Guid? ArtWorkID { get; set; }
+        public virtual ArtWork? ArtWork { get; set; }
 
         public OrderStatus Status { get; set; }
         public virtual IList<Rating>? Rating { get; set; }

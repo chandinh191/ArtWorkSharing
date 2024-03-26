@@ -80,8 +80,7 @@ namespace ArtWorkSharingAPI.Controllers
         [HttpPut("Update")]
         public IActionResult Update(Order order)
         {
-            if (ModelState.IsValid)
-            {
+          
                 var orderCheck = orderService.GetById(order.Id);
                 if (orderCheck == null)
                 {
@@ -93,11 +92,7 @@ namespace ArtWorkSharingAPI.Controllers
                     orderService.Update(order);
                     return Ok("Cập nhật thành công");
                 }
-            }
-            else
-            {
-                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
-            }
+            
         }
     }
 }
