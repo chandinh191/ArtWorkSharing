@@ -26,7 +26,7 @@ namespace AWS_DAO
             {
                 List<WishList> wishLists
                     = (List<WishList>)_context.Get<WishList>()
-                    .Include(i => i.ArtWorkID)
+                    
                     .ToList();
                 return wishLists;
             }
