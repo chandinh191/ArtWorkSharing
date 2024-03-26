@@ -26,7 +26,7 @@ namespace ArtWorkSharingAPI.Controllers
             var artWorks = _artWorkService.GetAll();           
             return Ok(artWorks);
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
