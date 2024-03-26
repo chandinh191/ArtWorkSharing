@@ -79,9 +79,7 @@ namespace AWS_DAO
                     ImageUrl = artWorks.ImageUrl,
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
-                    IsDeleted = false,
-                    IsSold = false,
-                    IsPreOrder = false
+                    IsDeleted = false
                 };
                 _context.Get<ArtWork>().Add(newArtWork);
                 _context.SaveChanges();
@@ -103,8 +101,7 @@ namespace AWS_DAO
                     throw new NotFoundException();
                 }
                 //ArtWork = artWorks;
-                ArtWork.ArtWorkStatus = artWorks.ArtWorkStatus;
-                ArtWork.IsPreOrder = artWorks.IsPreOrder;              
+                ArtWork.ArtWorkStatus = artWorks.ArtWorkStatus;              
                 ArtWork.Name = artWorks.Name;
                 ArtWork.UserAccountId = artWorks.UserAccountId;
                 ArtWork.Description = artWorks.Description;

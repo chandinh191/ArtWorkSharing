@@ -94,5 +94,18 @@ namespace ArtWorkSharingAPI.Controllers
                 }
             
         }
+        [HttpPut("UpdateStatusCancel")]
+        public IActionResult UpdateStatusCancel(Guid artworkId)
+        {
+
+             var listOrder = orderService.GetAll().Where(o=>o.ArtWorkID == artworkId);
+             foreach (var order in listOrder)
+            {
+                order.Status = 0;
+                orderService.Update(order);
+            }
+             return Ok("Cập nhật thành công");
+
+        }
     }
 }

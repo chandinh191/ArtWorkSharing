@@ -52,8 +52,6 @@ namespace AWS_BusinessObjects.Entities
 
 
         public ArtWorkStatus ArtWorkStatus { get; set; }
-        public bool IsSold { get; set; }
-        public bool IsPreOrder { get; set; }
 
         public virtual IList<Order>? Orders { get; set; }
 

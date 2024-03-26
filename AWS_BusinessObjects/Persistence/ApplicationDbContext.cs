@@ -193,7 +193,6 @@ namespace AWS_BusinessObjects.Persistence
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
                     IsDeleted = false,
-                    IsPreOrder = false,
                     CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
@@ -208,7 +207,6 @@ namespace AWS_BusinessObjects.Persistence
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
                     IsDeleted = false,
-                    IsPreOrder = true,
                     CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 },
                 new ArtWork
@@ -223,7 +221,6 @@ namespace AWS_BusinessObjects.Persistence
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
                     IsDeleted = false,
-                    IsPreOrder= true,
                     CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
@@ -308,7 +305,6 @@ namespace AWS_BusinessObjects.Persistence
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
                     IsDeleted = false,
-                    IsPreOrder = true,
                     CategoryId = Guid.Parse("b3cb8ee0-c965-4970-8ef0-baad50ebf987")
                 },
                 new ArtWork
@@ -323,7 +319,6 @@ namespace AWS_BusinessObjects.Persistence
                     ArtWorkStatus = ArtWorkStatus.Active,
                     Created = DateTime.Now,
                     IsDeleted = false,
-                    IsPreOrder = true,
                     CategoryId = Guid.Parse("b1799e22-2212-43d2-a09a-6a0371f2d89c")
                 }
                 );
