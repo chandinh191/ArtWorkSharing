@@ -101,7 +101,10 @@ namespace ArtWorkSharingAPI.Controllers
              var listOrder = orderService.GetAll().Where(o=>o.ArtWorkID == artworkId);
              foreach (var order in listOrder)
             {
-                order.Status = 0;
+                if(order.Status != OrderStatus.Accepted)
+                {
+                    order.Status = OrderStatus.Cancelled;
+                }
                 orderService.Update(order);
             }
              return Ok("Cập nhật thành công");
