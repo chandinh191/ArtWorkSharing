@@ -113,6 +113,20 @@ namespace AWS_Repository.Identity
             return result;
         }
 
+        public async Task<ApplicationUser> GetAccountByIdAsync(string id)
+        {
+            try
+            {
+                AWS_BusinessObjects.Identity.ApplicationUser user
+                    = context.GetUser<ApplicationUser>().FirstOrDefault(r => r.Id == id);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<ApplicationUser>> GetAudienceAcountAsync()
         {
             try
