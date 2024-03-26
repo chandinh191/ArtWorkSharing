@@ -92,7 +92,7 @@ namespace AWS_Repository.Identity
             var user = new ApplicationUser
             {
                 Email = model.Email,
-                UserName = model.Email,
+                UserName = model.Username,
                 LockoutEnabled = false,
             };
             var result = await userManager.CreateAsync(user, model.Password);
