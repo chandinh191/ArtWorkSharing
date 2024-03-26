@@ -35,7 +35,6 @@ public static class ConfigureServices
         // Service
         services.AddScoped<IArtWorkService, ArtWorkService>();
         services.AddScoped<IInteractService, InteractService>();
-        services.AddScoped<IRatingService, RatingService>();
         services.AddScoped<IOrderService,OrderService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IWishListService, WishListService>();
@@ -46,14 +45,12 @@ public static class ConfigureServices
 
         services.AddScoped<IArtWorkRepository, ArtWorkRepository>();        
         services.AddScoped<IInteractRepository,InteractRepository>();
-        services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
         services.AddScoped<IWishListRepository, WishListRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         // DAO
         services.AddScoped<ArtWorkDAO>();
         services.AddScoped<InteractDAO>();
-        services.AddScoped<RatingDAO>();
         services.AddScoped<OrderDAO>();
         services.AddScoped<WishListDAO>();
         services.AddScoped<CategoryDAO>();

@@ -40,7 +40,6 @@ namespace AWS_BusinessObjects.Persistence
         public DbSet<Interact> Interacts => Set<Interact>();
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<Category> Categories => Set<Category>();
-        public DbSet<Rating> Ratings => Set<Rating>();
         public DbSet<Report> Reports => Set<Report>();
         public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
         public DbSet<WishList> WishLists => Set<WishList>();
@@ -434,69 +433,9 @@ namespace AWS_BusinessObjects.Persistence
                 }
                 );
 
-            // Order Seed Data
-            builder.Entity<Order>()
-                .HasData(
-                new Order
-                {
-                    Id = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a861cf"),
-                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
-                    ArtWorkID = Guid.Parse("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
-                    Status = OrderStatus.Pending,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Order
-                {
-                    Id = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a862cf"),
-                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cg",
-                    ArtWorkID = Guid.Parse("26709dca-1906-4c50-a00e-1c63582ab644"),
-                    Status = OrderStatus.Pending,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Order
-                {
-                    Id = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a863cf"),
-                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866ch",
-                    ArtWorkID = Guid.Parse("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
-                    Status = OrderStatus.Pending,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                }
-                );
+          
 
-            // Rating Seed Data, 3 Ratings
-            builder.Entity<Rating>()
-                .HasData(
-                new Rating
-                {
-                    Id = Guid.NewGuid(),
-                    OrderID = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a861cf"),
-                    Description = "Description 1",
-                    Point = 5,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Rating
-                {
-                    Id = Guid.NewGuid(),
-                    OrderID = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a862cf"),
-                    Description = "Description 2",
-                    Point = 4,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                },
-                new Rating
-                {
-                    Id = Guid.NewGuid(),
-                    OrderID = Guid.Parse("871a809a-b3fa-495b-9cc2-c5d738a863cf"),
-                    Description = "Description 3",
-                    Point = 3,
-                    Created = DateTime.Now,
-                    IsDeleted = false
-                }
-                );
+       
 
             // Report Seed Data, 3 Reports
             /*builder.Entity<Report>()

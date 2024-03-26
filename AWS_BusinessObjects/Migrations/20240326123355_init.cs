@@ -59,7 +59,7 @@ namespace AWS_BusinessObjects.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -405,11 +405,10 @@ namespace AWS_BusinessObjects.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserAccountId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BuyerAccountId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OwnerAccountId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArtWorkID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    isPreOrder = table.Column<bool>(type: "bit", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -463,41 +462,16 @@ namespace AWS_BusinessObjects.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Ratings",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Point = table.Column<float>(type: "real", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ratings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Orders_OrderID",
-                        column: x => x.OrderID,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "871a809a-b3fa-495b-9cc2-c5d738a866cf", 0, null, "beedfc04-02a7-410d-9f1b-71f21eb9cc2b", "hieu123@gmail.com", false, false, null, null, null, "TRANHIEU1", null, null, false, "0b48aed8-45dc-4d01-b22a-d81aa12bc1e0", false, "TranHieu1" },
-                    { "871a809a-b3fa-495b-9cc2-c5d738a866cg", 0, null, "12913fde-8a53-4c42-8358-4e1ecc37db25", "hieuaccount2@gmail.com", false, false, null, null, null, "TRANHIEU2", null, null, false, "0a010b27-b000-40e4-9183-c1e40fe8c18d", false, "TranHieu2" },
-                    { "871a809a-b3fa-495b-9cc2-c5d738a866ch", 0, null, "5644e969-b2b9-46d0-ac3a-e2da59727bca", "hieuaccount3@gmail.com", false, false, null, null, null, "TRANHIEU3", null, null, false, "87cc657c-2bea-43d7-9c31-cf467135a7ce", false, "TranHieu3" },
-                    { "871a809a-b3fa-495b-9cc2-c5d738a866ci", 0, null, "cdee8d47-0768-46ec-9109-431bc8e045f6", "hieuaccount4@gmail.com", false, false, null, null, null, "TRANHIEU4", null, null, false, "39b5940b-4129-4fa6-b970-12f085f8709c", false, "TranHieu4" },
-                    { "871a809a-b3fa-495b-9cc2-c5d738a866cj", 0, null, "af5901f8-75e1-4dc8-946c-bcbc7d5c5ca2", "hieuaccount5@gmail.com", false, false, null, null, null, "TRANHIEU5", null, null, false, "730e2043-aea1-4472-ad3e-eaab16d91c27", false, "TranHieu5" }
+                    { "871a809a-b3fa-495b-9cc2-c5d738a866cf", 0, null, "f3f05e8c-bcab-44f5-91db-6b70ceb5c81f", "hieu123@gmail.com", false, false, null, null, null, "TRANHIEU1", null, null, false, "140cacd6-571b-4f0a-8c25-26654e26d96f", false, "TranHieu1" },
+                    { "871a809a-b3fa-495b-9cc2-c5d738a866cg", 0, null, "ce3dfe14-3cd2-4ce5-a0e5-fe99e1f1e1ee", "hieuaccount2@gmail.com", false, false, null, null, null, "TRANHIEU2", null, null, false, "279aa2a4-b729-4b07-ad2f-765e165e062b", false, "TranHieu2" },
+                    { "871a809a-b3fa-495b-9cc2-c5d738a866ch", 0, null, "a02f62a7-22d9-45a2-b2fd-b9837e7e379b", "hieuaccount3@gmail.com", false, false, null, null, null, "TRANHIEU3", null, null, false, "605ff71d-3455-4001-8939-ee94022162c0", false, "TranHieu3" },
+                    { "871a809a-b3fa-495b-9cc2-c5d738a866ci", 0, null, "081e35f5-477e-4116-8c3d-f468f4578bf9", "hieuaccount4@gmail.com", false, false, null, null, null, "TRANHIEU4", null, null, false, "530e329b-fbcb-4119-802a-afda0d753dbe", false, "TranHieu4" },
+                    { "871a809a-b3fa-495b-9cc2-c5d738a866cj", 0, null, "fc4a9a4f-5dfc-40cd-98fd-b2ac2c5e1b2f", "hieuaccount5@gmail.com", false, false, null, null, null, "TRANHIEU5", null, null, false, "80f0da9c-8906-4848-9fb7-090c16da0f81", false, "TranHieu5" }
                 });
 
             migrationBuilder.InsertData(
@@ -505,8 +479,12 @@ namespace AWS_BusinessObjects.Migrations
                 columns: new[] { "Id", "CategoryName", "Created", "CreatedBy", "Description", "IsDeleted", "LastModified", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), "Category1", new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9602), null, "Description Category1", false, null, null },
-                    { new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), "Category2", new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9630), null, "Description Category2", false, null, null }
+                    { new Guid("26b5fcea-c9cb-4c7c-ad93-100a6d8611d6"), "Category 6", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7516), null, "Description Category 6", false, null, null },
+                    { new Guid("53b50d7f-44eb-4dda-84b1-9d3c938eba22"), "Category 3", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7498), null, "Description Category 3", false, null, null },
+                    { new Guid("58c96dfc-1c31-429b-9c6c-378db1c68b2a"), "Category 4", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7500), null, "Description Category 4", false, null, null },
+                    { new Guid("5d935698-bc0f-4692-88a3-43234943be40"), "Category 5", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7514), null, "Description Category 5", false, null, null },
+                    { new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), "Category 1", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7467), null, "Description Category 1", false, null, null },
+                    { new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), "Category 2", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7495), null, "Description Category 2", false, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -514,16 +492,16 @@ namespace AWS_BusinessObjects.Migrations
                 columns: new[] { "Id", "ApplicationUserId", "ArtWorkStatus", "CategoryId", "Created", "CreatedBy", "Description", "ImageUrl", "IsDeleted", "IsPreOrder", "IsSold", "LastModified", "LastModifiedBy", "Name", "Price", "UserAccountId", "UserOwnerId" },
                 values: new object[,]
                 {
-                    { new Guid("1f35558f-a942-4837-81a4-720bae0e8bb1"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(43), null, "Description 8", "https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/191815536_1305384429858113_8269960277638413432_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FYh3OT-x0AIAX-Z3VNM&_nc_ht=scontent.fsgn5-3.fna&oh=00_AfCifetKtGNeQBaVh8Yrx3lnW3U1CxznHdMAZMB1a1w5XA&oe=6623B508", false, false, false, null, null, "ArtWork 8", 800f, "871a809a-b3fa-495b-9cc2-c5d738a866ci", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
-                    { new Guid("26709dca-1906-4c50-a00e-1c63582ab644"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(9), null, "Description 2", "https://i.ebayimg.com/images/g/pAUAAOSw5yJjhMYl/s-l1200.webp", false, true, false, null, null, "ArtWork 2", 200f, "871a809a-b3fa-495b-9cc2-c5d738a866cf", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
-                    { new Guid("7b76bf1f-d24c-4ac9-b466-4179e65605b2"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(22), null, "Description 4", "https://studio.pinotspalette.com/naperville/images/nap-uniquevangogh.jpg", false, false, false, null, null, "ArtWork 4", 400f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866ch" },
-                    { new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(14), null, "Description 3", "https://media.takealot.com/covers_images/0e56acf396604d34ac7c414b287c7cd7/s-pdpxl.file", false, true, false, null, null, "ArtWork 3", 300f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866ch" },
-                    { new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(3), null, "Description 1", "https://img.cdn-pictorem.com/uploads/collection/D/DN4DFF8JRC/900_Nature-Art_10.jpg", false, false, false, null, null, "ArtWork 1", 100f, "871a809a-b3fa-495b-9cc2-c5d738a866cf", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
-                    { new Guid("9db314d0-6a55-492c-9a13-7ee6f2091cbf"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(49), null, "Description 9", "https://scontent.fsgn5-11.fna.fbcdn.net/v/t1.6435-9/107542684_1068121206917771_2494785157216852040_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=o9rZ89Am3UEAX-VFzIF&_nc_ht=scontent.fsgn5-11.fna&oh=00_AfCNUsxrhFPBP5F0Yu-A-dnY-gT2TF8zwifP0MFBwfUTgQ&oe=66239792", false, true, false, null, null, "ArtWork 9", 900f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866cf" },
-                    { new Guid("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(27), null, "Description 5", "https://www.singulart.com/images/artworks/v2/cropped/2479/main/carousel/1844446_b5d87c0efe493d715a1d57f480131a2f.jpeg", false, false, false, null, null, "ArtWork 5", 500f, "871a809a-b3fa-495b-9cc2-c5d738a866cj", "871a809a-b3fa-495b-9cc2-c5d738a866ci" },
-                    { new Guid("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(33), null, "Description 6", "https://images.saatchiart.com/saatchi/1093024/art/4707641/3777473-FIDYEXAV-7.jpg", false, false, false, null, null, "ArtWork 6", 600f, "871a809a-b3fa-495b-9cc2-c5d738a866cj", "871a809a-b3fa-495b-9cc2-c5d738a866ci" },
-                    { new Guid("bd37c967-1817-495b-89eb-665c81b02d5e"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(38), null, "Description 7", "https://images.saatchiart.com/saatchi/770124/art/8867466/7930834-HSC00923-7.jpg", false, false, false, null, null, "ArtWork 7", 700f, "871a809a-b3fa-495b-9cc2-c5d738a866ci", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
-                    { new Guid("d9d6b461-8efd-4395-8662-a58caa152200"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(54), null, "Description 10", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Vincent_Willem_van_Gogh_127.jpg/270px-Vincent_Willem_van_Gogh_127.jpg", false, true, false, null, null, "ArtWork 10", 1000f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866cf" }
+                    { new Guid("1f35558f-a942-4837-81a4-720bae0e8bb1"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7871), null, "Description 8", "https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/191815536_1305384429858113_8269960277638413432_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FYh3OT-x0AIAX-Z3VNM&_nc_ht=scontent.fsgn5-3.fna&oh=00_AfCifetKtGNeQBaVh8Yrx3lnW3U1CxznHdMAZMB1a1w5XA&oe=6623B508", false, false, false, null, null, "ArtWork 8", 800f, "871a809a-b3fa-495b-9cc2-c5d738a866ci", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
+                    { new Guid("26709dca-1906-4c50-a00e-1c63582ab644"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7844), null, "Description 2", "https://i.ebayimg.com/images/g/pAUAAOSw5yJjhMYl/s-l1200.webp", false, true, false, null, null, "ArtWork 2", 200f, "871a809a-b3fa-495b-9cc2-c5d738a866cf", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
+                    { new Guid("7b76bf1f-d24c-4ac9-b466-4179e65605b2"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7853), null, "Description 4", "https://studio.pinotspalette.com/naperville/images/nap-uniquevangogh.jpg", false, false, false, null, null, "ArtWork 4", 400f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866ch" },
+                    { new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7848), null, "Description 3", "https://media.takealot.com/covers_images/0e56acf396604d34ac7c414b287c7cd7/s-pdpxl.file", false, true, false, null, null, "ArtWork 3", 300f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866ch" },
+                    { new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7838), null, "Description 1", "https://img.cdn-pictorem.com/uploads/collection/D/DN4DFF8JRC/900_Nature-Art_10.jpg", false, false, false, null, null, "ArtWork 1", 100f, "871a809a-b3fa-495b-9cc2-c5d738a866cf", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
+                    { new Guid("9db314d0-6a55-492c-9a13-7ee6f2091cbf"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7876), null, "Description 9", "https://scontent.fsgn5-11.fna.fbcdn.net/v/t1.6435-9/107542684_1068121206917771_2494785157216852040_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=o9rZ89Am3UEAX-VFzIF&_nc_ht=scontent.fsgn5-11.fna&oh=00_AfCNUsxrhFPBP5F0Yu-A-dnY-gT2TF8zwifP0MFBwfUTgQ&oe=66239792", false, true, false, null, null, "ArtWork 9", 900f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866cf" },
+                    { new Guid("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7857), null, "Description 5", "https://www.singulart.com/images/artworks/v2/cropped/2479/main/carousel/1844446_b5d87c0efe493d715a1d57f480131a2f.jpeg", false, false, false, null, null, "ArtWork 5", 500f, "871a809a-b3fa-495b-9cc2-c5d738a866cj", "871a809a-b3fa-495b-9cc2-c5d738a866ci" },
+                    { new Guid("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"), null, 1, new Guid("b3cb8ee0-c965-4970-8ef0-baad50ebf987"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7863), null, "Description 6", "https://images.saatchiart.com/saatchi/1093024/art/4707641/3777473-FIDYEXAV-7.jpg", false, false, false, null, null, "ArtWork 6", 600f, "871a809a-b3fa-495b-9cc2-c5d738a866cj", "871a809a-b3fa-495b-9cc2-c5d738a866ci" },
+                    { new Guid("bd37c967-1817-495b-89eb-665c81b02d5e"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7867), null, "Description 7", "https://images.saatchiart.com/saatchi/770124/art/8867466/7930834-HSC00923-7.jpg", false, false, false, null, null, "ArtWork 7", 700f, "871a809a-b3fa-495b-9cc2-c5d738a866ci", "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
+                    { new Guid("d9d6b461-8efd-4395-8662-a58caa152200"), null, 1, new Guid("b1799e22-2212-43d2-a09a-6a0371f2d89c"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7880), null, "Description 10", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Vincent_Willem_van_Gogh_127.jpg/270px-Vincent_Willem_van_Gogh_127.jpg", false, true, false, null, null, "ArtWork 10", 1000f, "871a809a-b3fa-495b-9cc2-c5d738a866cg", "871a809a-b3fa-495b-9cc2-c5d738a866cf" }
                 });
 
             migrationBuilder.InsertData(
@@ -531,9 +509,9 @@ namespace AWS_BusinessObjects.Migrations
                 columns: new[] { "Id", "Created", "CreatedBy", "IsDeleted", "LastModified", "LastModifiedBy", "UserAccountId" },
                 values: new object[,]
                 {
-                    { new Guid("3a7c7868-dde8-45e9-9702-f4e5d39f4ead"), new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9956), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866ch" },
-                    { new Guid("4f98c6ad-b87a-4197-85b8-c8527efb6240"), new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9950), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866cf" },
-                    { new Guid("797cae3c-817b-4365-97ea-2eeab8ba3486"), new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9953), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866cg" }
+                    { new Guid("2faf0458-3928-4f00-832e-93bd1a425a06"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7789), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866cg" },
+                    { new Guid("725cc757-35ab-4adc-8aed-c6e6f1b08f64"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7786), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866cf" },
+                    { new Guid("b7b9068a-a245-4b34-bc6d-104e1f69d561"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7791), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866ch" }
                 });
 
             migrationBuilder.InsertData(
@@ -541,8 +519,8 @@ namespace AWS_BusinessObjects.Migrations
                 columns: new[] { "Id", "Created", "CreatedBy", "IsDeleted", "LastModified", "LastModifiedBy", "UserAccountId" },
                 values: new object[,]
                 {
-                    { new Guid("0aeea278-445d-4746-a025-6ccb26f798dc"), new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9980), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866cj" },
-                    { new Guid("1f31a543-ca65-4a02-9d18-6bda4cd86243"), new DateTime(2024, 3, 21, 20, 38, 44, 326, DateTimeKind.Local).AddTicks(9977), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866ci" }
+                    { new Guid("1e1f085d-2998-49ad-ad0d-9b182b610d11"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7815), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866cj" },
+                    { new Guid("f6b83e57-e360-4537-8368-27a3c98be349"), new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7812), null, false, null, null, "871a809a-b3fa-495b-9cc2-c5d738a866ci" }
                 });
 
             migrationBuilder.InsertData(
@@ -550,36 +528,16 @@ namespace AWS_BusinessObjects.Migrations
                 columns: new[] { "Id", "ApplicationUserId", "ArtWorkID", "Comment", "Created", "CreatedBy", "Date", "IsDeleted", "IsLike", "LastModified", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { new Guid("66cd6199-a372-43d4-be3e-a5e46a34fb56"), null, new Guid("9db314d0-6a55-492c-9a13-7ee6f2091cbf"), "Comment 9", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(117), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(118), false, true, null, null },
-                    { new Guid("7695e96b-d1c8-45e2-b1ab-a3879eb8806c"), null, new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"), "Comment 3", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(90), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(91), false, true, null, null },
-                    { new Guid("7e423a54-b4d0-45a3-a6d9-cd3580f9cb51"), null, new Guid("bd37c967-1817-495b-89eb-665c81b02d5e"), "Comment 7", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(108), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(110), false, true, null, null },
-                    { new Guid("84e20059-b5c2-40a6-9bae-af8f3a18f2da"), null, new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"), "Comment 1", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(78), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(80), false, true, null, null },
-                    { new Guid("8dc388a4-eb17-4f5d-b66d-28e9424db05f"), null, new Guid("d9d6b461-8efd-4395-8662-a58caa152200"), "Comment 10", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(122), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(124), false, true, null, null },
-                    { new Guid("bfa64fd2-cf6f-4d49-a186-663ea8f409fd"), null, new Guid("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"), "Comment 5", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(98), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(100), false, true, null, null },
-                    { new Guid("c8af4798-8ff1-4eb6-80dd-2ae1ea3e1da8"), null, new Guid("7b76bf1f-d24c-4ac9-b466-4179e65605b2"), "Comment 4", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(94), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(95), false, true, null, null },
-                    { new Guid("e0e5cb79-bdf5-4162-a57d-781e2a17e74c"), null, new Guid("26709dca-1906-4c50-a00e-1c63582ab644"), "Comment 2", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(85), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(86), false, true, null, null },
-                    { new Guid("fb8a1438-24ac-4ed7-ac79-743cc5713a68"), null, new Guid("1f35558f-a942-4837-81a4-720bae0e8bb1"), "Comment 8", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(112), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(114), false, true, null, null },
-                    { new Guid("ffcef4c6-beee-46b0-9f58-91d41c69a1b3"), null, new Guid("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"), "Comment 6", new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(104), null, new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(105), false, true, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "Id", "ApplicationUserId", "ArtWorkID", "Created", "CreatedBy", "IsDeleted", "LastModified", "LastModifiedBy", "Price", "Status", "UserAccountId", "isPreOrder" },
-                values: new object[,]
-                {
-                    { new Guid("871a809a-b3fa-495b-9cc2-c5d738a861cf"), null, new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(148), null, false, null, null, 0f, 1, "871a809a-b3fa-495b-9cc2-c5d738a866cf", false },
-                    { new Guid("871a809a-b3fa-495b-9cc2-c5d738a862cf"), null, new Guid("26709dca-1906-4c50-a00e-1c63582ab644"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(152), null, false, null, null, 0f, 1, "871a809a-b3fa-495b-9cc2-c5d738a866cg", false },
-                    { new Guid("871a809a-b3fa-495b-9cc2-c5d738a863cf"), null, new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(156), null, false, null, null, 0f, 1, "871a809a-b3fa-495b-9cc2-c5d738a866ch", false }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Ratings",
-                columns: new[] { "Id", "Created", "CreatedBy", "Description", "IsDeleted", "LastModified", "LastModifiedBy", "OrderID", "Point" },
-                values: new object[,]
-                {
-                    { new Guid("85280f51-c517-4da1-b10e-e9013ede236d"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(216), null, "Description 1", false, null, null, new Guid("871a809a-b3fa-495b-9cc2-c5d738a861cf"), 5f },
-                    { new Guid("9756e7f3-0698-4c2f-bb35-c8a24b16479b"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(219), null, "Description 2", false, null, null, new Guid("871a809a-b3fa-495b-9cc2-c5d738a862cf"), 4f },
-                    { new Guid("d11f2821-4a08-45e9-bf9a-1678f4776086"), new DateTime(2024, 3, 21, 20, 38, 44, 327, DateTimeKind.Local).AddTicks(225), null, "Description 3", false, null, null, new Guid("871a809a-b3fa-495b-9cc2-c5d738a863cf"), 3f }
+                    { new Guid("3381518e-0176-469c-be6c-bd5fc445050a"), null, new Guid("8e9acec5-54c9-4093-a450-19eb7b2109fb"), "Comment 1", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7901), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7904), false, true, null, null },
+                    { new Guid("44094f36-f103-4cd6-86d4-f89023546393"), null, new Guid("26709dca-1906-4c50-a00e-1c63582ab644"), "Comment 2", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7909), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7910), false, true, null, null },
+                    { new Guid("63b6f510-dda3-41ff-927a-21fc38d3167c"), null, new Guid("bd37c967-1817-495b-89eb-665c81b02d5e"), "Comment 7", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7929), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7931), false, true, null, null },
+                    { new Guid("641b9768-1a0b-4fdc-9b34-6ba140818acd"), null, new Guid("9db314d0-6a55-492c-9a13-7ee6f2091cbf"), "Comment 9", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7937), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7938), false, true, null, null },
+                    { new Guid("b1080d50-33e4-415b-9984-e8e919d37e66"), null, new Guid("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"), "Comment 6", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7926), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7927), false, true, null, null },
+                    { new Guid("b1ceff87-8c0d-480b-8f98-bf17d864bc01"), null, new Guid("7b76bf1f-d24c-4ac9-b466-4179e65605b2"), "Comment 4", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7917), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7918), false, true, null, null },
+                    { new Guid("c1f3d88a-212c-4694-b6c8-accce65bedf6"), null, new Guid("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"), "Comment 3", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7913), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7914), false, true, null, null },
+                    { new Guid("c345caa7-8138-4c2f-b623-d71e801becce"), null, new Guid("d9d6b461-8efd-4395-8662-a58caa152200"), "Comment 10", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7942), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7944), false, true, null, null },
+                    { new Guid("d29dc285-e9f0-4af4-b045-6d8fc0a18caa"), null, new Guid("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"), "Comment 5", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7920), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7921), false, true, null, null },
+                    { new Guid("f6445393-e4d5-4814-85b5-de8163d76eaf"), null, new Guid("1f35558f-a942-4837-81a4-720bae0e8bb1"), "Comment 8", new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7933), null, new DateTime(2024, 3, 26, 19, 33, 55, 331, DateTimeKind.Local).AddTicks(7934), false, true, null, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -703,11 +661,6 @@ namespace AWS_BusinessObjects.Migrations
                 columns: new[] { "SubjectId", "SessionId", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ratings_OrderID",
-                table: "Ratings",
-                column: "OrderID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reports_applicationUserId",
                 table: "Reports",
                 column: "applicationUserId");
@@ -760,10 +713,10 @@ namespace AWS_BusinessObjects.Migrations
                 name: "Keys");
 
             migrationBuilder.DropTable(
-                name: "PersistedGrants");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Ratings");
+                name: "PersistedGrants");
 
             migrationBuilder.DropTable(
                 name: "Reports");
@@ -773,9 +726,6 @@ namespace AWS_BusinessObjects.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "ArtWorks");
