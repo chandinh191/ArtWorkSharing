@@ -1,4 +1,6 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
+using AWS_DAO.Common.Exceptions;
 using AWS_Repository.Identity;
 using AWS_Repository.Interface;
 using AWS_Services.Interface;
@@ -17,11 +19,11 @@ namespace AWS_Services.Services
         {
             _artWorkRepository = artWorkRepository;
         }
-        public void Add(ArtWork artWork)
+        public void Add(ArtWorkModel artWork)
         {
             try
-            {                
-               _artWorkRepository.Add(artWork);
+            {
+                _artWorkRepository.Add(artWork);
             } 
             catch (Exception ex)
             {

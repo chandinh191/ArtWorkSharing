@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_BusinessObjects.Identity;
 using AWS_BusinessObjects.Models;
@@ -70,6 +71,47 @@ namespace AWS_Repository.Identity
                 //add role
                 authClaims.Add(new Claim(ClaimTypes.Role, role.ToString()));
             }
+            AccountModel accountModel = new AccountModel();
+            foreach (var role in userRole)
+            {
+                if (role == "Administrator")
+                {
+                    accountModel = new AccountModel()
+                    {
+                        Email = user.Email,
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        isAdminAccount = true,
+                        isArtistAccount = false,
+                        isAudienceAccount = false,
+                    };
+                }
+                else if (role == "Audience")
+                {
+                    accountModel = new AccountModel()
+                    {
+                        Email = user.Email,
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        isAdminAccount = false,
+                        isArtistAccount = false,
+                        isAudienceAccount = true,
+                    };
+                }
+                else if (role == "Artist")
+                {
+                    accountModel = new AccountModel()
+                    {
+                        Email = user.Email,
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        isAdminAccount = false,
+                        isArtistAccount = true,
+                        isAudienceAccount = false,
+                    };
+                }
+            }
+
             // Use this line to relax HMAC key size validation
             IdentityModelEventSource.ShowPII = true;
 
@@ -87,7 +129,7 @@ namespace AWS_Repository.Identity
 
             return new { 
                 token = new JwtSecurityTokenHandler().WriteToken(token),
-                accinfo = user
+                accinfo = accountModel
             };
         }
 
@@ -102,15 +144,40 @@ namespace AWS_Repository.Identity
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                // Check role
-                if (!await roleManager.RoleExistsAsync("Audience"))
+                if (model.Status == AWS_BusinessObjects.Enums.SignUpStatus.AudienceAccount)
                 {
-                    await roleManager.CreateAsync(new IdentityRole("Audience"));
+                    if (!await roleManager.RoleExistsAsync("Audience"))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Audience"));
+                    }
+                    await userManager.AddToRoleAsync(user, "Audience");
                 }
-                await userManager.AddToRoleAsync(user, "Audience");
+                else if (model.Status == AWS_BusinessObjects.Enums.SignUpStatus.ArtistAccounts)
+                {
+                    if (!await roleManager.RoleExistsAsync("Artist"))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Artist"));
+                    }
+                    await userManager.AddToRoleAsync(user, "Artist");
+                }
+                // Check role
             }
 
             return result;
+        }
+
+        public async Task<ApplicationUser> GetAccountByIdAsync(string id)
+        {
+            try
+            {
+                AWS_BusinessObjects.Identity.ApplicationUser user
+                    = context.GetUser<ApplicationUser>().FirstOrDefault(r => r.Id == id);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<List<ApplicationUser>> GetAudienceAcountAsync()

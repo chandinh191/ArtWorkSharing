@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Repository.Identity;
 using AWS_Services.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +27,7 @@ namespace ArtWorkSharingAPI.Controllers
             var artWorks = _artWorkService.GetAll();           
             return Ok(artWorks);
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
@@ -39,7 +40,7 @@ namespace ArtWorkSharingAPI.Controllers
         }
         //[Authorize Roles = ("1, 2, 3")]
         [HttpPost("Add")]
-        public IActionResult Add(ArtWork artWork)
+        public IActionResult Add(ArtWorkModel artWork)
         {
             if (!ModelState.IsValid)
             {
@@ -96,6 +97,24 @@ namespace ArtWorkSharingAPI.Controllers
             {
                 return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
             }            
+        }
+        [HttpPut("UpdateOwner")]
+        public IActionResult UpdateOwner(ArtWork artWork)
+        {
+           
+                var artWorkCheck = _artWorkService.GetById(artWork.Id);
+                if (artWorkCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh của bạn!, Id: {artWork.Id}, Name: {artWork.Name}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                artWorkCheck.UserOwnerId = artWork.UserOwnerId;
+                    _artWorkService.Update(artWorkCheck);
+                    return Ok("Cập nhật thành công");
+                }
+            
         }
     }
 }

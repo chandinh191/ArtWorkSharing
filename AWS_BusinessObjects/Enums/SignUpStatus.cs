@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace AWS_BusinessObjects.Enums
 {
-    public enum OrderStatus
+    public enum SignUpStatus
     {
-        Cancelled = 0,
-        Pending = 1,
-        Accepted = 2
+        AudienceAccount = 0,
+        ArtistAccounts = 1
     }
 }

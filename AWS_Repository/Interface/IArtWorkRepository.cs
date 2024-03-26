@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace AWS_Repository.Interface
     {
         public List<ArtWork> GetAll();
         public ArtWork GetById(Guid id);
-        public void Add(ArtWork artWork);
+        public void Add(ArtWorkModel artWork);
         public void Update(ArtWork artWork);
         public void Delete(Guid id);
     }

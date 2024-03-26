@@ -10,6 +10,8 @@ using AWS_DAO.Common.Exceptions;
 using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Enums;
 
 namespace AWS_DAO
 {
@@ -61,11 +63,11 @@ namespace AWS_DAO
         }   
 
         // add ArtWork
-        public void Add(AWS_BusinessObjects.Entities.ArtWork artWorks)
+        public void Add(ArtWorkModel artWorks)
         {
             try
             {
-                var newArtWork = new ArtWork()
+                AWS_BusinessObjects.Entities.ArtWork newArtWork = new ArtWork()
                 {
                     Id = new Guid(),
                     UserAccountId = artWorks.UserAccountId,
@@ -75,8 +77,8 @@ namespace AWS_DAO
                     Description = artWorks.Description,
                     Price = artWorks.Price,
                     ImageUrl = artWorks.ImageUrl,
-                    ArtWorkStatus = artWorks.ArtWorkStatus,
-                    Created = artWorks.Created,
+                    ArtWorkStatus = ArtWorkStatus.Active,
+                    Created = DateTime.Now,
                     IsDeleted = false,
                     IsSold = false,
                     IsPreOrder = false

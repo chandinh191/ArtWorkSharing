@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
@@ -17,7 +18,7 @@ namespace AWS_Repository.Repositories
         {
             _artWorkDAO = artWorkDAO;
         }
-        public void Add(ArtWork artWork)
+        public void Add(ArtWorkModel artWork)
         {
             _artWorkDAO.Add(artWork);
             //throw new NotImplementedException();

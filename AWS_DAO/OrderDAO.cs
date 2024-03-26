@@ -26,6 +26,7 @@ namespace AWS_DAO
             {
                 List<Order> orders
                     = (List<Order>)_context.Get<Order>().Where(x => x.IsDeleted == false).OrderByDescending(x => x.Created)
+                    .Include(o=>o.ArtWork)
                     .ToList();
                 return orders;
             }
@@ -73,7 +74,7 @@ namespace AWS_DAO
                     throw new NotFoundException();
                 }
                 Order.LastModified = DateTime.Now;
-
+                Order.Status = order.Status;
 
                 _context.Get<Order>().Update(Order);
                 _context.SaveChanges();
@@ -83,6 +84,7 @@ namespace AWS_DAO
                 throw new Exception(ex.Message);
             }
         }
+
 
         // delete Order, isDeleted = true
         public void Delete(Guid id)

@@ -13,6 +13,7 @@ namespace AWS_Repository.Identity
     {
         public Task<IdentityResult> SignUpAsync(SignUpModel model);
         public Task<object> SignInAsync(SignInModel model);
+        public Task<ApplicationUser> GetAccountByIdAsync(string id);
         public Task<List<ApplicationUser>> GetAudienceAcountAsync();
         public Task<List<ApplicationUser>> GetArtistAcountAsync();
         public Task<List<ApplicationUser>> GetAdministratorAcountAsync();
