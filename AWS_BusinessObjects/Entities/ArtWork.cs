@@ -42,7 +42,7 @@ namespace AWS_BusinessObjects.Entities
         public string Description { get; set; }
 
 
-        [Range(0, double.MaxValue, ErrorMessage = "Price must be greater than or equal to 0")]
+        [Range(0, 10000, ErrorMessage = "Price must be between 0 and 10000")]
         public float Price { get; set; }
 
 

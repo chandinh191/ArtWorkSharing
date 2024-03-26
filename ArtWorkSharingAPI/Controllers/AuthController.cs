@@ -40,7 +40,7 @@ namespace ArtWorkSharingAPI.Controllers
         public async Task<IActionResult> SignIn(SignInModel model)
         {
             var result = await accountRepository.SignInAsync(model);
-            if (string.IsNullOrEmpty(result))
+            if (result == null)
             {
                 return BadRequest("Sai tên đăng nhập hoặc mật khẩu!");
             }

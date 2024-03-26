@@ -19,10 +19,7 @@ namespace AWS_BusinessObjects.Entities
         [ForeignKey(nameof(ArtWork))]
         [Required(ErrorMessage = "ArtWordID is required")]
         public Guid ArtWorkID { get; set; }
-        [Range(0, double.MaxValue, ErrorMessage = "Price must be greater than or equal to 0")]
-        public float Price { get; set; }
         public OrderStatus Status { get; set; }
-        public bool isPreOrder { get; set; }    
         public virtual IList<Rating>? Rating { get; set; }
     }
 }

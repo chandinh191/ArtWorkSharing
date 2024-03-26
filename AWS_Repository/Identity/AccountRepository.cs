@@ -42,7 +42,7 @@ namespace AWS_Repository.Identity
             this.identityService = identityService;
             this.context = context;
         }
-        public async Task<string> SignInAsync(SignInModel model)
+        public async Task<object> SignInAsync(SignInModel model)
         {
             /*var signInResult = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
             if(!signInResult.Succeeded)
@@ -84,7 +84,11 @@ namespace AWS_Repository.Identity
             );
 
             // Return token
-            return new JwtSecurityTokenHandler().WriteToken(token);
+
+            return new { 
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                accinfo = user
+            };
         }
 
         public async Task<IdentityResult> SignUpAsync(SignUpModel model)
@@ -92,7 +96,8 @@ namespace AWS_Repository.Identity
             var user = new ApplicationUser
             {
                 Email = model.Email,
-                UserName = model.Email,
+                UserName = model.Username,
+                LockoutEnabled = false,
             };
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
