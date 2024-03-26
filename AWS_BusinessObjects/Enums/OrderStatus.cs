@@ -8,10 +8,8 @@ namespace AWS_BusinessObjects.Enums
 {
     public enum OrderStatus
     {
+        Cancelled = 0,
         Pending = 1,
-        Processing = 2,
-        Shipped = 3,
-        Delivered = 4,
-        Cancelled = 5
+        Accepted = 2
     }
 }
