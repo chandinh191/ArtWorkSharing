@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -71,26 +72,26 @@ namespace ArtWorkSharingAPI.Controllers
 
         }
         [HttpPut("Update")]
-        public IActionResult Update(Category category)
+        public IActionResult Update(CategoryModel categoryModel)
         {
-            if (ModelState.IsValid)
-            {
-                var categoryCheck = categoryService.GetById(category.Id);
-                if (category == null)
+            /*if (ModelState.IsValid)
+            {*/
+                var categoryCheck = categoryService.GetById(categoryModel.Id);
+                if (categoryCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {category.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy loại tranh của bạn!, Id: {categoryModel.Id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    categoryService.Update(category);
+                    categoryService.Update(categoryModel);
                     return Ok("Cập nhật thành công");
                 }
-            }
+            /*}
             else
             {
                 return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
-            }
+            }*/
         }
     }
 }

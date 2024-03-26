@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Repository.Interface;
 using AWS_Services.Interface;
 using System;
@@ -22,6 +23,6 @@ namespace AWS_Services.Services
 
         public Category GetById(Guid id) => categoryRepository.GetById(id);
 
-        public void Update(Category category) => categoryRepository.Update(category);
+        public void Update(CategoryModel categoryModel) => categoryRepository.Update(categoryModel);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO.Common.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -63,17 +64,17 @@ namespace AWS_DAO
         }
 
         // update Interact
-        public void Update(Category category)
+        public void Update(CategoryModel categoryModel)
         {
             try
             {
-                var Category = _context.Get<Category>().FirstOrDefault(x => x.Id == category.Id);
+                var Category = _context.Get<Category>().FirstOrDefault(x => x.Id == categoryModel.Id);
                 if (Category == null)
                 {
                     throw new NotFoundException();
                 }
-                Category.CategoryName = category.CategoryName;
-                Category.Description = category.Description;
+                Category.CategoryName = categoryModel.CategoryName;
+                Category.Description = categoryModel.Description;
                 Category.LastModified = DateTime.Now;
 
                 _context.Get<Category>().Update(Category);
