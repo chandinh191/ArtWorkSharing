@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AWS_BusinessObjects.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace AWS_BusinessObjects.Models
         [Required]
         public string ConfirmPassword { get; set; }
         [Required]
-        public string Username { get; set; }    
+        public string Username { get; set; }
+        [Required]
+        public SignUpStatus Status { get; set; }
     }
 }
