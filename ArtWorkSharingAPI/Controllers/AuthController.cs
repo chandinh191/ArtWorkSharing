@@ -95,5 +95,29 @@ namespace ArtWorkSharingAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        // get artist by id
+        [HttpGet("GetArtistById")]
+        public async Task<IActionResult> GetArtistById(string id)
+        {
+            var result = await accountRepository.GetAccountByIdAsync(id);
+            if (result == null)
+            {
+                return NotFound($"Không tìm thấy tài khoản của bạn!, Id: {id}");
+            }
+            return Ok(result);
+        }
+
+        // get audience by id
+        [HttpGet("GetAudienceById")]
+        public async Task<IActionResult> GetAudienceById(string id)
+        {
+            var result = await accountRepository.GetAccountByIdAsync(id);
+            if (result == null)
+            {
+                return NotFound($"Không tìm thấy tài khoản của bạn!, Id: {id}");
+            }
+            return Ok(result);
+        }
     }
 }
