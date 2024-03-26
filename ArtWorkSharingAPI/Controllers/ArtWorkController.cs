@@ -98,5 +98,23 @@ namespace ArtWorkSharingAPI.Controllers
                 return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
             }            
         }
+        [HttpPut("UpdateOwner")]
+        public IActionResult UpdateOwner(ArtWork artWork)
+        {
+           
+                var artWorkCheck = _artWorkService.GetById(artWork.Id);
+                if (artWorkCheck == null)
+                {
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh của bạn!, Id: {artWork.Id}, Name: {artWork.Name}");
+                    return NotFound(ModelState);
+                }
+                else
+                {
+                artWorkCheck.UserOwnerId = artWork.UserOwnerId;
+                    _artWorkService.Update(artWorkCheck);
+                    return Ok("Cập nhật thành công");
+                }
+            
+        }
     }
 }
