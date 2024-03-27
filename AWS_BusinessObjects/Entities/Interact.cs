@@ -17,9 +17,10 @@ namespace AWS_BusinessObjects.Entities
         public Guid ArtWorkID { get; set; }
 
         // bị vòng
-        public ApplicationUser ApplicationUser { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string UserAccountId { get; set; }
+        public virtual ApplicationUser? ApplicationUser { get; set; }
 
         [Required(ErrorMessage = "Comment is required")]
         public string Comment { get; set; }
