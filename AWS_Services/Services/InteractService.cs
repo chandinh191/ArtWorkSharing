@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Repository.Interface;
 using AWS_Services.Interface;
 using System;
@@ -17,8 +18,8 @@ namespace AWS_Services.Services
             this.interactRepository = interactRepository;
         }
 
-        public void Add(Interact interact)
-        => interactRepository.Add(interact);
+        public void Add(InteractModel interactModel)
+        => interactRepository.Add(interactModel);
 
         public void Delete(Guid id)
         => interactRepository.Delete(id);
@@ -29,7 +30,7 @@ namespace AWS_Services.Services
         public Interact GetById(Guid id)
         => interactRepository.GetById(id);
 
-        public void Update(Interact interact)
-        => interactRepository.Update(interact);
+        public void Update(InteractModel interactModel)
+        => interactRepository.Update(interactModel);
     }
 }

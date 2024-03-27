@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Repository.Interface;
 using AWS_Services.Interface;
 using System;
@@ -17,8 +18,8 @@ namespace AWS_Services.Services
             this.reportRepository = reportRepository;
         }
 
-        public void Add(Report report)
-        => reportRepository.Add(report);
+        public void Add(ReportModel reportModel)
+        => reportRepository.Add(reportModel);
 
         public void Delete(Guid id)
         => reportRepository.Delete(id);
@@ -29,7 +30,7 @@ namespace AWS_Services.Services
         public Report GetById(Guid id)
         => reportRepository.GetById(id);
 
-        public void Update(Report report)
-        => reportRepository.Update(report);
+        public void Update(ReportModel reportModel)
+        => reportRepository.Update(reportModel);
     }
 }

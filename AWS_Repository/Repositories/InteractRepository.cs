@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
@@ -18,8 +19,8 @@ namespace AWS_Repository.Repositories
             _interactDAO = interactDAO;
         }
 
-        public void Add(Interact interact)
-        => _interactDAO.Add(interact);
+        public void Add(InteractModel interactModel)
+        => _interactDAO.Add(interactModel);
 
         public void Delete(Guid id)
         => _interactDAO.Delete(id);
@@ -30,7 +31,7 @@ namespace AWS_Repository.Repositories
         public Interact GetById(Guid id)
         => _interactDAO.GetById(id);
 
-        public void Update(Interact interact)
-        => _interactDAO.Update(interact);    
+        public void Update(InteractModel interactModel)
+        => _interactDAO.Update(interactModel);    
     }
 }

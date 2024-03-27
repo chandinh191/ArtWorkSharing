@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO.Common.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -50,10 +51,18 @@ namespace AWS_DAO
         }
 
         // add Order
-        public void Add(Order order)
+        public void Add(OrderModel orderModel)
         {
             try
             {
+                Order order = new Order();
+                order.Id = new Guid();
+                order.BuyerAccountId = orderModel.BuyerAccountId;
+                order.OwnerAccountId = orderModel.OwnerAccountId;
+                order.ArtWorkID = orderModel.ArtWorkID;
+                order.Status = orderModel.Status;
+                order.IsDeleted = false;
+                order.Created = DateTime.Now;
                 _context.Get<Order>().Add(order);
                 _context.SaveChanges();
             }
@@ -64,19 +73,22 @@ namespace AWS_DAO
         }
 
         // update Order
-        public void Update(Order order)
+        public void Update(OrderModel orderModel)
         {
             try
             {
-                var Order = _context.Get<Order>().FirstOrDefault(x => x.Id == order.Id);
-                if (Order == null)
+                var order = _context.Get<Order>().FirstOrDefault(x => x.Id == orderModel.Id);
+                if (order == null)
                 {
                     throw new NotFoundException();
                 }
-                Order.LastModified = DateTime.Now;
-                Order.Status = order.Status;
+                order.BuyerAccountId = orderModel.BuyerAccountId;
+                order.OwnerAccountId = orderModel.OwnerAccountId;
+                order.ArtWorkID = orderModel.ArtWorkID;
+                order.Status = orderModel.Status;
+                order.LastModified = DateTime.Now;
 
-                _context.Get<Order>().Update(Order);
+                _context.Get<Order>().Update(order);
                 _context.SaveChanges();
             }
             catch (Exception ex)

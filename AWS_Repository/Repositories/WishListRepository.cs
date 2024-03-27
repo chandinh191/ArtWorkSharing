@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
@@ -18,7 +19,7 @@ namespace AWS_Repository.Repositories
             _wishListDAO = wishListDAO;
         }
 
-        public void Add(WishList wishList) => _wishListDAO.Add(wishList);
+        public void Add(WistListModel wishListModel) => _wishListDAO.Add(wishListModel);
 
         public void Delete(Guid id) => _wishListDAO.Delete(id);
 
@@ -26,6 +27,6 @@ namespace AWS_Repository.Repositories
 
         public WishList GetById(Guid id) => _wishListDAO.GetById(id);
 
-        public void Update(WishList wishList) => _wishListDAO.Update(wishList);
+        public void Update(WistListModel wishListModel) => _wishListDAO.Update(wishListModel);
     }
 }

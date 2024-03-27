@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +37,7 @@ namespace ArtWorkSharingAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public IActionResult Add(WishList wishList)
+        public IActionResult Add(WistListModel wishListModel)
         {
             if (!ModelState.IsValid)
             {
@@ -44,7 +45,7 @@ namespace ArtWorkSharingAPI.Controllers
             }
             else
             {
-                wishListService.Add(wishList);
+                wishListService.Add(wishListModel);
                 return Ok("Thêm thành công");
             }
         }
@@ -73,19 +74,19 @@ namespace ArtWorkSharingAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public IActionResult Update(WishList wishList)
+        public IActionResult Update(WistListModel wishListModel)
         {
             if (ModelState.IsValid)
             {
-                var wishListCheck = wishListService.GetById(wishList.Id);
+                var wishListCheck = wishListService.GetById(wishListModel.Id);
                 if (wishListCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh mong muốn của bạn!, Id: {wishList.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tranh mong muốn của bạn!, Id: {wishListModel.Id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    wishListService.Update(wishList);
+                    wishListService.Update(wishListModel);
                     return Ok("Cập nhật thành công");
                 }
             }

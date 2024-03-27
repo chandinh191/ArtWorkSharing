@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace AWS_Repository.Interface
     {
         public List<Order> GetAll();
         public Order GetById(Guid id);
-        public void Add(Order order);
-        public void Update(Order order);
+        public void Add(OrderModel orderModel);
+        public void Update(OrderModel orderModel);
         public void Delete(Guid id);
     }
 }

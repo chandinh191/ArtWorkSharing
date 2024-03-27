@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
 using System;
@@ -17,8 +18,8 @@ namespace AWS_Repository.Repositories
             _reportDAO = reportDAO;
         }
 
-        public void Add(Report report)
-        => _reportDAO.Add(report);
+        public void Add(ReportModel reportModel)
+        => _reportDAO.Add(reportModel);
 
         public void Delete(Guid id)
         => _reportDAO.Delete(id);
@@ -29,7 +30,7 @@ namespace AWS_Repository.Repositories
         public Report GetById(Guid id)
         => _reportDAO.GetById(id);
 
-        public void Update(Report report)
-        => _reportDAO.Update(report);
+        public void Update(ReportModel reportModel)
+        => _reportDAO.Update(reportModel);
     }
 }

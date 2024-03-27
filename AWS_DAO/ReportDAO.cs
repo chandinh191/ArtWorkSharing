@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO.Common.Exceptions;
 using System;
@@ -51,10 +52,17 @@ namespace AWS_DAO
         }
 
         // add report, validate and try catch
-        public void Add(Report report)
+        public void Add(ReportModel reportModel)
         {
             try
             {
+                Report report = new Report();
+                report.Id = new Guid();
+                report.UserAccountID = reportModel.UserAccountID;
+                report.UserAccountIDReport = reportModel.UserAccountIDReport;
+                report.Description = reportModel.Description;
+                report.Created = DateTime.Now;
+                report.IsDeleted = false;
                 // check reportId, if found throw exception
                 var checkId = GetById(report.Id);
                 if (checkId != null)
@@ -71,16 +79,20 @@ namespace AWS_DAO
         }
 
         // update report, validate and try catch
-        public void Update(Report report)
+        public void Update(ReportModel reportModel)
         {
             try
             {
                 // check reportId, throw not found exception if not found
-                var checkId = GetById(report.Id);
+                var checkId = GetById(reportModel.Id);
                 if (checkId == null)
                 {
                     throw new NotFoundException("Report not found");
                 }
+                var report = checkId;
+                report.UserAccountID = reportModel.UserAccountID;
+                report.UserAccountIDReport = reportModel.UserAccountIDReport;
+                report.Description = reportModel.Description;
                 _context.Get<Report>().Update(report);
                 _context.SaveChanges();
             }

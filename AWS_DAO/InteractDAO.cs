@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO.Common.Exceptions;
 using System;
@@ -47,10 +48,18 @@ namespace AWS_DAO
         }
 
         // add Interact
-        public void Add(Interact interact)
+        public void Add(InteractModel interactModel)
         {
             try
             {
+                Interact interact = new Interact();
+                interact.Id = new Guid();
+                interact.UserAccountId = interactModel.UserAccountId;
+                interact.ArtWorkID = interactModel.ArtWorkID;
+                interact.Comment = interactModel.Comment;
+                interact.IsLike = interactModel.IsLike;
+                interact.IsDeleted = false;
+                interact.Created = DateTime.Now;
                 _context.Get<Interact>().Add(interact);
                 _context.SaveChanges();
             }
@@ -61,20 +70,21 @@ namespace AWS_DAO
         }
 
         // update Interact
-        public void Update(Interact interact)
+        public void Update(InteractModel interactModel)
         {
             try
             {
-                var Interact = _context.Get<Interact>().FirstOrDefault(x => x.Id == interact.Id);
-                if (Interact == null)
+                var interact = _context.Get<Interact>().FirstOrDefault(x => x.Id == interactModel.Id);
+                if (interact == null)
                 {
                     throw new NotFoundException();
                 }
-                Interact.Comment = interact.Comment;
-                Interact.IsLike = interact.IsLike;
-                Interact.LastModified = DateTime.Now;
+                interact.ArtWorkID = interactModel.ArtWorkID;
+                interact.Comment = interactModel.Comment;
+                interact.IsLike = interactModel.IsLike;
+                interact.LastModified = DateTime.Now;
 
-                _context.Get<Interact>().Update(Interact);
+                _context.Get<Interact>().Update(interact);
                 _context.SaveChanges();
             }
             catch (Exception ex)

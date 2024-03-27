@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_Services.Interface;
 using AWS_Services.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ namespace ArtWorkSharingAPI.Controllers
             }          
         }
         [HttpPost("Add")]
-        public IActionResult Add(Interact interact)
+        public IActionResult Add(InteractModel interactModel)
         {
             if (!ModelState.IsValid)
             {
@@ -43,7 +44,7 @@ namespace ArtWorkSharingAPI.Controllers
             }
             else
             {
-                interactService.Add(interact);
+                interactService.Add(interactModel);
                 return Ok("Thêm thành công");
             }
         }
@@ -70,19 +71,19 @@ namespace ArtWorkSharingAPI.Controllers
             }
         }
         [HttpPut("Update")]
-        public IActionResult Update(Interact interact)
+        public IActionResult Update(InteractModel interactModel)
         {
             if (ModelState.IsValid)
             {
-                var interactCheck = interactService.GetById(interact.Id);
+                var interactCheck = interactService.GetById(interactModel.Id);
                 if (interactCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy tương tác của bạn!, Id: {interact.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy tương tác của bạn!, Id: {interactModel.Id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    interactService.Update(interact);
+                    interactService.Update(interactModel);
                     return Ok("Cập nhật thành công");
                 }
             }

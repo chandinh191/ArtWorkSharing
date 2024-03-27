@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO.Common.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -50,10 +51,16 @@ namespace AWS_DAO
         }
 
         // add Order
-        public void Add(WishList wishList)
+        public void Add(WistListModel wishListModel)
         {
             try
             {
+                WishList wishList = new WishList();
+                wishList.Id = new Guid();
+                wishList.ArtWorkID = wishListModel.ArtWorkID;
+                wishList.UserAccountId = wishListModel.UserAccountId;
+                wishList.Created = DateTime.Now;
+                wishList.IsDeleted = false;
                 _context.Get<WishList>().Add(wishList);
                 _context.SaveChanges();
             }
@@ -64,20 +71,21 @@ namespace AWS_DAO
         }
 
         // update Order
-        public void Update(WishList wishList)
+        public void Update(WistListModel wishListModel)
         {
             try
             {
-                var WishList = _context.Get<WishList>().FirstOrDefault(x => x.Id == wishList.Id);
-                if (WishList == null)
+                var wishList = _context.Get<WishList>().FirstOrDefault(x => x.Id == wishListModel.Id);
+                if (wishList == null)
                 {
                     throw new NotFoundException();
                 }
-                WishList.ArtWorkID = wishList.ArtWorkID;
-                WishList.LastModified = DateTime.Now;
+                wishList.ArtWorkID = wishListModel.ArtWorkID;
+                wishList.UserAccountId = wishListModel.UserAccountId;
+                wishList.LastModified = DateTime.Now;
 
 
-                _context.Get<WishList>().Update(WishList);
+                _context.Get<WishList>().Update(wishList);
                 _context.SaveChanges();
             }
             catch (Exception ex)

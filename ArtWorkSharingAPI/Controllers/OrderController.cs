@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using AWS_BusinessObjects.Enums;
 using AWS_Services.Interface;
 using AWS_Services.Services;
@@ -42,7 +43,7 @@ namespace ArtWorkSharingAPI.Controllers
             }
         }
         [HttpPost("Add")]
-        public IActionResult Add(Order order)
+        public IActionResult Add(OrderModel orderModel)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +51,7 @@ namespace ArtWorkSharingAPI.Controllers
             }
             else
             {
-                orderService.Add(order);
+                orderService.Add(orderModel);
                 return Ok("Thêm thành công");
             }
         }
@@ -78,18 +79,18 @@ namespace ArtWorkSharingAPI.Controllers
             
         }
         [HttpPut("Update")]
-        public IActionResult Update(Order order)
+        public IActionResult Update(OrderModel orderModel)
         {
           
-                var orderCheck = orderService.GetById(order.Id);
+                var orderCheck = orderService.GetById(orderModel.Id);
                 if (orderCheck == null)
                 {
-                    ModelState.AddModelError($"Id", $"Không tìm thấy đơn đặt hàng của bạn!, Id: {order.Id}");
+                    ModelState.AddModelError($"Id", $"Không tìm thấy đơn đặt hàng của bạn!, Id: {orderModel.Id}");
                     return NotFound(ModelState);
                 }
                 else
                 {
-                    orderService.Update(order);
+                    orderService.Update(orderModel);
                     return Ok("Cập nhật thành công");
                 }
             
@@ -97,15 +98,21 @@ namespace ArtWorkSharingAPI.Controllers
         [HttpPut("UpdateStatusCancel")]
         public IActionResult UpdateStatusCancel(Guid artworkId)
         {
-
-             var listOrder = orderService.GetAll().Where(o=>o.ArtWorkID == artworkId);
+            OrderModel orderModel = new OrderModel();
+            var listOrder = orderService.GetAll().Where(o=>o.ArtWorkID == artworkId);
              foreach (var order in listOrder)
             {
                 if(order.Status != OrderStatus.Accepted)
                 {
                     order.Status = OrderStatus.Cancelled;
+                    orderModel.Id = order.Id;
+                    orderModel.Status = order.Status;
+                    orderModel.ArtWorkID = order.ArtWorkID;
+                    orderModel.BuyerAccountId = order.BuyerAccountId;
+                    orderModel.OwnerAccountId = order.OwnerAccountId;
+                    
                 }
-                orderService.Update(order);
+                orderService.Update(orderModel);
             }
              return Ok("Cập nhật thành công");
 

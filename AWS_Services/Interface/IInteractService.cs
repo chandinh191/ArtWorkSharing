@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace AWS_Services.Interface
     {
         public List<Interact> GetAll();
         public Interact GetById(Guid id);
-        public void Add(Interact interact);
-        public void Update(Interact interact);
+        public void Add(InteractModel interactModel);
+        public void Update(InteractModel interactModel);
         public void Delete(Guid id);
     }
 }

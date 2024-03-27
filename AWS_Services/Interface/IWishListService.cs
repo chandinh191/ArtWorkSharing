@@ -1,4 +1,5 @@
-﻿using AWS_BusinessObjects.Entities;
+﻿using AWS_BusinessObjects.Common.Models;
+using AWS_BusinessObjects.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace AWS_Services.Interface
     {
         public List<WishList> GetAll();
         public WishList GetById(Guid id);
-        public void Add(WishList wishList);
-        public void Update(WishList wishList);
+        public void Add(WistListModel wishListModel);
+        public void Update(WistListModel wishListModel);
         public void Delete(Guid id);
     }
 }

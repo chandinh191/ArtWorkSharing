@@ -1,4 +1,5 @@
 ﻿using AWS_BusinessObjects.Common.Interfaces;
+using AWS_BusinessObjects.Common.Models;
 using AWS_BusinessObjects.Entities;
 using AWS_DAO;
 using AWS_Repository.Interface;
@@ -18,8 +19,8 @@ namespace AWS_Repository.Repositories
             _orderDAO = orderDAO;
         }
 
-        public void Add(Order order)
-        => _orderDAO.Add(order);
+        public void Add(OrderModel orderModel)
+        => _orderDAO.Add(orderModel);
 
         public void Delete(Guid id)
         => _orderDAO.Delete(id);
@@ -30,7 +31,7 @@ namespace AWS_Repository.Repositories
         public Order GetById(Guid id)
         => _orderDAO.GetById(id);
 
-        public void Update(Order order)
-        => _orderDAO.Update(order);
+        public void Update(OrderModel orderModel)
+        => _orderDAO.Update(orderModel);
     }
 }
