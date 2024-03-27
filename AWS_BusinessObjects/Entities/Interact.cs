@@ -17,13 +17,13 @@ namespace AWS_BusinessObjects.Entities
         public Guid ArtWorkID { get; set; }
 
         // bị vòng
-        /*public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("ApplicationUser")]
-        public string UserAccountId { get; set; }*/
+        public string UserAccountId { get; set; }
+
         [Required(ErrorMessage = "Comment is required")]
         public string Comment { get; set; }
-        public bool IsLike { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public bool? IsLike { get; set; }
+
     }
 }

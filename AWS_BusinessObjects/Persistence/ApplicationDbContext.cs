@@ -330,100 +330,102 @@ namespace AWS_BusinessObjects.Persistence
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("8e9acec5-54c9-4093-a450-19eb7b2109fb"),
                     IsDeleted = false,
                     Comment = "Comment 1",
-                    Date = DateTime.Now,
+        
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("26709dca-1906-4c50-a00e-1c63582ab644"),
                     IsDeleted = false,
                     Comment = "Comment 2",
-                    Date = DateTime.Now,
+        
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("8c44d5c8-a738-4b65-a88e-3ed38fce88c4"),
                     IsDeleted = false,
                     Comment = "Comment 3",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("7b76bf1f-d24c-4ac9-b466-4179e65605b2"),
                     IsDeleted = false,
                     Comment = "Comment 4",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("a25e170e-7ddc-4bdc-9215-51c6fb9bcd96"),
                     IsDeleted = false,
                     Comment = "Comment 5",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("b18dcaa1-d99a-4f15-a30c-5fd72c30280e"),
                     IsDeleted = false,
                     Comment = "Comment 6",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("bd37c967-1817-495b-89eb-665c81b02d5e"),
                     IsDeleted = false,
                     Comment = "Comment 7",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("1f35558f-a942-4837-81a4-720bae0e8bb1"),
                     IsDeleted = false,
                     Comment = "Comment 8",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("9db314d0-6a55-492c-9a13-7ee6f2091cbf"),
                     IsDeleted = false,
                     Comment = "Comment 9",
-                    Date = DateTime.Now,
                     IsLike = true
                 },
                 new Interact
                 {
                     Id = Guid.NewGuid(),
                     Created = DateTime.Now,
+                    UserAccountId = "871a809a-b3fa-495b-9cc2-c5d738a866cf",
                     ArtWorkID = Guid.Parse("d9d6b461-8efd-4395-8662-a58caa152200"),
                     IsDeleted = false,
                     Comment = "Comment 10",
-                    Date = DateTime.Now,
                     IsLike = true
                 }
                 );
