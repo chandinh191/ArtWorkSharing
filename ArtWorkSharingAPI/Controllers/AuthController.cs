@@ -119,5 +119,17 @@ namespace ArtWorkSharingAPI.Controllers
             }
             return Ok(result);
         }
+
+        // get account by id
+        [HttpGet("GetAccountById")]
+        public async Task<IActionResult> GetAccountById(string id)
+        {
+            var result = await accountRepository.GetAccountByIdAsync(id);
+            if (result == null)
+            {
+                return NotFound($"Không tìm thấy tài khoản của bạn!, Id: {id}");
+            }
+            return Ok(result);
+        }
     }
 }
