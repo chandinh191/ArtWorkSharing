@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AWS_BusinessObjects.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,5 +28,6 @@ namespace AWS_BusinessObjects.Common.Models
         [Required(ErrorMessage = "ImageUrl is required")]
         [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
+        public ArtWorkStatus ArtWorkStatus { get; set; }
     }
 }

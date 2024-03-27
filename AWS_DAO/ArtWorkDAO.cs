@@ -77,7 +77,7 @@ namespace AWS_DAO
                     Description = artWorks.Description,
                     Price = artWorks.Price,
                     ImageUrl = artWorks.ImageUrl,
-                    ArtWorkStatus = ArtWorkStatus.Active,
+                    ArtWorkStatus = artWorks.ArtWorkStatus,
                     Created = DateTime.Now,
                     IsDeleted = false
                 };

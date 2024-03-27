@@ -74,8 +74,8 @@ namespace ArtWorkSharingAPI.Controllers
         [HttpPut("Update")]
         public IActionResult Update(CategoryModel categoryModel)
         {
-            /*if (ModelState.IsValid)
-            {*/
+            if (ModelState.IsValid)
+            {
                 var categoryCheck = categoryService.GetById(categoryModel.Id);
                 if (categoryCheck == null)
                 {
@@ -87,11 +87,11 @@ namespace ArtWorkSharingAPI.Controllers
                     categoryService.Update(categoryModel);
                     return Ok("Cập nhật thành công");
                 }
-            /*}
+            }
             else
             {
-                return BadRequest($"Số Lỗi: {ModelState.ErrorCount}, Lỗi: {ModelState}");
-            }*/
+                return BadRequest();
+            }
         }
     }
 }
